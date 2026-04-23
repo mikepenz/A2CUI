@@ -38,3 +38,7 @@ include(":a2cui-sample")
 include(":a2cui-sample-shared")
 include(":a2cui-sample-android")
 include(":a2cui-sample-ios")
+include(":a2cui-sample-custom-catalog")
+
+include(":a2cui-agui-mock-server")
+include(":a2cui-sample-live")

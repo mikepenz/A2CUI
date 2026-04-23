@@ -1,5 +1,6 @@
 plugins {
     id("com.mikepenz.convention.kotlin-multiplatform")
+    id("com.mikepenz.convention.compose")
     id("com.mikepenz.convention.publishing")
     alias(libs.plugins.kotlinSerialization)
 }
@@ -18,6 +19,7 @@ kotlin {
             // interface mirrored from docs.ag-ui.com, decoded via kotlinx-serialization.
             implementation(libs.kotlinx.serialization.json)
             implementation(baseLibs.kotlinx.coroutines.core)
+            implementation(compose.runtime)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

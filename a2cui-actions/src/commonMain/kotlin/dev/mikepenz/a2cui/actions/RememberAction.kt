@@ -41,6 +41,7 @@ public fun <T : Any> rememberAction(
                     parameters = parameters,
                 ),
                 render = wrapped,
+                accumulatorFactory = { TypedArgsAccumulator(schema, json) },
             ),
         )
         onDispose { registry.unregister(name) }

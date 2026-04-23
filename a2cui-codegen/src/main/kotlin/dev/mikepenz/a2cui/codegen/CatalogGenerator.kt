@@ -54,11 +54,17 @@ internal object CatalogGenerator {
     private fun quoted(value: String): String = "\"" + value.replace("\\", "\\\\").replace("\"", "\\\"") + "\""
 
     /**
-     * Emit a Kotlin raw string literal. Triple-quote avoids escaping JSON/markdown `"` and `\n`;
-     * the only danger is a literal `"""` in the payload, which we escape by splicing dollar-signs
-     * into the middle (the resulting string parses identically but can't be mistaken for an end
-     * delimiter).
+     * Emit a Kotlin raw string literal. Triple-quote avoids escaping JSON/markdown `"` and `\n`.
+     * Two hazards to neutralise:
+     *  - a literal `"""` in the payload — splice a `${'"'}` in so it can't terminate early, and
+     *  - `$identifier` / `${...}` — raw strings still evaluate templates, and JSON Schema keys
+     *    like `$schema` / `$ref` would otherwise be read as Kotlin references; we substitute
+     *    `${'$'}` which renders as a literal `$`.
      */
-    private fun tripleQuoted(value: String): String =
-        "\"\"\"" + value.replace("\"\"\"", "\"\"\${'\"'}") + "\"\"\""
+    private fun tripleQuoted(value: String): String {
+        val escaped = value
+            .replace("$", "\${'\$'}")
+            .replace("\"\"\"", "\"\"\${'\"'}")
+        return "\"\"\"" + escaped + "\"\"\""
+    }
 }

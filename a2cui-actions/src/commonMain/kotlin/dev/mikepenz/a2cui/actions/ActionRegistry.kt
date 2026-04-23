@@ -13,6 +13,13 @@ import kotlinx.coroutines.flow.update
 public class ActionRegistration(
     public val descriptor: ActionDescriptor,
     public val render: @Composable (ToolCallStatus<*>) -> Unit,
+    /**
+     * Optional factory for a fresh [TypedArgsAccumulator] scoped to one tool-call id.
+     * Non-null when the action was registered with a typed [kotlinx.serialization.KSerializer]
+     * via [dev.mikepenz.a2cui.actions.rememberAction]. Dispatchers use this to drive
+     * [ToolCallStatus.Executing] emissions mid-stream as partial JSON becomes decodable.
+     */
+    public val accumulatorFactory: (() -> TypedArgsAccumulator<*>)? = null,
 )
 
 /**
