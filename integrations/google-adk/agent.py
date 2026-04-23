@@ -1,54 +1,27 @@
 """
-Google ADK booking agent exposing an AG-UI-compatible SSE stream at GET /events.
+Google ADK → AG-UI → A2UI bridge with **free-form prompt generation**.
 
-Wire contract (matches `:a2cui-agui-mock-server` and the Pydantic AI sibling):
+Users type a prompt like "login form with email, password, submit button" in
+the Compose client. The server passes the prompt to a Gemini-backed ADK agent.
+The agent replies with a short narration, then calls the `emit_ui` tool with a
+list of A2UI ComponentNodes describing the requested UI. The server forwards
+those nodes as a CUSTOM(name=a2ui) event carrying one `updateComponents` frame.
 
-  RUN_STARTED
-  TEXT_MESSAGE_START / TEXT_MESSAGE_CONTENT / TEXT_MESSAGE_END
-  CUSTOM  { name: "a2ui", value: createSurface(...)      }
-  CUSTOM  { name: "a2ui", value: updateComponents(...)   }
-  CUSTOM  { name: "a2ui", value: updateDataModel(...)    }
-  RUN_FINISHED
+Endpoints
+---------
 
-Each CUSTOM carries ONE A2UI v0.9 frame. A2CUI's Kotlin bridge converts `a2ui`
-CUSTOM events into `A2uiFrame`s and renders them via Compose.
-
-How it works
-------------
-
-Google ADK has no built-in AG-UI adapter (as of the time of writing). Agents are
-driven through `Runner.run_async()`, which yields ADK `Event`s. We:
-
-1. Register a tool `render_booking_form(surface_id)` on the ADK agent. When the
-   model calls the tool, the tool returns the three A2UI frames it wants
-   rendered (createSurface / updateComponents / updateDataModel).
-2. We iterate ADK's event stream. Text deltas become AG-UI `TEXT_MESSAGE_*`
-   events; tool-result events carrying A2UI frames become AG-UI `CUSTOM` events
-   with `name: "a2ui"`.
-
-If no Gemini credentials are available, a deterministic fallback narration and
-frames are streamed so the demo still runs offline.
-
-Run
----
-
-    pip install -r requirements.txt
-    export GOOGLE_API_KEY=...          # OR: use `gcloud auth application-default login`
-    export A2UI_MODEL=gemini-flash-latest
-    python agent.py
-    # → GET http://localhost:8100/events
+    GET  /events?prompt=<url-encoded>    # streams SSE for the given prompt
+    GET  /events                         # streams SSE for the default demo
+    GET  /health
 
 Env vars
 --------
 
     A2UI_SURFACE_ID       default "demo"
-    A2UI_FRAME_DELAY_MS   inter-frame pacing (default 300ms)
+    A2UI_FRAME_DELAY_MS   pacing between emitted frames (default 200ms)
     A2UI_MODEL            ADK model id (default "gemini-flash-latest")
+    GOOGLE_API_KEY        Gemini API key (free tier at https://aistudio.google.com)
     PORT                  default 8100
-
-Point `:a2cui-sample-live` at this server with:
-
-    AGUI_URL=http://localhost:8100/events ./gradlew :a2cui-sample-live:run
 """
 
 from __future__ import annotations
@@ -57,16 +30,17 @@ import asyncio
 import json
 import os
 import random
-from typing import Any, AsyncIterator
+from typing import Any, AsyncIterator, Optional
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from sse_starlette.sse import EventSourceResponse
 
 SURFACE_ID = os.environ.get("A2UI_SURFACE_ID", "demo")
-FRAME_DELAY_MS = int(os.environ.get("A2UI_FRAME_DELAY_MS", "300"))
+FRAME_DELAY_MS = int(os.environ.get("A2UI_FRAME_DELAY_MS", "200"))
 MODEL_ID = os.environ.get("A2UI_MODEL", "gemini-flash-latest")
 
-# --- A2UI v0.9 frame builders (mirror SampleA2uiFrames.kt) -------------------
+
+# --- A2UI v0.9 frame builders -----------------------------------------------
 
 def create_surface(surface_id: str) -> dict[str, Any]:
     return {
@@ -78,70 +52,105 @@ def create_surface(surface_id: str) -> dict[str, Any]:
     }
 
 
-def booking_components(surface_id: str) -> dict[str, Any]:
+def update_components(surface_id: str, components: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "version": "v0.9",
         "updateComponents": {
             "surfaceId": surface_id,
-            "components": [
-                {"id": "root", "component": "Column", "spacing": 12,
-                 "children": ["title", "sub", "email", "name", "subscribe", "submit"]},
-                {"id": "title", "component": "Text", "text": "Book your table", "variant": "h2"},
-                {"id": "sub", "component": "Text", "text": "Live agent demo — Google ADK.", "variant": "body"},
-                {"id": "email", "component": "TextField", "label": "Email", "value": {"path": "/form/email"}},
-                {"id": "name", "component": "TextField", "label": "Name", "value": {"path": "/form/name"}},
-                {"id": "subscribe", "component": "CheckBox", "label": "Email me the receipt",
-                 "value": {"path": "/form/subscribe"}},
-                {"id": "submit", "component": "Button", "text": "Submit booking",
-                 "action": {"event": {"name": "submit_booking", "context": {
-                     "email": {"path": "/form/email"},
-                     "name": {"path": "/form/name"},
-                     "subscribe": {"path": "/form/subscribe"},
-                 }}}},
-            ],
+            "components": components,
         },
     }
 
 
-def seed_email(surface_id: str) -> dict[str, Any]:
-    return {
-        "version": "v0.9",
-        "updateDataModel": {
-            "surfaceId": surface_id,
-            "path": "/form/email",
-            "value": "hello@example.com",
-        },
-    }
+def default_booking_components(surface_id: str) -> dict[str, Any]:
+    return update_components(surface_id, [
+        {"id": "root", "component": "Column", "spacing": 12,
+         "children": ["title", "sub", "email", "name", "submit"]},
+        {"id": "title", "component": "Text", "text": "Book your table", "variant": "h2"},
+        {"id": "sub", "component": "Text", "text": "Default demo — submit a prompt to regenerate.", "variant": "body"},
+        {"id": "email", "component": "TextField", "label": "Email", "value": {"path": "/form/email"}},
+        {"id": "name", "component": "TextField", "label": "Name", "value": {"path": "/form/name"}},
+        {"id": "submit", "component": "Button", "text": "Submit booking",
+         "action": {"event": {"name": "submit_booking", "context": {
+             "email": {"path": "/form/email"},
+             "name": {"path": "/form/name"},
+         }}}},
+    ])
 
 
-BOOKING_FRAMES = lambda sid=SURFACE_ID: [  # noqa: E731
-    create_surface(sid),
-    booking_components(sid),
-    seed_email(sid),
-]
+# --- Catalog description handed to the model --------------------------------
 
-# --- ADK tool -----------------------------------------------------------------
-# The tool is a plain Python function; ADK introspects its signature + docstring
-# to expose it to the model. When the agent decides to call the tool, ADK emits
-# a tool-call event followed by a tool-result event carrying this return value.
+CATALOG_SYSTEM_PROMPT = """You render interactive UIs by emitting A2UI v0.9 component nodes.
+Every UI must be a flat adjacency list of nodes. Exactly ONE node has id="root".
+Children are referenced by id in the `children` array — never nested inline.
 
-def render_booking_form(surface_id: str = SURFACE_ID) -> dict[str, Any]:
-    """Render a booking form on the A2CUI client surface. Returns the A2UI frames
-    the client should apply, in order. Call this when the user asks to book a
-    table / room / appointment.
+Allowed component types (Material 3 basic catalog) — emit ONLY these:
+
+  Text         props: text (str, required), variant (one of h1,h2,h3,title,body,label,caption)
+  Column       props: spacing (int, dp). children: [ids]
+  Row          props: spacing (int, dp). children: [ids]
+  Card         children: [ids]
+  Button       props: text (str, required), variant (optional: outlined/text),
+                      enabled (bool). Emits events via `action.event.name` with optional context.
+  TextField    props: label (str), value ({"path":"/ptr"} binds to data model)
+  CheckBox     props: label (str), value ({"path":"/ptr"})
+  Slider       props: min, max, step (int). value ({"path":"/ptr"})
+  ChoicePicker props: label (str), selected ({"path":"/ptr"}),
+                      choices [{value, label}, ...]
+  DateTimeInput props: label, value ({"path":"/ptr"}), format (date|time|datetime)
+  List         props: spacing, items ({"path":"/arrayPointer"}). children: [templateId]
+  Tabs         props: titles: [str]. children: [ids] (one per tab)
+  Modal        props: title (str), open ({"path":"/ptr"}). children: [ids]
+  Image        props: src (str, url), contentDescription (str)
+  Icon         props: name (str)
+
+Data binding:
+  Use {"path": "/relative/json/pointer"} anywhere a value property accepts it
+  (TextField.value, CheckBox.value, Slider.value, ChoicePicker.selected, etc.).
+  The client mutates the data model locally; only explicit `action.event` entries
+  flush to the agent.
+
+Actions:
+  Buttons fire events via `action: {"event": {"name": "<name>", "context": {...}}}`.
+  Context entries can be literals or {"path": "/ptr"} refs — paths resolve at emit.
+
+Workflow for any request:
+  1. Reply with ONE short narration sentence (< 15 words).
+  2. Call the `emit_ui` tool exactly once with the full component list.
+  3. Stop.
+
+Never invent component types outside the list above — the client will render a
+placeholder for unknown names. Prefer Column at the root. Keep IDs short, lowercase,
+kebab-case. Every non-root id must appear in exactly one parent's `children`.
+"""
+
+
+# --- ADK tool ---------------------------------------------------------------
+
+def emit_ui(components: list[dict[str, Any]], title: str = "") -> dict[str, Any]:
+    """Render the given A2UI component list on the client surface.
+
+    Args:
+        components: A list of A2UI v0.9 ComponentNode objects. Must include
+            exactly one node with id="root". Every child id must exist as a
+            sibling. Only components from the Material 3 basic catalog.
+        title: Optional human-readable title for logging. Not rendered.
+
+    Returns:
+        A frames list the server will forward to the client as CUSTOM(a2ui).
     """
-    return {"surfaceId": surface_id, "frames": BOOKING_FRAMES(surface_id)}
+    # Minimal validation — the model is allowed to be creative, but the client
+    # renders a placeholder for anything it can't resolve.
+    return {"surfaceId": SURFACE_ID, "title": title, "components": components}
 
-# --- ADK-driven streaming ----------------------------------------------------
 
-async def _adk_stream_frames() -> AsyncIterator[tuple[str, Any]]:
+# --- ADK-driven streaming ---------------------------------------------------
+
+async def _adk_stream_for_prompt(prompt: str) -> AsyncIterator[tuple[str, Any]]:
     """Yield `(kind, payload)` tuples from a live ADK run.
 
-    kind ∈ {"text", "a2ui"}:
-      - ("text", delta) for assistant text chunks
-      - ("a2ui", frame_dict) for each A2UI frame emitted by the tool
-
-    Falls back to a deterministic script if ADK is unavailable or not configured.
+    kind ∈ {"text", "a2ui"}: text deltas or A2UI frames.
+    Falls back to a deterministic script when ADK isn't available.
     """
     try:
         from google.adk.agents import Agent  # type: ignore
@@ -149,23 +158,16 @@ async def _adk_stream_frames() -> AsyncIterator[tuple[str, Any]]:
         from google.adk.sessions import InMemorySessionService  # type: ignore
         from google.genai import types  # type: ignore
     except ImportError:
-        async for item in _fallback_stream():
+        async for item in _fallback_stream(prompt):
             yield item
         return
 
-    # Build the agent.
     agent = Agent(
-        name="a2cui_booking_agent",
+        name="a2cui_ui_generator",
         model=MODEL_ID,
-        instruction=(
-            "You are an assistant that renders interactive UIs via the A2UI "
-            "protocol. When asked to book a table, first say one short sentence "
-            "acknowledging the request, then call `render_booking_form`. Keep "
-            "narration under 15 words."
-        ),
-        tools=[render_booking_form],
+        instruction=CATALOG_SYSTEM_PROMPT,
+        tools=[emit_ui],
     )
-
     session_service = InMemorySessionService()
     app_name = "a2cui-adk-demo"
     user_id = "u"
@@ -173,19 +175,14 @@ async def _adk_stream_frames() -> AsyncIterator[tuple[str, Any]]:
     await session_service.create_session(app_name=app_name, user_id=user_id, session_id=session_id)
 
     runner = Runner(agent=agent, app_name=app_name, session_service=session_service)
-    prompt = types.Content(
-        role="user",
-        parts=[types.Part(text="Please book me a table.")],
-    )
+    message = types.Content(role="user", parts=[types.Part(text=prompt)])
 
     try:
         async for event in runner.run_async(
             user_id=user_id,
             session_id=session_id,
-            new_message=prompt,
+            new_message=message,
         ):
-            # ADK events carry either streamed model text, tool calls, or tool results.
-            # See https://google.github.io/adk-docs/events for the full shape.
             content = getattr(event, "content", None)
             if content is None:
                 continue
@@ -196,23 +193,21 @@ async def _adk_stream_frames() -> AsyncIterator[tuple[str, Any]]:
                 fn_resp = getattr(part, "function_response", None)
                 if fn_resp is not None:
                     payload = getattr(fn_resp, "response", None) or {}
-                    # Accept either `{frames: [...]}` from our tool or a bare frame.
-                    frames = payload.get("frames") if isinstance(payload, dict) else None
-                    if frames:
-                        for frame in frames:
-                            yield ("a2ui", frame)
+                    if isinstance(payload, dict) and "components" in payload:
+                        sid = payload.get("surfaceId") or SURFACE_ID
+                        frame = update_components(sid, payload["components"])
+                        yield ("a2ui", frame)
                     elif isinstance(payload, dict) and "version" in payload:
                         yield ("a2ui", payload)
-    except Exception as exc:  # auth, network, model errors — never break the SSE stream
-        yield ("text", f"(ADK stream aborted: {exc.__class__.__name__}; falling back.) ")
-        async for item in _fallback_stream():
+    except Exception as exc:  # auth/network/model — never break the SSE stream
+        yield ("text", f"(ADK stream error: {exc.__class__.__name__}; falling back.) ")
+        async for item in _fallback_stream(prompt):
             yield item
 
 
-async def _fallback_stream() -> AsyncIterator[tuple[str, Any]]:
-    yield ("text", "Rendering booking form… ")
-    for frame in BOOKING_FRAMES():
-        yield ("a2ui", frame)
+async def _fallback_stream(prompt: str) -> AsyncIterator[tuple[str, Any]]:
+    yield ("text", f"Rendering '{prompt or 'default demo'}' (offline fallback)… ")
+    yield ("a2ui", default_booking_components(SURFACE_ID))
 
 
 # --- AG-UI SSE envelope ------------------------------------------------------
@@ -221,7 +216,7 @@ def _evt(type_: str, **fields: Any) -> dict[str, str]:
     return {"data": json.dumps({"type": type_, **fields})}
 
 
-async def agui_stream() -> AsyncIterator[dict[str, str]]:
+async def agui_stream(prompt: Optional[str]) -> AsyncIterator[dict[str, str]]:
     thread_id = f"thread-{random.randint(1, 1_000_000)}"
     run_id = f"run-{random.randint(1, 1_000_000)}"
     message_id = "msg-1"
@@ -229,15 +224,20 @@ async def agui_stream() -> AsyncIterator[dict[str, str]]:
     yield _evt("RUN_STARTED", threadId=thread_id, runId=run_id)
     await asyncio.sleep(FRAME_DELAY_MS / 1000)
 
+    # Every run first resets the surface so successive prompts don't accumulate state.
+    yield _evt("CUSTOM", name="a2ui", value=create_surface(SURFACE_ID))
+    await asyncio.sleep(FRAME_DELAY_MS / 1000)
+
     message_open = False
-    saw_any_text = False
-    async for kind, payload in _adk_stream_frames():
+    saw_text = False
+
+    async for kind, payload in _adk_stream_for_prompt(prompt or "Render the default booking form."):
         if kind == "text":
             if not message_open:
                 yield _evt("TEXT_MESSAGE_START", messageId=message_id, role="assistant")
                 message_open = True
             yield _evt("TEXT_MESSAGE_CONTENT", messageId=message_id, delta=payload)
-            saw_any_text = True
+            saw_text = True
         elif kind == "a2ui":
             if message_open:
                 yield _evt("TEXT_MESSAGE_END", messageId=message_id)
@@ -248,8 +248,7 @@ async def agui_stream() -> AsyncIterator[dict[str, str]]:
 
     if message_open:
         yield _evt("TEXT_MESSAGE_END", messageId=message_id)
-    if not saw_any_text:
-        # Guarantee a TEXT envelope so clients don't think the run was silent.
+    if not saw_text:
         yield _evt("TEXT_MESSAGE_START", messageId=message_id, role="assistant")
         yield _evt("TEXT_MESSAGE_CONTENT", messageId=message_id, delta="Done.")
         yield _evt("TEXT_MESSAGE_END", messageId=message_id)
@@ -259,12 +258,12 @@ async def agui_stream() -> AsyncIterator[dict[str, str]]:
 
 # --- FastAPI app -------------------------------------------------------------
 
-app = FastAPI(title="A2CUI Google ADK Agent")
+app = FastAPI(title="A2CUI Google ADK Agent — Prompt-driven UI Generator")
 
 
 @app.get("/events")
-async def events() -> EventSourceResponse:
-    return EventSourceResponse(agui_stream())
+async def events(prompt: Optional[str] = Query(default=None)) -> EventSourceResponse:
+    return EventSourceResponse(agui_stream(prompt))
 
 
 @app.get("/health")
