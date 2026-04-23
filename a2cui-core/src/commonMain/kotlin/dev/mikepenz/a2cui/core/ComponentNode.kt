@@ -1,6 +1,7 @@
 package dev.mikepenz.a2cui.core
 
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.SerializationException
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -49,13 +50,13 @@ internal object ComponentNodeSerializer : KSerializer<ComponentNode> {
 
     override fun deserialize(decoder: Decoder): ComponentNode {
         val jsonDecoder = decoder as? JsonDecoder
-            ?: error("ComponentNode can only be deserialized from JSON")
+            ?: throw SerializationException("ComponentNode can only be deserialized from JSON")
         val obj = jsonDecoder.decodeJsonElement().jsonObject
 
         val id = obj["id"]?.jsonPrimitive?.content
-            ?: error("ComponentNode requires 'id'")
+            ?: throw SerializationException("ComponentNode requires 'id' (got keys: ${obj.keys})")
         val component = obj["component"]?.jsonPrimitive?.content
-            ?: error("ComponentNode requires 'component'")
+            ?: throw SerializationException("ComponentNode requires 'component' (got keys: ${obj.keys})")
         val children = obj["children"]?.jsonArray?.map { it.jsonPrimitive.content } ?: emptyList()
         val props = buildJsonObject {
             obj.forEach { (k, v) -> if (k !in reservedKeys) put(k, v) }
@@ -65,7 +66,7 @@ internal object ComponentNodeSerializer : KSerializer<ComponentNode> {
 
     override fun serialize(encoder: Encoder, value: ComponentNode) {
         val jsonEncoder = encoder as? JsonEncoder
-            ?: error("ComponentNode can only be serialized to JSON")
+            ?: throw SerializationException("ComponentNode can only be serialized to JSON")
         val merged = buildJsonObject {
             put("id", JsonPrimitive(value.id))
             put("component", JsonPrimitive(value.component))

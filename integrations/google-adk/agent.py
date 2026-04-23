@@ -80,9 +80,22 @@ def default_booking_components(surface_id: str) -> dict[str, Any]:
 
 # --- Catalog description handed to the model --------------------------------
 
+ALLOWED_COMPONENTS = {
+    "Text", "Column", "Row", "Card", "Button", "TextField", "CheckBox", "Slider",
+    "ChoicePicker", "DateTimeInput", "List", "Tabs", "Modal", "Image", "Icon",
+}
+
 CATALOG_SYSTEM_PROMPT = """You render interactive UIs by emitting A2UI v0.9 component nodes.
-Every UI must be a flat adjacency list of nodes. Exactly ONE node has id="root".
-Children are referenced by id in the `children` array — never nested inline.
+
+Hard rules (the client rejects any node that breaks these):
+
+  * Every node MUST have these exact string keys:
+      - "id"         (unique, lowercase, kebab-case)
+      - "component"  (one of the allowed types below, case-sensitive)
+  * Child nodes are referenced by id in the "children" array — NEVER nested inline.
+  * Exactly one node has id = "root".
+  * Every id listed in any "children" array must also appear as a sibling node.
+  * DO NOT use "type" as a synonym for "component". The key is literally "component".
 
 Allowed component types (Material 3 basic catalog) — emit ONLY these:
 
@@ -104,24 +117,22 @@ Allowed component types (Material 3 basic catalog) — emit ONLY these:
   Image        props: src (str, url), contentDescription (str)
   Icon         props: name (str)
 
-Data binding:
-  Use {"path": "/relative/json/pointer"} anywhere a value property accepts it
-  (TextField.value, CheckBox.value, Slider.value, ChoicePicker.selected, etc.).
-  The client mutates the data model locally; only explicit `action.event` entries
-  flush to the agent.
+Canonical example — emit this SHAPE verbatim (change content to match the user's request):
 
-Actions:
-  Buttons fire events via `action: {"event": {"name": "<name>", "context": {...}}}`.
-  Context entries can be literals or {"path": "/ptr"} refs — paths resolve at emit.
+  [
+    {"id": "root",  "component": "Column", "spacing": 12, "children": ["title","email","submit"]},
+    {"id": "title", "component": "Text", "text": "Sign in", "variant": "h2"},
+    {"id": "email", "component": "TextField", "label": "Email", "value": {"path":"/form/email"}},
+    {"id": "submit","component": "Button", "text": "Sign in",
+     "action": {"event": {"name": "submit", "context": {"email": {"path":"/form/email"}}}}}
+  ]
 
 Workflow for any request:
   1. Reply with ONE short narration sentence (< 15 words).
   2. Call the `emit_ui` tool exactly once with the full component list.
   3. Stop.
 
-Never invent component types outside the list above — the client will render a
-placeholder for unknown names. Prefer Column at the root. Keep IDs short, lowercase,
-kebab-case. Every non-root id must appear in exactly one parent's `children`.
+Never invent component types outside the allowed set. Never omit "id" or "component".
 """
 
 
@@ -139,9 +150,65 @@ def emit_ui(components: list[dict[str, Any]], title: str = "") -> dict[str, Any]
     Returns:
         A frames list the server will forward to the client as CUSTOM(a2ui).
     """
-    # Minimal validation — the model is allowed to be creative, but the client
-    # renders a placeholder for anything it can't resolve.
-    return {"surfaceId": SURFACE_ID, "title": title, "components": components}
+    repaired, warnings = _repair_components(components)
+    return {
+        "surfaceId": SURFACE_ID,
+        "title": title,
+        "components": repaired,
+        "warnings": warnings,
+    }
+
+
+def _repair_components(components: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[str]]:
+    """Best-effort normalisation of model output before it hits the client.
+
+    - Drops nodes missing `id`.
+    - Maps common aliases for `component`: `type`, `component_type`, `componentType`.
+    - Drops nodes whose component isn't in the allowed catalog; strips those ids from any
+      `children` array so surviving parents don't reference missing nodes.
+    - Ensures exactly one `root`; promotes the first node if needed.
+    """
+    warnings: list[str] = []
+    fixed: list[dict[str, Any]] = []
+    for raw in components:
+        if not isinstance(raw, dict):
+            warnings.append(f"Dropped non-object entry: {raw!r}")
+            continue
+        node = dict(raw)
+        if "component" not in node:
+            for alias in ("type", "componentType", "component_type"):
+                if alias in node:
+                    node["component"] = node.pop(alias)
+                    warnings.append(f"Renamed '{alias}' -> 'component' on id={node.get('id')}")
+                    break
+        if "id" not in node:
+            warnings.append(f"Dropped node missing 'id': component={node.get('component')}")
+            continue
+        if "component" not in node:
+            warnings.append(f"Dropped node missing 'component': id={node['id']}")
+            continue
+        if node["component"] not in ALLOWED_COMPONENTS:
+            warnings.append(
+                f"Dropped unknown component '{node['component']}' for id={node['id']}"
+            )
+            continue
+        fixed.append(node)
+
+    surviving_ids = {n["id"] for n in fixed}
+    for node in fixed:
+        raw_children = node.get("children")
+        if isinstance(raw_children, list):
+            kept = [c for c in raw_children if c in surviving_ids]
+            if len(kept) != len(raw_children):
+                dropped = [c for c in raw_children if c not in surviving_ids]
+                warnings.append(f"Stripped dangling child refs {dropped} from id={node['id']}")
+            node["children"] = kept
+
+    if not any(n["id"] == "root" for n in fixed) and fixed:
+        fixed[0]["id"] = "root"
+        warnings.append(f"Promoted first node to id='root'")
+
+    return fixed, warnings
 
 
 # --- ADK-driven streaming ---------------------------------------------------

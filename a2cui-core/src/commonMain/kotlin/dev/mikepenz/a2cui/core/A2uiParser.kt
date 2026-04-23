@@ -40,6 +40,17 @@ public class A2uiParser(private val json: Json = A2uiJson) {
                 message = e.message ?: "Invalid A2UI frame",
             ),
         )
+    } catch (e: IllegalStateException) {
+        // Defensive: custom serializers or user-supplied call dispatchers may `error(...)` on
+        // malformed payloads. We surface these the same way to keep the transport layer
+        // resilient — a broken frame must not tear down the whole stream or the UI.
+        A2uiStreamEvent.ParseError(
+            raw = raw,
+            error = A2uiClientMessage.Error.Body(
+                code = ErrorCode.PARSE_ERROR,
+                message = e.message ?: "Invalid A2UI frame",
+            ),
+        )
     }
 
     /** Encode an outbound client message to JSON. */
