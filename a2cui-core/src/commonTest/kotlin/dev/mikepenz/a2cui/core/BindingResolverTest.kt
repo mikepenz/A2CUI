@@ -81,4 +81,45 @@ class BindingResolverTest {
         val raw = buildJsonObject { put("path", JsonPrimitive("/name")) }
         assertEquals(JsonNull, r.resolve(raw))
     }
+
+    @OptIn(ExperimentalA2uiDraft::class)
+    @Test fun experimental_conditional_picks_branch_on_boolean_pointer() {
+        val model = DataModel()
+        model.write("/user/isAdmin", JsonPrimitive(true))
+        val r = BindingResolver(model)
+        val raw = buildJsonObject {
+            put("if", JsonPrimitive("/user/isAdmin"))
+            put("then", JsonPrimitive("Admin Panel"))
+            put("else", JsonPrimitive("User Home"))
+        }
+        assertEquals("Admin Panel", (r.resolve(raw) as JsonPrimitive).content)
+
+        model.write("/user/isAdmin", JsonPrimitive(false))
+        assertEquals("User Home", (r.resolve(raw) as JsonPrimitive).content)
+    }
+
+    @OptIn(ExperimentalA2uiDraft::class)
+    @Test fun experimental_conditional_missing_pointer_is_falsy() {
+        val r = BindingResolver(DataModel())
+        val raw = buildJsonObject {
+            put("if", JsonPrimitive("/missing"))
+            put("then", JsonPrimitive("yes"))
+            put("else", JsonPrimitive("no"))
+        }
+        assertEquals("no", (r.resolve(raw) as JsonPrimitive).content)
+    }
+
+    @OptIn(ExperimentalA2uiDraft::class)
+    @Test fun experimental_conditional_branch_resolves_nested_path() {
+        val model = DataModel()
+        model.write("/flag", JsonPrimitive(true))
+        model.write("/userName", JsonPrimitive("Ada"))
+        val r = BindingResolver(model)
+        val raw = buildJsonObject {
+            put("if", JsonPrimitive("/flag"))
+            put("then", buildJsonObject { put("path", JsonPrimitive("/userName")) })
+            put("else", JsonPrimitive("anonymous"))
+        }
+        assertEquals("Ada", (r.resolve(raw) as JsonPrimitive).content)
+    }
 }

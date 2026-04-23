@@ -111,6 +111,8 @@ final class dev.mikepenz.a2cui.compose/SurfaceController { // dev.mikepenz.a2cui
         final fun <get-events>(): kotlinx.coroutines.flow/SharedFlow<dev.mikepenz.a2cui.core/A2uiClientMessage> // dev.mikepenz.a2cui.compose/SurfaceController.events.<get-events>|<get-events>(){}[0]
     final val registry // dev.mikepenz.a2cui.compose/SurfaceController.registry|{}registry[0]
         final fun <get-registry>(): dev.mikepenz.a2cui.compose/ComponentRegistry // dev.mikepenz.a2cui.compose/SurfaceController.registry.<get-registry>|<get-registry>(){}[0]
+    final val scrollRequests // dev.mikepenz.a2cui.compose/SurfaceController.scrollRequests|{}scrollRequests[0]
+        final fun <get-scrollRequests>(): kotlinx.coroutines.flow/SharedFlow<dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body> // dev.mikepenz.a2cui.compose/SurfaceController.scrollRequests.<get-scrollRequests>|<get-scrollRequests>(){}[0]
     final val surfaces // dev.mikepenz.a2cui.compose/SurfaceController.surfaces|{}surfaces[0]
         final fun <get-surfaces>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/Map<kotlin/String, dev.mikepenz.a2cui.compose/SurfaceState>> // dev.mikepenz.a2cui.compose/SurfaceController.surfaces.<get-surfaces>|<get-surfaces>(){}[0]
 

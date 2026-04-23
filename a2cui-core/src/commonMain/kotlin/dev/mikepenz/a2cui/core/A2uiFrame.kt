@@ -69,12 +69,12 @@ public sealed interface A2uiFrame {
     }
 
     /**
-     * **v0.10 draft** — multi-op data-model patch. Replaces a run of individual
+     * **A2CUI experimental extension** — multi-op data-model patch. Replaces a run of individual
      * `updateDataModel` frames with a single JSON-Patch-style batch. The exact wire shape is
-     * not finalised in the v0.10 draft yet — this is a plausible candidate discriminated by
+     * not finalised in the A2UI spec yet — this is an A2CUI-proposed candidate discriminated by
      * the top-level `dataModelPatch` key. Revisit when the draft firms up.
      */
-    @ExperimentalA2uiV010
+    @ExperimentalA2uiDraft
     @Serializable
     public data class DataModelPatch(
         override val version: String,
@@ -93,10 +93,35 @@ public sealed interface A2uiFrame {
             val value: JsonElement? = null,
         )
     }
+
+    /**
+     * **A2CUI experimental extension** — server-initiated focus / scroll hint. Agents can nudge the client to
+     * bring a specific component into view (e.g. after appending a new validation error to the
+     * data model, scroll the offending field into focus). Discriminated by the top-level
+     * `scrollTo` key. Exact motion semantics (instant vs animated, offset rules) are left to
+     * the host catalog.
+     */
+    @ExperimentalA2uiDraft
+    @Serializable
+    public data class ScrollTo(
+        override val version: String,
+        val scrollTo: Body,
+    ) : A2uiFrame {
+        @Serializable
+        public data class Body(
+            val surfaceId: String,
+            /** Component id to bring into view. Must already exist in the current surface tree. */
+            val componentId: String,
+            /** Optional behaviour hint: `"auto"` (default), `"smooth"`, or `"instant"`. */
+            val behavior: String? = null,
+            /** If true, also request keyboard focus on the component (when applicable). */
+            val focus: Boolean = false,
+        )
+    }
 }
 
 internal object A2uiFrameSerializer : JsonContentPolymorphicSerializer<A2uiFrame>(A2uiFrame::class) {
-    @OptIn(ExperimentalA2uiV010::class)
+    @OptIn(ExperimentalA2uiDraft::class)
     override fun selectDeserializer(element: JsonElement): DeserializationStrategy<A2uiFrame> {
         val obj = element.jsonObject
         return when {
@@ -104,8 +129,9 @@ internal object A2uiFrameSerializer : JsonContentPolymorphicSerializer<A2uiFrame
             "updateComponents" in obj -> A2uiFrame.UpdateComponents.serializer()
             "updateDataModel" in obj -> A2uiFrame.UpdateDataModel.serializer()
             "deleteSurface" in obj -> A2uiFrame.DeleteSurface.serializer()
-            // v0.10 draft — never hit on v0.9 JSON.
+            // A2CUI experimental extensions — never hit on v0.9 JSON.
             "dataModelPatch" in obj -> A2uiFrame.DataModelPatch.serializer()
+            "scrollTo" in obj -> A2uiFrame.ScrollTo.serializer()
             else -> throw SerializationException(
                 "Unknown A2UI frame — no recognized key in ${obj.keys}"
             )

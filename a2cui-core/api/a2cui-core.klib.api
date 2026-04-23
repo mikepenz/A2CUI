@@ -6,8 +6,8 @@
 // - Show declarations: true
 
 // Library unique name: <dev.mikepenz.a2cui:a2cui-core>
-open annotation class dev.mikepenz.a2cui.core/ExperimentalA2uiV010 : kotlin/Annotation { // dev.mikepenz.a2cui.core/ExperimentalA2uiV010|null[0]
-    constructor <init>() // dev.mikepenz.a2cui.core/ExperimentalA2uiV010.<init>|<init>(){}[0]
+open annotation class dev.mikepenz.a2cui.core/ExperimentalA2uiDraft : kotlin/Annotation { // dev.mikepenz.a2cui.core/ExperimentalA2uiDraft|null[0]
+    constructor <init>() // dev.mikepenz.a2cui.core/ExperimentalA2uiDraft.<init>|<init>(){}[0]
 }
 
 sealed interface dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2cui.core/A2uiClientMessage|null[0]
@@ -142,6 +142,70 @@ sealed interface dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2c
 
         final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Companion|null[0]
             final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Error> // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Viewport : dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body) // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Viewport.Body){}[0]
+
+        final val version // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.version.<get-version>|<get-version>(){}[0]
+        final val viewport // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.viewport|{}viewport[0]
+            final fun <get-viewport>(): dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.viewport.<get-viewport>|<get-viewport>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body = ...): dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Viewport.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlin/Int, kotlin/Int) // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.<init>|<init>(kotlin.String;kotlin.String;kotlin.Int;kotlin.Int){}[0]
+
+            final val containerId // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.containerId|{}containerId[0]
+                final fun <get-containerId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.containerId.<get-containerId>|<get-containerId>(){}[0]
+            final val firstVisibleIndex // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.firstVisibleIndex|{}firstVisibleIndex[0]
+                final fun <get-firstVisibleIndex>(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.firstVisibleIndex.<get-firstVisibleIndex>|<get-firstVisibleIndex>(){}[0]
+            final val lastVisibleIndex // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.lastVisibleIndex|{}lastVisibleIndex[0]
+                final fun <get-lastVisibleIndex>(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.lastVisibleIndex.<get-lastVisibleIndex>|<get-lastVisibleIndex>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.component2|component2(){}[0]
+            final fun component3(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.component3|component3(){}[0]
+            final fun component4(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.component4|component4(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Int = ..., kotlin/Int = ...): dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.copy|copy(kotlin.String;kotlin.String;kotlin.Int;kotlin.Int){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body> { // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body) // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiClientMessage.Viewport.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body> // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport> { // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport) // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiClientMessage.Viewport){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport> // dev.mikepenz.a2cui.core/A2uiClientMessage.Viewport.Companion.serializer|serializer(){}[0]
         }
     }
 
@@ -366,6 +430,70 @@ sealed interface dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/
         }
     }
 
+    final class ScrollTo : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body) // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.ScrollTo.Body){}[0]
+
+        final val scrollTo // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.scrollTo|{}scrollTo[0]
+            final fun <get-scrollTo>(): dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.scrollTo.<get-scrollTo>|<get-scrollTo>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body = ...): dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.ScrollTo.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/Boolean = ...) // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.Boolean){}[0]
+
+            final val behavior // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.behavior|{}behavior[0]
+                final fun <get-behavior>(): kotlin/String? // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.behavior.<get-behavior>|<get-behavior>(){}[0]
+            final val componentId // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.componentId|{}componentId[0]
+                final fun <get-componentId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.componentId.<get-componentId>|<get-componentId>(){}[0]
+            final val focus // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.focus|{}focus[0]
+                final fun <get-focus>(): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.focus.<get-focus>|<get-focus>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.component2|component2(){}[0]
+            final fun component3(): kotlin/String? // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.component3|component3(){}[0]
+            final fun component4(): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.component4|component4(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/Boolean = ...): dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.Boolean){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body> { // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body) // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.ScrollTo.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body> // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo> { // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo) // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.ScrollTo){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo> // dev.mikepenz.a2cui.core/A2uiFrame.ScrollTo.Companion.serializer|serializer(){}[0]
+        }
+    }
+
     final class UpdateComponents : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents|null[0]
         constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents.Body){}[0]
 
@@ -539,6 +667,25 @@ sealed interface dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.c
         final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/PropertyValue.Call.equals|equals(kotlin.Any?){}[0]
         final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/PropertyValue.Call.hashCode|hashCode(){}[0]
         final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Call.toString|toString(){}[0]
+    }
+
+    final class Conditional : dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.core/PropertyValue.Conditional|null[0]
+        constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement, kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.core/PropertyValue.Conditional.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+
+        final val condition // dev.mikepenz.a2cui.core/PropertyValue.Conditional.condition|{}condition[0]
+            final fun <get-condition>(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Conditional.condition.<get-condition>|<get-condition>(){}[0]
+        final val elseBranch // dev.mikepenz.a2cui.core/PropertyValue.Conditional.elseBranch|{}elseBranch[0]
+            final fun <get-elseBranch>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/PropertyValue.Conditional.elseBranch.<get-elseBranch>|<get-elseBranch>(){}[0]
+        final val thenBranch // dev.mikepenz.a2cui.core/PropertyValue.Conditional.thenBranch|{}thenBranch[0]
+            final fun <get-thenBranch>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/PropertyValue.Conditional.thenBranch.<get-thenBranch>|<get-thenBranch>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Conditional.component1|component1(){}[0]
+        final fun component2(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/PropertyValue.Conditional.component2|component2(){}[0]
+        final fun component3(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/PropertyValue.Conditional.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonElement = ..., kotlinx.serialization.json/JsonElement = ...): dev.mikepenz.a2cui.core/PropertyValue.Conditional // dev.mikepenz.a2cui.core/PropertyValue.Conditional.copy|copy(kotlin.String;kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonElement){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/PropertyValue.Conditional.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/PropertyValue.Conditional.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Conditional.toString|toString(){}[0]
     }
 
     final class Literal : dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.core/PropertyValue.Literal|null[0]

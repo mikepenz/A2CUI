@@ -3,6 +3,8 @@ package dev.mikepenz.a2cui.core
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.boolean
+import kotlinx.serialization.json.booleanOrNull
 
 /**
  * Resolves a raw wire [JsonElement] into a concrete value by interpreting the v0.9 property
@@ -36,10 +38,28 @@ public class BindingResolver(
     }
 
     /** Classify [raw] and resolve it. Missing pointer paths resolve to [JsonNull]. */
+    @OptIn(ExperimentalA2uiDraft::class)
     public fun resolve(raw: JsonElement): JsonElement = when (val p = PropertyValue.classify(raw)) {
         is PropertyValue.Literal -> p.value
         is PropertyValue.Path -> dataModel.read(scopedPointer(p.path)) ?: JsonNull
         is PropertyValue.Call -> callDispatcher.invoke(p.function, p.args)
+        is PropertyValue.Conditional -> {
+            // Experimental extension: evaluate the condition pointer, pick a branch, resolve recursively
+            // so nested {path}/{call}/{if} bindings inside the chosen branch still work.
+            val truthy = isTruthy(dataModel.read(scopedPointer(p.condition)))
+            resolve(if (truthy) p.thenBranch else p.elseBranch)
+        }
+    }
+
+    private fun isTruthy(value: JsonElement?): Boolean = when (value) {
+        null, JsonNull -> false
+        is kotlinx.serialization.json.JsonPrimitive -> when {
+            value.booleanOrNull != null -> value.boolean
+            value.isString -> value.content.isNotEmpty()
+            else -> value.content != "0" && value.content.isNotEmpty()
+        }
+        is JsonObject -> value.isNotEmpty()
+        is kotlinx.serialization.json.JsonArray -> value.isNotEmpty()
     }
 
     /** Resolve a property by its key on a component's [properties] object. */

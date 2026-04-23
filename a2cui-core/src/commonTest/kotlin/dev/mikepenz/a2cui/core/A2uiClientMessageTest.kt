@@ -32,6 +32,30 @@ class A2uiClientMessageTest {
         assertEquals("u@example.com", action.context["email"]?.jsonPrimitive?.content)
     }
 
+    @OptIn(ExperimentalA2uiDraft::class)
+    @Test
+    fun experimental_viewport_roundtrip() {
+        val json = """
+            {
+              "version": "v0.9-a2cui-draft",
+              "viewport": {
+                "surfaceId": "feed",
+                "containerId": "users-list",
+                "firstVisibleIndex": 10,
+                "lastVisibleIndex": 19
+              }
+            }
+        """.trimIndent()
+        val msg = A2uiJson.decodeFromString<A2uiClientMessage>(json)
+        val vp = assertIs<A2uiClientMessage.Viewport>(msg).viewport
+        assertEquals("users-list", vp.containerId)
+        assertEquals(10, vp.firstVisibleIndex)
+        assertEquals(19, vp.lastVisibleIndex)
+
+        val encoded = A2uiJson.encodeToString<A2uiClientMessage>(msg)
+        assertEquals(msg, A2uiJson.decodeFromString<A2uiClientMessage>(encoded))
+    }
+
     @Test
     fun encodes_error() {
         val err = A2uiClientMessage.Error(

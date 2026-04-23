@@ -5,7 +5,7 @@ import dev.mikepenz.a2cui.core.A2UI_PROTOCOL_VERSION
 import dev.mikepenz.a2cui.core.A2uiClientMessage
 import dev.mikepenz.a2cui.core.A2uiFrame
 import dev.mikepenz.a2cui.core.A2uiParser
-import dev.mikepenz.a2cui.core.ExperimentalA2uiV010
+import dev.mikepenz.a2cui.core.ExperimentalA2uiDraft
 import dev.mikepenz.a2cui.core.A2uiStreamEvent
 import dev.mikepenz.a2cui.core.DataModel
 import dev.mikepenz.a2cui.transport.A2uiTransport
@@ -45,6 +45,16 @@ public class SurfaceController(
     private val _events = MutableSharedFlow<A2uiClientMessage>(extraBufferCapacity = 64)
     /** Outbound messages (actions, errors) — useful for observability/logging. */
     public val events: SharedFlow<A2uiClientMessage> = _events.asSharedFlow()
+
+    @OptIn(ExperimentalA2uiDraft::class)
+    private val _scrollRequests = MutableSharedFlow<A2uiFrame.ScrollTo.Body>(extraBufferCapacity = 16)
+
+    /**
+     * A2CUI experimental extension — server-initiated scroll/focus hints (see [A2uiFrame.ScrollTo]).
+     * Host catalogs observe this flow to bring the referenced component into view.
+     */
+    @ExperimentalA2uiDraft
+    public val scrollRequests: SharedFlow<A2uiFrame.ScrollTo.Body> get() = _scrollRequests.asSharedFlow()
 
     private var ingestionJob: Job? = null
     private var closed: Boolean = false
@@ -99,7 +109,7 @@ public class SurfaceController(
 
     internal fun applyForTest(frame: A2uiFrame) { apply(frame) }
 
-    @OptIn(ExperimentalA2uiV010::class)
+    @OptIn(ExperimentalA2uiDraft::class)
     private fun apply(frame: A2uiFrame) {
         when (frame) {
             is A2uiFrame.CreateSurface -> {
@@ -132,9 +142,9 @@ public class SurfaceController(
                 _surfaces.update { it - frame.deleteSurface.surfaceId }
             }
             is A2uiFrame.DataModelPatch -> {
-                // v0.10 draft — apply JSON-Patch style ops against the surface's data model.
+                // A2CUI experimental extension — apply JSON-Patch style ops against the surface's data model.
                 // Only `add`/`replace` (value) and `remove` (no value) are handled here; any
-                // unknown op is silently ignored until the draft wire shape firms up.
+                // unknown op is silently ignored until the shape stabilises.
                 val body = frame.dataModelPatch
                 val dm = _surfaces.value[body.surfaceId]?.dataModel ?: return
                 for (op in body.operations) {
@@ -142,10 +152,18 @@ public class SurfaceController(
                         "add", "replace" -> op.value?.let { dm.write(op.path, it) }
                         "remove" -> {
                             // Minimal semantics — write JsonNull to mark removal; structural
-                            // removal awaits the finalised draft.
+                            // removal awaits the finalised shape.
                             dm.write(op.path, kotlinx.serialization.json.JsonNull)
                         }
                     }
+                }
+            }
+            is A2uiFrame.ScrollTo -> {
+                // A2CUI experimental extension — hosts observe `scrollRequests` to honour focus
+                // / scroll hints in catalog components. A noop when the surface doesn't exist.
+                val body = frame.scrollTo
+                if (_surfaces.value[body.surfaceId] != null) {
+                    _scrollRequests.tryEmit(body)
                 }
             }
         }

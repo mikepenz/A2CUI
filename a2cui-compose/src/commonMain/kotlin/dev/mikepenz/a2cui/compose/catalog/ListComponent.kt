@@ -29,8 +29,8 @@ import kotlinx.serialization.json.JsonArray
  *  we picked first-child because (a) it keeps the v0.9 wire format verbatim — no new
  *  top-level property — and (b) agent authors already express "one subtree per item" by
  *  shipping exactly one child, so the implicit convention matches the natural mental model.
- *  If the v0.10 draft later standardises `template`, we can honour it additively without
- *  breaking existing surfaces.
+ *  If a future A2UI spec standardises an explicit `template` property, we can honour it
+ *  additively without breaking existing surfaces.
  */
 internal val ListFactory: ComponentFactory = @Composable { node, scope ->
     val spacing = scope.resolveInt(node, "spacing", default = 4)

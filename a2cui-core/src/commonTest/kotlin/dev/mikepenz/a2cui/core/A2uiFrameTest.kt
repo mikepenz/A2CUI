@@ -114,12 +114,12 @@ class A2uiFrameTest {
         }
     }
 
-    @OptIn(ExperimentalA2uiV010::class)
+    @OptIn(ExperimentalA2uiDraft::class)
     @Test
-    fun v010_dataModelPatch_roundtrip_requires_opt_in() {
+    fun experimental_dataModelPatch_roundtrip_requires_opt_in() {
         val json = """
             {
-              "version": "v0.10",
+              "version": "v0.9-a2cui-draft",
               "dataModelPatch": {
                 "surfaceId": "s",
                 "operations": [
@@ -132,7 +132,7 @@ class A2uiFrameTest {
 
         val frame = A2uiJson.decodeFromString<A2uiFrame>(json)
         val patch = assertIs<A2uiFrame.DataModelPatch>(frame)
-        assertEquals("v0.10", patch.version)
+        assertEquals("v0.9-a2cui-draft", patch.version)
         assertEquals("s", patch.dataModelPatch.surfaceId)
         assertEquals(2, patch.dataModelPatch.operations.size)
         assertEquals("add", patch.dataModelPatch.operations[0].op)
@@ -142,6 +142,30 @@ class A2uiFrameTest {
         val encoded = A2uiJson.encodeToString<A2uiFrame>(patch)
         val decoded = A2uiJson.decodeFromString<A2uiFrame>(encoded)
         assertEquals(patch, decoded)
+    }
+
+    @OptIn(ExperimentalA2uiDraft::class)
+    @Test
+    fun experimental_scrollTo_roundtrip() {
+        val json = """
+            {
+              "version": "v0.9-a2cui-draft",
+              "scrollTo": {
+                "surfaceId": "main",
+                "componentId": "email",
+                "behavior": "smooth",
+                "focus": true
+              }
+            }
+        """.trimIndent()
+        val frame = A2uiJson.decodeFromString<A2uiFrame>(json)
+        val scroll = assertIs<A2uiFrame.ScrollTo>(frame)
+        assertEquals("email", scroll.scrollTo.componentId)
+        assertEquals("smooth", scroll.scrollTo.behavior)
+        assertTrue(scroll.scrollTo.focus)
+
+        val encoded = A2uiJson.encodeToString<A2uiFrame>(scroll)
+        assertEquals(scroll, A2uiJson.decodeFromString<A2uiFrame>(encoded))
     }
 
     @Test
