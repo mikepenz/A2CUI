@@ -30,7 +30,7 @@ Env vars
 
     A2UI_SURFACE_ID       default "demo"
     A2UI_FRAME_DELAY_MS   pacing between emitted frames (default 200ms)
-    A2UI_MODEL            ADK model id (default "gemini-flash-latest")
+    A2UI_MODEL            ADK model id (default "gemini-2.5-flash")
     GOOGLE_API_KEY        Gemini API key (free tier at https://aistudio.google.com)
     PORT                  default 8100
 """
@@ -55,7 +55,7 @@ def _log(msg: str) -> None:
 
 SURFACE_ID = os.environ.get("A2UI_SURFACE_ID", "demo")
 FRAME_DELAY_MS = int(os.environ.get("A2UI_FRAME_DELAY_MS", "200"))
-MODEL_ID = os.environ.get("A2UI_MODEL", "gemini-flash-latest")
+MODEL_ID = os.environ.get("A2UI_MODEL", "gemini-2.5-flash")
 
 # In-memory thread-id -> ADK session-id store. A single process instance is
 # assumed; persistence across restarts is out of scope for this example.

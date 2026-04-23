@@ -91,7 +91,7 @@ booking form that the ADK agent emitted via `render_booking_form`.
 |---|---|---|
 | `A2UI_SURFACE_ID` | `demo` | Surface id — must match the Kotlin host's `surfaceId` in `A2cuiSurface(surfaceId = ...)`. |
 | `A2UI_FRAME_DELAY_MS` | `300` | Pacing between emitted frames (visual effect; doesn't affect correctness). |
-| `A2UI_MODEL` | `gemini-flash-latest` | ADK model id; any Gemini model accepted by `google.adk.agents.Agent(model=...)`. |
+| `A2UI_MODEL` | `gemini-2.5-flash` | ADK model id; any Gemini model accepted by `google.adk.agents.Agent(model=...)`. Swap to `gemini-2.5-flash-lite` for a smaller quota bucket or `gemini-2.5-pro` for stronger reasoning. |
 | `PORT` | `8100` | HTTP port. |
 
 ---
