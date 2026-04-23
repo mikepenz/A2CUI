@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 21
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Assemble
+        run: ./gradlew assemble --no-daemon
+
+      - name: Test
+        run: ./gradlew :a2cui-core:jvmTest :a2cui-transport:jvmTest :a2cui-compose:jvmTest :a2cui-agui:jvmTest :a2cui-actions:jvmTest --no-daemon
+
+      - name: API check
+        run: ./gradlew apiCheck --no-daemon
+        continue-on-error: true
