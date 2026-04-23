@@ -101,6 +101,7 @@ final class dev.mikepenz.a2cui.compose/RenderScope { // dev.mikepenz.a2cui.compo
 
     final fun Child(kotlin/String, androidx.compose.runtime/Composer?, kotlin/Int) // dev.mikepenz.a2cui.compose/RenderScope.Child|Child(kotlin.String;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
     final fun emit(dev.mikepenz.a2cui.compose/EventSpec) // dev.mikepenz.a2cui.compose/RenderScope.emit|emit(dev.mikepenz.a2cui.compose.EventSpec){}[0]
+    final fun withScope(kotlin/String): dev.mikepenz.a2cui.compose/RenderScope // dev.mikepenz.a2cui.compose/RenderScope.withScope|withScope(kotlin.String){}[0]
 }
 
 final class dev.mikepenz.a2cui.compose/SurfaceController { // dev.mikepenz.a2cui.compose/SurfaceController|null[0]

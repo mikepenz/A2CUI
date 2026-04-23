@@ -67,9 +67,36 @@ public sealed interface A2uiFrame {
         @Serializable
         public data class Body(val surfaceId: String)
     }
+
+    /**
+     * **v0.10 draft** — multi-op data-model patch. Replaces a run of individual
+     * `updateDataModel` frames with a single JSON-Patch-style batch. The exact wire shape is
+     * not finalised in the v0.10 draft yet — this is a plausible candidate discriminated by
+     * the top-level `dataModelPatch` key. Revisit when the draft firms up.
+     */
+    @ExperimentalA2uiV010
+    @Serializable
+    public data class DataModelPatch(
+        override val version: String,
+        val dataModelPatch: Body,
+    ) : A2uiFrame {
+        @Serializable
+        public data class Body(
+            val surfaceId: String,
+            val operations: List<Operation>,
+        )
+
+        @Serializable
+        public data class Operation(
+            val op: String,
+            val path: String,
+            val value: JsonElement? = null,
+        )
+    }
 }
 
 internal object A2uiFrameSerializer : JsonContentPolymorphicSerializer<A2uiFrame>(A2uiFrame::class) {
+    @OptIn(ExperimentalA2uiV010::class)
     override fun selectDeserializer(element: JsonElement): DeserializationStrategy<A2uiFrame> {
         val obj = element.jsonObject
         return when {
@@ -77,6 +104,8 @@ internal object A2uiFrameSerializer : JsonContentPolymorphicSerializer<A2uiFrame
             "updateComponents" in obj -> A2uiFrame.UpdateComponents.serializer()
             "updateDataModel" in obj -> A2uiFrame.UpdateDataModel.serializer()
             "deleteSurface" in obj -> A2uiFrame.DeleteSurface.serializer()
+            // v0.10 draft — never hit on v0.9 JSON.
+            "dataModelPatch" in obj -> A2uiFrame.DataModelPatch.serializer()
             else -> throw SerializationException(
                 "Unknown A2UI frame — no recognized key in ${obj.keys}"
             )

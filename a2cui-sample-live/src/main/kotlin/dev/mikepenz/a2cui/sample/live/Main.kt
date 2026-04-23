@@ -56,6 +56,15 @@ fun main() = application {
  *
  * Two panes: rendered A2UI surface on top, raw AG-UI event log on the bottom.
  */
+/**
+ * Resolve the AG-UI server URL from (in order):
+ *   1. `AGUI_URL` environment variable
+ *   2. `-Dagui.url=...` JVM system property
+ *   3. `null` — caller spins up an in-process [MockAguiServer]
+ */
+private fun resolveAguiUrl(): String? =
+    System.getenv("AGUI_URL") ?: System.getProperty("agui.url")
+
 @Composable
 private fun A2cuiLiveApp() {
     val a2uiConduit = remember { FakeTransport() }
@@ -66,14 +75,21 @@ private fun A2cuiLiveApp() {
     val eventLog = remember { mutableStateListOf<String>() }
     val outbound = remember { mutableStateListOf<String>() }
 
-    val server = remember { MockAguiServer(port = 0, surfaceId = "demo", frameDelayMillis = 300L) }
+    val externalUrl = remember { resolveAguiUrl() }
+    val server = remember {
+        if (externalUrl == null) MockAguiServer(port = 0, surfaceId = "demo", frameDelayMillis = 300L) else null
+    }
     val httpClient = remember { HttpClient(CIO) { install(SSE) } }
 
-    DisposableEffect(server) {
-        val port = server.start(wait = false)
-        eventLog.add("[mock-server] listening on http://127.0.0.1:$port/events")
+    DisposableEffect(server, externalUrl) {
+        if (server != null) {
+            val port = server.start(wait = false)
+            eventLog.add("[mock-server] listening on http://127.0.0.1:$port/events")
+        } else {
+            eventLog.add("[external] AGUI_URL=$externalUrl")
+        }
         onDispose {
-            server.stop()
+            server?.stop()
             httpClient.close()
         }
     }
@@ -82,11 +98,14 @@ private fun A2cuiLiveApp() {
         controller.events.collect { msg -> outbound.add(msg.toString()) }
     }
 
-    LaunchedEffect(server, httpClient) {
-        val port = server.resolvedPort()
+    LaunchedEffect(server, httpClient, externalUrl) {
+        val receiveUrl = externalUrl ?: run {
+            val port = server!!.resolvedPort()
+            "http://127.0.0.1:$port/events"
+        }
         val transport = SseTransport(
             httpClient = httpClient,
-            receiveUrl = "http://127.0.0.1:$port/events",
+            receiveUrl = receiveUrl,
         )
         val parser = AguiEventParser()
 

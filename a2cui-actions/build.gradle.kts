@@ -28,5 +28,11 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.turbine)
         }
+        jvmTest.dependencies {
+            implementation(libs.compose.ui.test.junit4)
+            implementation(compose.desktop.currentOs)
+            implementation(compose.material3)
+            implementation(libs.kotlinx.coroutines.test)
+        }
     }
 }

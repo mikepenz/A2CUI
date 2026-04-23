@@ -71,6 +71,7 @@ public final class dev/mikepenz/a2cui/compose/RenderScope {
 	public final fun getResolver ()Ldev/mikepenz/a2cui/core/BindingResolver;
 	public final fun getSurfaceId ()Ljava/lang/String;
 	public final fun getTheme ()Ldev/mikepenz/a2cui/compose/A2cuiTheme;
+	public final fun withScope (Ljava/lang/String;)Ldev/mikepenz/a2cui/compose/RenderScope;
 }
 
 public final class dev/mikepenz/a2cui/compose/SurfaceController {

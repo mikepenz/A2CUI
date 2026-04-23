@@ -6,6 +6,10 @@
 // - Show declarations: true
 
 // Library unique name: <dev.mikepenz.a2cui:a2cui-core>
+open annotation class dev.mikepenz.a2cui.core/ExperimentalA2uiV010 : kotlin/Annotation { // dev.mikepenz.a2cui.core/ExperimentalA2uiV010|null[0]
+    constructor <init>() // dev.mikepenz.a2cui.core/ExperimentalA2uiV010.<init>|<init>(){}[0]
+}
+
 sealed interface dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2cui.core/A2uiClientMessage|null[0]
     abstract val version // dev.mikepenz.a2cui.core/A2uiClientMessage.version|{}version[0]
         abstract fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.version.<get-version>|<get-version>(){}[0]
@@ -212,6 +216,98 @@ sealed interface dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/
 
         final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Companion|null[0]
             final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface> // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class DataModelPatch : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body) // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch.Body){}[0]
+
+        final val dataModelPatch // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.dataModelPatch|{}dataModelPatch[0]
+            final fun <get-dataModelPatch>(): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.dataModelPatch.<get-dataModelPatch>|<get-dataModelPatch>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body = ...): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body|null[0]
+            constructor <init>(kotlin/String, kotlin.collections/List<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation>) // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.<init>|<init>(kotlin.String;kotlin.collections.List<dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch.Operation>){}[0]
+
+            final val operations // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.operations|{}operations[0]
+                final fun <get-operations>(): kotlin.collections/List<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.operations.<get-operations>|<get-operations>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.component1|component1(){}[0]
+            final fun component2(): kotlin.collections/List<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.component2|component2(){}[0]
+            final fun copy(kotlin/String = ..., kotlin.collections/List<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation> = ...): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.copy|copy(kotlin.String;kotlin.collections.List<dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch.Operation>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body> { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body) // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.Companion|null[0]
+                final val $childSerializers // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.Companion.$childSerializers|{}$childSerializers[0]
+
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final class Operation { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonElement? = ...) // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.<init>|<init>(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement?){}[0]
+
+            final val op // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.op|{}op[0]
+                final fun <get-op>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.op.<get-op>|<get-op>(){}[0]
+            final val path // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.path|{}path[0]
+                final fun <get-path>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.path.<get-path>|<get-path>(){}[0]
+            final val value // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.value|{}value[0]
+                final fun <get-value>(): kotlinx.serialization.json/JsonElement? // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.value.<get-value>|<get-value>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.component2|component2(){}[0]
+            final fun component3(): kotlinx.serialization.json/JsonElement? // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.component3|component3(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonElement? = ...): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.copy|copy(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement?){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation> { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation) // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch.Operation){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Operation.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch> { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch) // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.DataModelPatch){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch> // dev.mikepenz.a2cui.core/A2uiFrame.DataModelPatch.Companion.serializer|serializer(){}[0]
         }
     }
 
@@ -487,10 +583,17 @@ final class dev.mikepenz.a2cui.core/A2uiParser { // dev.mikepenz.a2cui.core/A2ui
 }
 
 final class dev.mikepenz.a2cui.core/BindingResolver { // dev.mikepenz.a2cui.core/BindingResolver|null[0]
-    constructor <init>(dev.mikepenz.a2cui.core/DataModel, dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher = ...) // dev.mikepenz.a2cui.core/BindingResolver.<init>|<init>(dev.mikepenz.a2cui.core.DataModel;dev.mikepenz.a2cui.core.BindingResolver.CallDispatcher){}[0]
+    constructor <init>(dev.mikepenz.a2cui.core/DataModel, dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher = ..., kotlin/String = ...) // dev.mikepenz.a2cui.core/BindingResolver.<init>|<init>(dev.mikepenz.a2cui.core.DataModel;dev.mikepenz.a2cui.core.BindingResolver.CallDispatcher;kotlin.String){}[0]
+
+    final val dataModel // dev.mikepenz.a2cui.core/BindingResolver.dataModel|{}dataModel[0]
+        final fun <get-dataModel>(): dev.mikepenz.a2cui.core/DataModel // dev.mikepenz.a2cui.core/BindingResolver.dataModel.<get-dataModel>|<get-dataModel>(){}[0]
+    final val scopeRoot // dev.mikepenz.a2cui.core/BindingResolver.scopeRoot|{}scopeRoot[0]
+        final fun <get-scopeRoot>(): kotlin/String // dev.mikepenz.a2cui.core/BindingResolver.scopeRoot.<get-scopeRoot>|<get-scopeRoot>(){}[0]
 
     final fun resolve(kotlinx.serialization.json/JsonElement): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/BindingResolver.resolve|resolve(kotlinx.serialization.json.JsonElement){}[0]
     final fun resolveProperty(kotlinx.serialization.json/JsonObject, kotlin/String): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/BindingResolver.resolveProperty|resolveProperty(kotlinx.serialization.json.JsonObject;kotlin.String){}[0]
+    final fun scopedPointer(kotlin/String): kotlin/String // dev.mikepenz.a2cui.core/BindingResolver.scopedPointer|scopedPointer(kotlin.String){}[0]
+    final fun withScope(kotlin/String): dev.mikepenz.a2cui.core/BindingResolver // dev.mikepenz.a2cui.core/BindingResolver.withScope|withScope(kotlin.String){}[0]
 
     abstract fun interface CallDispatcher { // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher|null[0]
         abstract fun invoke(kotlin/String, kotlinx.serialization.json/JsonObject): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher.invoke|invoke(kotlin.String;kotlinx.serialization.json.JsonObject){}[0]

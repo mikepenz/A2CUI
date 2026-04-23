@@ -38,6 +38,25 @@ public class RenderScope internal constructor(
 
     /** Fire an outbound action event. */
     public fun emit(event: EventSpec) { eventEmitter(event) }
+
+    /**
+     * Return a child [RenderScope] whose [resolver] is scoped under [rootPointer]. Used by
+     * iterating components (e.g. `List`) to bind a subtree template against a single array
+     * element: inside the scope, `{path:"/name"}` resolves to `rootPointer + "/name"`, and
+     * `{path:"../..."}` walks up toward the surface root.
+     *
+     * All other scope fields (surfaceId, dataModel, registry, nodesById, theme, emitter) are
+     * inherited unchanged — structural navigation still uses the full node map.
+     */
+    public fun withScope(rootPointer: String): RenderScope = RenderScope(
+        surfaceId = surfaceId,
+        dataModel = dataModel,
+        resolver = resolver.withScope(rootPointer),
+        registry = registry,
+        nodesById = nodesById,
+        theme = theme,
+        eventEmitter = eventEmitter,
+    )
 }
 
 /** An outbound user-triggered action derived from a component interaction. */

@@ -29,5 +29,9 @@ kotlin {
             implementation(libs.turbine)
             implementation(libs.kotlinx.coroutines.test)
         }
+        jvmTest.dependencies {
+            implementation(libs.compose.ui.test.junit4)
+            implementation(compose.desktop.currentOs)
+        }
     }
 }

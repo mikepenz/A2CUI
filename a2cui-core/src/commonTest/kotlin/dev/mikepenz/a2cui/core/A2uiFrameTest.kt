@@ -114,6 +114,36 @@ class A2uiFrameTest {
         }
     }
 
+    @OptIn(ExperimentalA2uiV010::class)
+    @Test
+    fun v010_dataModelPatch_roundtrip_requires_opt_in() {
+        val json = """
+            {
+              "version": "v0.10",
+              "dataModelPatch": {
+                "surfaceId": "s",
+                "operations": [
+                  { "op": "add", "path": "/users/-", "value": { "name": "Ada" } },
+                  { "op": "remove", "path": "/users/0" }
+                ]
+              }
+            }
+        """.trimIndent()
+
+        val frame = A2uiJson.decodeFromString<A2uiFrame>(json)
+        val patch = assertIs<A2uiFrame.DataModelPatch>(frame)
+        assertEquals("v0.10", patch.version)
+        assertEquals("s", patch.dataModelPatch.surfaceId)
+        assertEquals(2, patch.dataModelPatch.operations.size)
+        assertEquals("add", patch.dataModelPatch.operations[0].op)
+        assertEquals("/users/-", patch.dataModelPatch.operations[0].path)
+
+        // Round-trip back through JSON preserves the payload.
+        val encoded = A2uiJson.encodeToString<A2uiFrame>(patch)
+        val decoded = A2uiJson.decodeFromString<A2uiFrame>(encoded)
+        assertEquals(patch, decoded)
+    }
+
     @Test
     fun roundtrip_updateComponents_preserves_properties() {
         val original = A2uiFrame.UpdateComponents(

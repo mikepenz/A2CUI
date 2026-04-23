@@ -49,4 +49,36 @@ class BindingResolverTest {
         val r = BindingResolver(DataModel())
         assertEquals(JsonNull, r.resolveProperty(buildJsonObject {}, "missing"))
     }
+
+    @Test fun scoped_resolver_reads_absolute_path_relative_to_scope_root() {
+        val model = DataModel()
+        model.write("/users/0/name", JsonPrimitive("Ada"))
+        model.write("/users/1/name", JsonPrimitive("Grace"))
+        val scoped = BindingResolver(model).withScope("/users/0")
+        val raw = buildJsonObject { put("path", JsonPrimitive("/name")) }
+        assertEquals("Ada", (scoped.resolve(raw) as JsonPrimitive).content)
+    }
+
+    @Test fun scoped_resolver_supports_walk_up() {
+        val model = DataModel()
+        model.write("/title", JsonPrimitive("Hello"))
+        model.write("/users/0/name", JsonPrimitive("Ada"))
+        val scoped = BindingResolver(model).withScope("/users/0")
+        val raw = buildJsonObject { put("path", JsonPrimitive("../../title")) }
+        assertEquals("Hello", (scoped.resolve(raw) as JsonPrimitive).content)
+    }
+
+    @Test fun scoped_pointer_composes_root_and_absolute_path() {
+        val r = BindingResolver(DataModel()).withScope("/users/0")
+        assertEquals("/users/0/name", r.scopedPointer("/name"))
+        assertEquals("/users/0", r.scopedPointer(""))
+        assertEquals("/users", r.scopedPointer("/.."))
+        assertEquals("/title", r.scopedPointer("/../../title"))
+    }
+
+    @Test fun scoped_resolver_missing_path_still_returns_null() {
+        val r = BindingResolver(DataModel()).withScope("/users/0")
+        val raw = buildJsonObject { put("path", JsonPrimitive("/name")) }
+        assertEquals(JsonNull, r.resolve(raw))
+    }
 }

@@ -5,6 +5,7 @@ import dev.mikepenz.a2cui.core.A2UI_PROTOCOL_VERSION
 import dev.mikepenz.a2cui.core.A2uiClientMessage
 import dev.mikepenz.a2cui.core.A2uiFrame
 import dev.mikepenz.a2cui.core.A2uiParser
+import dev.mikepenz.a2cui.core.ExperimentalA2uiV010
 import dev.mikepenz.a2cui.core.A2uiStreamEvent
 import dev.mikepenz.a2cui.core.DataModel
 import dev.mikepenz.a2cui.transport.A2uiTransport
@@ -98,6 +99,7 @@ public class SurfaceController(
 
     internal fun applyForTest(frame: A2uiFrame) { apply(frame) }
 
+    @OptIn(ExperimentalA2uiV010::class)
     private fun apply(frame: A2uiFrame) {
         when (frame) {
             is A2uiFrame.CreateSurface -> {
@@ -128,6 +130,23 @@ public class SurfaceController(
             }
             is A2uiFrame.DeleteSurface -> {
                 _surfaces.update { it - frame.deleteSurface.surfaceId }
+            }
+            is A2uiFrame.DataModelPatch -> {
+                // v0.10 draft — apply JSON-Patch style ops against the surface's data model.
+                // Only `add`/`replace` (value) and `remove` (no value) are handled here; any
+                // unknown op is silently ignored until the draft wire shape firms up.
+                val body = frame.dataModelPatch
+                val dm = _surfaces.value[body.surfaceId]?.dataModel ?: return
+                for (op in body.operations) {
+                    when (op.op) {
+                        "add", "replace" -> op.value?.let { dm.write(op.path, it) }
+                        "remove" -> {
+                            // Minimal semantics — write JsonNull to mark removal; structural
+                            // removal awaits the finalised draft.
+                            dm.write(op.path, kotlinx.serialization.json.JsonNull)
+                        }
+                    }
+                }
             }
         }
     }
