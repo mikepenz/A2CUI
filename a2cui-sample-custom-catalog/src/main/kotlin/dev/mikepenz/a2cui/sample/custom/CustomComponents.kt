@@ -1,5 +1,6 @@
 package dev.mikepenz.a2cui.sample.custom
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -16,42 +17,17 @@ import dev.mikepenz.a2cui.codegen.annotations.A2uiEvent
 import dev.mikepenz.a2cui.codegen.annotations.A2uiProp
 import dev.mikepenz.a2cui.codegen.annotations.A2uiPropType
 import dev.mikepenz.a2cui.compose.ComponentFactory
-import dev.mikepenz.a2cui.compose.RenderScope
-import dev.mikepenz.a2cui.core.ComponentNode
-import kotlinx.serialization.json.JsonElement
+import dev.mikepenz.a2cui.compose.catalog.emitAction
+import dev.mikepenz.a2cui.compose.catalog.resolveBool
+import dev.mikepenz.a2cui.compose.catalog.resolveInt
+import dev.mikepenz.a2cui.compose.catalog.resolveString
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
-import kotlinx.serialization.json.booleanOrNull
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.intOrNull
-
-// Local copies of the `:a2cui-compose` internal helpers — the sample module cannot reach them
-// directly. Kept minimal: read a property, treat it as a primitive, fall back to a default.
-private fun RenderScope.prop(node: ComponentNode, key: String): JsonElement =
-    resolver.resolveProperty(node.properties, key)
-
-private fun RenderScope.propString(node: ComponentNode, key: String, default: String = ""): String =
-    (prop(node, key) as? JsonPrimitive)?.contentOrNull ?: default
-
-private fun RenderScope.propInt(node: ComponentNode, key: String, default: Int = 0): Int =
-    (prop(node, key) as? JsonPrimitive)?.intOrNull ?: default
-
-private fun RenderScope.propBool(node: ComponentNode, key: String, default: Boolean = false): Boolean =
-    (prop(node, key) as? JsonPrimitive)?.booleanOrNull ?: default
-
-private fun RenderScope.emitActionLike(node: ComponentNode, eventName: String) {
-    val action = node.properties["action"] as? JsonObject ?: return
-    val ev = action["event"] as? JsonObject ?: return
-    val name = (ev["name"] as? JsonPrimitive)?.contentOrNull ?: eventName
-    val ctx = ev["context"] as? JsonObject ?: JsonObject(emptyMap())
-    val resolved = JsonObject(ctx.mapValues { resolver.resolve(it.value) })
-    emit(dev.mikepenz.a2cui.compose.EventSpec(name = name, sourceComponentId = node.id, context = resolved))
-}
 
 /**
- * 5-star rating component. Values are clamped to 0..max; a bare row of `*`/`-` glyphs keeps this
- * demo portable without relying on icon assets. A `tap` event is emitted whenever the user
- * clicks on a star.
+ * 5-star rating component. Tapping a star fires the authored `rated` event with the tapped
+ * index overriding the authored `value` context field so the event payload reflects the user's
+ * choice rather than the initial rendered value.
  */
 @A2uiComponent(
     name = "Rating",
@@ -68,12 +44,15 @@ private fun RenderScope.emitActionLike(node: ComponentNode, eventName: String) {
     ],
 )
 public val RatingFactory: ComponentFactory = @Composable { node, scope ->
-    val value = scope.propInt(node, "value", default = 0)
-    val max = scope.propInt(node, "max", default = 5)
+    val value = scope.resolveInt(node, "value", default = 0)
+    val max = scope.resolveInt(node, "max", default = 5)
     Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
         repeat(max) { i ->
+            val tapped = i + 1
             val filled = i < value
-            TextButton(onClick = { scope.emitActionLike(node, "rated") }) {
+            TextButton(onClick = {
+                scope.emitAction(node, overrides = JsonObject(mapOf("value" to JsonPrimitive(tapped))))
+            }) {
                 Text(if (filled) "*" else "-", style = MaterialTheme.typography.titleLarge)
             }
         }
@@ -93,9 +72,9 @@ public val RatingFactory: ComponentFactory = @Composable { node, scope ->
     ],
 )
 public val BadgeFactory: ComponentFactory = @Composable { node, scope ->
-    val text = scope.propString(node, "text")
-    val tone = scope.propString(node, "tone", default = "neutral")
-    val emphasised = scope.propBool(node, "emphasised", default = false)
+    val text = scope.resolveString(node, "text")
+    val tone = scope.resolveString(node, "tone", default = "neutral")
+    val emphasised = scope.resolveBool(node, "emphasised", default = false)
     val colors = MaterialTheme.colorScheme
     val (bg, fg) = when (tone) {
         "info" -> colors.primaryContainer to colors.onPrimaryContainer
@@ -108,7 +87,7 @@ public val BadgeFactory: ComponentFactory = @Composable { node, scope ->
         color = if (emphasised) bg else colors.surface,
         contentColor = fg,
         shape = RoundedCornerShape(50),
-        border = if (emphasised) null else androidx.compose.foundation.BorderStroke(1.dp, bg),
+        border = if (emphasised) null else BorderStroke(1.dp, bg),
     ) {
         Text(
             text = text,
