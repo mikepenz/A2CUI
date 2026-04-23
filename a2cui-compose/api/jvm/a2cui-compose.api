@@ -162,7 +162,10 @@ public final class dev/mikepenz/a2cui/compose/catalog/ComposableSingletons$DateT
 	public static final field INSTANCE Ldev/mikepenz/a2cui/compose/catalog/ComposableSingletons$DateTimeInputComponentKt;
 	public fun <init> ()V
 	public final fun getLambda$-1307231969$a2cui_compose ()Lkotlin/jvm/functions/Function4;
-	public final fun getLambda$1626875608$a2cui_compose ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-1631836008$a2cui_compose ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-550004959$a2cui_compose ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$749152972$a2cui_compose ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$757151946$a2cui_compose ()Lkotlin/jvm/functions/Function3;
 }
 
 public final class dev/mikepenz/a2cui/compose/catalog/ComposableSingletons$LayoutComponentsKt {

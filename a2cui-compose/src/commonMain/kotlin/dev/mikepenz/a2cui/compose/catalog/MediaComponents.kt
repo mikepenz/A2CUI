@@ -3,14 +3,16 @@ package dev.mikepenz.a2cui.compose.catalog
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import dev.mikepenz.a2cui.compose.ComponentFactory
@@ -23,14 +25,44 @@ import dev.mikepenz.a2cui.compose.ComponentFactory
  */
 internal val ImageFactory: ComponentFactory = @Composable { node, scope ->
     val src = scope.resolveString(node, "src").ifEmpty { scope.resolveString(node, "url") }
-    val size = scope.resolveInt(node, "size", default = 96).dp
     val contentDescription = scope.resolveString(node, "contentDescription", default = "")
+
+    val hasSize = node.properties["size"] != null
+    val hasWidth = node.properties["width"] != null
+    val hasHeight = node.properties["height"] != null
+
+    // Precedence:
+    //   * explicit width/height override everything (mix-and-match OK),
+    //   * legacy `size` is a square shortcut,
+    //   * otherwise default to a 96dp square so the LLM doesn't need to know layout units.
+    val widthDp = when {
+        hasWidth -> scope.resolveInt(node, "width", default = 96).dp
+        hasSize -> scope.resolveInt(node, "size", default = 96).dp
+        else -> 96.dp
+    }
+    val heightDp = when {
+        hasHeight -> scope.resolveInt(node, "height", default = 96).dp
+        hasSize -> scope.resolveInt(node, "size", default = 96).dp
+        else -> 96.dp
+    }
+
+    val scaleKey = scope.resolveString(node, "contentScale", default = "crop").lowercase()
+    val scale = when (scaleKey) {
+        "fit" -> ContentScale.Fit
+        "inside" -> ContentScale.Inside
+        "fill", "fillbounds" -> ContentScale.FillBounds
+        "fillwidth" -> ContentScale.FillWidth
+        "fillheight" -> ContentScale.FillHeight
+        "none" -> ContentScale.None
+        else -> ContentScale.Crop
+    }
+
     val shape = RoundedCornerShape(4.dp)
+    val sizingModifier = Modifier.width(widthDp).height(heightDp).clip(shape)
+
     if (src.isEmpty()) {
         Box(
-            modifier = Modifier
-                .size(size)
-                .clip(shape)
+            modifier = sizingModifier
                 .background(MaterialTheme.colorScheme.surfaceVariant)
                 .padding(4.dp),
         ) {
@@ -44,9 +76,8 @@ internal val ImageFactory: ComponentFactory = @Composable { node, scope ->
         AsyncImage(
             model = src,
             contentDescription = contentDescription,
-            modifier = Modifier
-                .size(size)
-                .clip(shape),
+            contentScale = scale,
+            modifier = sizingModifier,
         )
     }
 }
