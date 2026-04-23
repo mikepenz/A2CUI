@@ -6,8 +6,8 @@ Compose Desktop host that wires an **AG-UI SSE stream** through
 
 Two panes:
 
-- **Top**: the rendered A2UI surface (updates as `CUSTOM` `a2ui` frames stream in).
-- **Bottom**: the raw AG-UI event log plus outbound events fired from the UI.
+- **Top** — the rendered A2UI surface (updates as `CUSTOM` `a2ui` frames stream in).
+- **Bottom** — the raw AG-UI event log plus outbound events fired from the UI.
 
 ## Backend selection
 
@@ -15,11 +15,11 @@ The backend URL is resolved in this order:
 
 1. `AGUI_URL` environment variable
 2. `-Dagui.url=...` JVM system property
-3. **Fallback** — an in-process `MockAguiServer` (from `:a2cui-agui-mock-server`)
+3. **Fallback** — an in-process [`MockAguiServer`](../a2cui-agui-mock-server)
    is spun up and consumed.
 
-The client only requires that the backend stream standard AG-UI events, with A2UI
-frames wrapped inside `CUSTOM` events named `a2ui`. See
+The client only requires that the backend stream standard AG-UI events, with
+A2UI frames wrapped inside `CUSTOM` events named `a2ui`. See
 [`integrations/README.md`](../integrations/README.md) for the wire contract.
 
 ## Three run modes
@@ -76,15 +76,30 @@ If you can't easily set env vars:
 ./gradlew :a2cui-sample-live:run -Dagui.url=http://localhost:8000/events
 ```
 
+## Key files
+
+| Concept | Path |
+|---|---|
+| Desktop entry point | [`src/main/kotlin/.../live/Main.kt`](src/main/kotlin/dev/mikepenz/a2cui/sample/live/Main.kt) |
+| In-process mock server | [`:a2cui-agui-mock-server`](../a2cui-agui-mock-server/README.md) |
+| Gradle wiring | [`build.gradle.kts`](build.gradle.kts) |
+
 ## Troubleshooting
 
-- **Surface stays empty.** Confirm the backend actually emits `CUSTOM` events with
-  `name: "a2ui"` — curl the endpoint and check each `data:` line. The `surfaceId`
-  in the A2UI frames must equal `"demo"` (hard-coded in `A2cuiLiveApp`), or change
-  both ends.
-- **SSE hangs on connect.** Most AG-UI servers require `Accept: text/event-stream`
-  — A2CUI's `SseTransport` sends that automatically. If you reverse-proxy through
-  nginx, disable buffering (`proxy_buffering off;`).
+- **Surface stays empty.** Confirm the backend actually emits `CUSTOM` events
+  with `name: "a2ui"` — curl the endpoint and check each `data:` line. The
+  `surfaceId` in the A2UI frames must equal `"demo"` (hard-coded in
+  `A2cuiLiveApp`), or change both ends.
+- **SSE hangs on connect.** Most AG-UI servers require
+  `Accept: text/event-stream` — A2CUI's `SseTransport` sends that automatically.
+  If you reverse-proxy through nginx, disable buffering (`proxy_buffering off;`).
 - **LLM 401.** For Pydantic AI / Mastra narration, set the provider API key env
   var (`OPENAI_API_KEY`, etc.). Without a key both agents fall back to a static
   narration line — A2UI frames still stream normally.
+
+## See also
+
+- Root: [`../README.md`](../README.md)
+- Offline scripted host: [`:a2cui-sample`](../a2cui-sample/README.md)
+- Mock server: [`:a2cui-agui-mock-server`](../a2cui-agui-mock-server/README.md)
+- AG-UI bridge: [`:a2cui-agui`](../a2cui-agui)

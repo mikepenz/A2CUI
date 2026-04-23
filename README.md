@@ -1,114 +1,132 @@
 # A2CUI — Agent-to-Compose-UI
 
-Kotlin Multiplatform library rendering [Google A2UI v0.9](https://a2ui.org/specification/v0.9-a2ui/) surfaces natively on Compose Multiplatform, with [AG-UI](https://docs.ag-ui.com/) transport and CopilotKit-style generative-UI actions.
+<!-- TODO: hero screenshot of :a2cui-sample running -->
 
-Status: **pre-alpha**. The wire format, catalog, and public API are likely to change as A2UI stabilises and real-world agents are wired against A2CUI. See [`SYNTHESIS.md`](SYNTHESIS.md) for the design rationale and [`ARCHITECTURE.md`](ARCHITECTURE.md) for the module plan. Research notes live under [`research/`](research/).
+Render [Google A2UI v0.9](https://a2ui.org/specification/v0.9-a2ui/) surfaces natively on Compose Multiplatform, driven over [AG-UI](https://docs.ag-ui.com/) streaming transport, with CopilotKit-style generative-UI actions layered on top.
 
-## Why
+Kotlin Multiplatform. Material3 catalog. Host-owned theming. No WebView.
 
-Agents today talk to chat UIs. We want them to talk to **native** UIs — the same Compose tree a human developer would write, but structured at runtime by an LLM. A2UI gives us a closed, declarative JSON vocabulary; AG-UI gives us a streaming event transport; A2CUI makes both render as real Material3 composables on Android, Desktop, iOS, and the web.
+<!-- TODO: badges — CI / Maven Central / License -->
+<!-- TODO: ![CI](…) ![Maven Central](…) ![License: Apache-2.0](…) -->
 
-## Modules
+## Why A2CUI
 
-| Module | Targets | Purpose |
-|---|---|---|
-| `:a2cui-core` | android, jvm, iOS, macOS, JS, WASM | A2UI v0.9 wire types, parser, data model, binding resolver |
-| `:a2cui-transport` | android, jvm, iOS, macOS, JS, WASM | Ktor SSE + WebSocket + `FakeTransport` for tests |
-| `:a2cui-compose` | android, jvm, iOS, macOS, JS, WASM | Material3 basic catalog (15 components), `SurfaceController`, `A2cuiSurface` |
-| `:a2cui-agui` | android, jvm, iOS, macOS, JS, WASM | AG-UI event types, `AguiA2cuiBridge`, `AguiStateReducer`, JSON Patch, interrupts |
-| `:a2cui-actions` | android, jvm, iOS, macOS, JS, WASM | CopilotKit-style `rememberAction` / `rememberReadable` + streaming-args merger |
-| `:a2cui-codegen` | jvm | KSP `@A2uiComponent` processor (planned) |
-| `:a2cui-adaptive-cards` | android, jvm, iOS, macOS, JS, WASM | Adaptive Cards v1.6 → A2UI mapper (planned) |
-| `:a2cui-sample` | desktop jvm | Runnable Compose Desktop demo with `FakeTransport` replay |
+**Closed component vocabulary.** The catalog is the trust boundary. Agents cannot invent widgets the client has not registered — unknown components render a muted `FallbackPlaceholder`, never arbitrary code. Every rendered pixel comes from a factory you shipped in the binary.
 
-## Quick start
+**Local-first input binding.** Inputs mutate the local `DataModel` synchronously via JSON Pointer paths — `TextField`, `Slider`, `CheckBox`, `ChoicePicker`, `DateTimeInput` all two-way bind without a server round-trip. Only explicit `event` declarations flush to the agent. IME latency stays native.
+
+**Host-owned theming.** Agents supply semantic hints (`primary`, `error`, variants). Compose resolves them through `MaterialTheme`. Off-brand colors and inaccessible contrast are physically not expressible in the wire format.
+
+Design rationale in [SYNTHESIS.md](SYNTHESIS.md); module graph in [ARCHITECTURE.md](ARCHITECTURE.md).
+
+## Quickstart
+
+Add the dependency (planned coords — not yet published to Maven Central):
+
+```kotlin
+// build.gradle.kts
+dependencies {
+    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a01")
+    // optional:
+    // implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a01")
+    // implementation("dev.mikepenz.a2cui:a2cui-actions:0.1.0-a01")
+}
+```
+
+Minimum viable surface:
 
 ```kotlin
 @Composable
-fun MyScreen() {
+fun Demo() {
     val transport = remember { FakeTransport() }
     val controller = rememberSurfaceController(
         catalogs = listOf(Material3BasicCatalog),
         transport = transport,
     )
-    LaunchedEffect(Unit) {
-        transport.emit(
-            """
-            { "version": "v0.9",
-              "createSurface": { "surfaceId": "main",
-                "catalogId": "https://a2ui.org/specification/v0_9/basic_catalog.json" } }
-            """.trimIndent()
-        )
-        transport.emit(
-            """
-            { "version": "v0.9",
-              "updateComponents": { "surfaceId": "main", "components": [
-                { "id": "root", "component": "Column", "children": ["title", "email"] },
-                { "id": "title", "component": "Text", "text": "Hello", "variant": "h1" },
-                { "id": "email", "component": "TextField",
-                  "value": { "path": "/form/email" }, "label": "Email" } ] } }
-            """.trimIndent()
-        )
+    LaunchedEffect(transport) {
+        transport.emit(CREATE_SURFACE)
+        transport.emit(UPDATE_COMPONENTS)
     }
     A2cuiSurface(surfaceId = "main", controller = controller)
 }
 ```
 
-## Run the sample
+First frames to paste in:
 
-```bash
-./gradlew :a2cui-sample:run
+```json
+{ "version": "v0.9",
+  "createSurface": { "surfaceId": "main",
+    "catalogId": "https://a2ui.org/specification/v0_9/basic_catalog.json" } }
 ```
 
-Opens a Compose Desktop window driving a scripted booking form through `FakeTransport`.
-
-## Protocol overview
-
-A2UI ships four server→client message types over any JSON-framed channel:
-- `createSurface` — register a new surface with a catalog + optional theme.
-- `updateComponents` — add / replace components by id (flat adjacency list).
-- `updateDataModel` — write a JSON Pointer path.
-- `deleteSurface` — tear down a surface.
-
-Inputs two-way bind locally via `{ "path": "/pointer" }` on a property; server-bound events fire via `{ "action": { "event": { "name": "submit", "context": { ... } } } }`.
-
-A2CUI parses the stream, keeps one `SurfaceState` per live surface, and looks up registered `@Composable` factories by component name. Unknown components render a muted `FallbackPlaceholder`; the registry is the **closed trust boundary** — the agent cannot invent components the client has not registered.
-
-## Repository layout
-
-```
-A2CUI/
-├── build.gradle.kts          # root — convention plugin + apply-false aliases
-├── settings.gradle.kts       # module includes + baseLibs version catalog
-├── gradle.properties         # GROUP, VERSION, KMP + Compose target flags
-├── gradle/libs.versions.toml # local version catalog
-├── ARCHITECTURE.md           # module architecture + types + data flow
-├── SYNTHESIS.md              # design rationale comparing 10+ agent-UI systems
-├── research/                 # 7 deep-dive reports (AG-UI, A2UI, CopilotKit, …)
-├── a2cui-core/               # v0.9 wire types, parser, DataModel, JsonPointer, BindingResolver
-├── a2cui-transport/          # A2uiTransport + SSE + WS + FakeTransport
-├── a2cui-compose/            # SurfaceController, A2cuiSurface, Material3BasicCatalog
-├── a2cui-agui/               # AG-UI events, bridge, JSON Patch, state reducer, interrupts
-├── a2cui-actions/            # rememberAction / rememberReadable / StreamingArgsMerger
-├── a2cui-codegen/            # KSP processor (planned)
-├── a2cui-adaptive-cards/     # Adaptive Cards interop (planned)
-└── a2cui-sample/             # runnable Compose Desktop demo
+```json
+{ "version": "v0.9",
+  "updateComponents": { "surfaceId": "main", "components": [
+    { "id": "root",  "component": "Column", "children": ["hello", "go"] },
+    { "id": "hello", "component": "Text",   "text": "Hello from an agent", "variant": "h2" },
+    { "id": "go",    "component": "Button", "label": "Continue",
+      "action": { "event": { "name": "submit" } } }
+  ] } }
 ```
 
-## Tests
+Swap `FakeTransport()` for `SseTransport(...)` or `WebSocketTransport(...)` when you wire a real agent.
 
-```bash
-./gradlew :a2cui-core:jvmTest :a2cui-transport:jvmTest :a2cui-compose:jvmTest \
-          :a2cui-agui:jvmTest :a2cui-actions:jvmTest
-```
+## Platforms
 
-Current: ~76 tests green across 13 suites. UI tests for composables are deferred behind `compose-ui-test`; the state layer is covered by pure-Kotlin unit tests.
+Per [STATUS.md §2.2](STATUS.md#22-module-matrix):
 
-## Dependencies
+| Target | `:a2cui-core` / `-transport` / `-compose` / `-agui` / `-actions` / `-adaptive-cards` | `:a2cui-codegen` |
+|---|---|---|
+| android | yes | — |
+| jvm (desktop) | yes | yes |
+| iosArm64 / iosX64 / iosSimulatorArm64 | yes | — |
+| macosArm64 / macosX64 | yes | — |
+| js | yes | — |
+| wasmJs | yes | — |
 
-- Kotlin `2.3.20`, Compose Multiplatform `1.10.0`, Ktor `3.4.2`, kotlinx-serialization `1.11.0`, kotlinx-coroutines `latest`, kermit, Turbine (tests).
-- No AG-UI Kotlin SDK dependency — AG-UI events are decoded in-house via kotlinx-serialization.
+## Module map
+
+One-line summary per publishable module. Each links to its own README (authored separately).
+
+- [`:a2cui-core`](a2cui-core/) — A2UI v0.9 wire types, parser, `DataModel`, `JsonPointer`, `BindingResolver`. Pure Kotlin, zero Compose.
+- [`:a2cui-transport`](a2cui-transport/) — `A2uiTransport` interface plus Ktor `SseTransport`, `WebSocketTransport`, and `FakeTransport` for tests.
+- [`:a2cui-compose`](a2cui-compose/) — `SurfaceController`, `A2cuiSurface`, `ComponentRegistry`, and the 15-component `Material3BasicCatalog`.
+- [`:a2cui-agui`](a2cui-agui/) — AG-UI event decoder, `AguiA2cuiBridge`, `AguiStateReducer` (JSON Patch), interrupt awaiter, `rememberCoAgentState`.
+- [`:a2cui-actions`](a2cui-actions/) — CopilotKit-style `rememberAction` / `rememberReadable` with typed streaming-args decoding.
+- [`:a2cui-adaptive-cards`](a2cui-adaptive-cards/) — Adaptive Cards v1.6 → A2UI v0.9 mapper for Copilot Studio interop.
+- [`:a2cui-codegen`](a2cui-codegen/) — KSP processor for `@A2uiComponent` emitting catalog factories, JSON Schema, and tool-prompt fragments.
+- [`:a2cui-codegen-annotations`](a2cui-codegen-annotations/) — multiplatform annotations consumed by `:a2cui-codegen`.
+
+## Samples
+
+- [`a2cui-sample`](a2cui-sample/) — Compose Desktop app wrapping the shared sample in a `Window`. Run: `./gradlew :a2cui-sample:run`.
+- [`a2cui-sample-shared`](a2cui-sample-shared/) — `A2cuiSampleApp` composable + `SampleFrames`, shared across desktop / android / ios hosts.
+- [`a2cui-sample-android`](a2cui-sample-android/) — `MainActivity` hosting the shared sample inside an `Activity`.
+- [`a2cui-sample-ios`](a2cui-sample-ios/) — `SampleViewController` exposing the shared sample as a `ComposeUIViewController`.
+- [`a2cui-sample-live`](a2cui-sample-live/) — desktop host spinning up `MockAguiServer` in-process and wiring `SseTransport` → `AguiA2cuiBridge` → `A2cuiSurface`.
+- [`a2cui-sample-custom-catalog`](a2cui-sample-custom-catalog/) — dogfoods `:a2cui-codegen`: annotated `RatingFactory` + `BadgeFactory` compile into a `CustomDemoCatalog`.
+
+## Live agent backends
+
+Runnable backends that emit AG-UI events wrapping A2UI frames — point `:a2cui-sample-live` (or your own host) at them:
+
+- [`integrations/pydantic-ai/`](integrations/pydantic-ai/) — Python + Pydantic AI scaffold.
+- [`integrations/mastra/`](integrations/mastra/) — TypeScript + Mastra scaffold.
+
+Both speak AG-UI over SSE with `CUSTOM { name: "a2ui" }` frames carrying A2UI v0.9 JSON.
+
+## Status & roadmap
+
+- **Stable (v0.1)** — wire types, parser, transports, `Material3BasicCatalog`, `AguiA2cuiBridge`, `rememberAction`, `:a2cui-adaptive-cards`, `:a2cui-codegen`. 125 tests green on JVM; Android / iOS / macOS / JS / WASM compile.
+- **Experimental** — `@ExperimentalA2uiDraft` primitives (`DataModelPatch`, `ScrollTo`, `Viewport`, `Conditional`) ahead of upstream A2UI spec changes. AG-UI interrupt resume semantics still draft.
+- **Next** — real Pydantic AI / Mastra / ADK integration, Paparazzi snapshot tests on Android, Maven Central publish, Compose MP 1.11 deprecation migration, optional `WebResource` escape-hatch for MCP Apps.
+
+Full execution log, test matrix, and deferrals: [STATUS.md](STATUS.md).
+
+## Contributing
+
+CONTRIBUTING.md is **WIP** — see [`CONTRIBUTING.md`](CONTRIBUTING.md) once it lands. In the meantime, issues and PRs are welcome; run `./gradlew assemble check` before opening one.
 
 ## License
 
-Apache-2.0.
+Apache-2.0. See [`gradle.properties`](gradle.properties) for POM metadata.
