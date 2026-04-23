@@ -41,11 +41,17 @@ import asyncio
 import json
 import os
 import random
+import sys
+import traceback
 from typing import Any, AsyncIterator, Optional
 
 from fastapi import FastAPI, Header, Query, Request
 from fastapi.responses import JSONResponse
 from sse_starlette.sse import EventSourceResponse
+
+
+def _log(msg: str) -> None:
+    print(f"[a2cui-adk] {msg}", file=sys.stderr, flush=True)
 
 SURFACE_ID = os.environ.get("A2UI_SURFACE_ID", "demo")
 FRAME_DELAY_MS = int(os.environ.get("A2UI_FRAME_DELAY_MS", "200"))
@@ -252,8 +258,11 @@ async def _adk_stream_for_prompt(prompt: str, thread_id: str) -> AsyncIterator[t
         from google.adk.agents import Agent  # type: ignore
         from google.adk.runners import Runner  # type: ignore
         from google.genai import types  # type: ignore
-    except ImportError:
-        async for item in _fallback_stream(prompt):
+    except ImportError as exc:
+        _log(f"ADK import failed: {exc}. Pip install: `pip install google-adk`. Falling back.")
+        async for item in _diagnostic_stream(
+            prompt, reason=f"google-adk not installed ({exc.name})"
+        ):
             yield item
         return
 
@@ -292,12 +301,68 @@ async def _adk_stream_for_prompt(prompt: str, thread_id: str) -> AsyncIterator[t
                     elif isinstance(payload, dict) and "version" in payload:
                         yield ("a2ui", payload)
     except Exception as exc:  # auth/network/model — never break the SSE stream
-        yield ("text", f"(ADK stream error: {exc.__class__.__name__}; falling back.) ")
-        async for item in _fallback_stream(prompt):
+        _log("ADK run raised:")
+        traceback.print_exc(file=sys.stderr)
+        reason = f"{exc.__class__.__name__}: {exc}"
+        async for item in _diagnostic_stream(prompt, reason=reason):
             yield item
 
 
+async def _diagnostic_stream(prompt: str, reason: str) -> AsyncIterator[tuple[str, Any]]:
+    """Emit a visible-on-surface error UI instead of silently rendering the default booking form.
+
+    When ADK isn't installed, the model blows up, or auth fails, we previously
+    returned the canned `default_booking_components` — which looks indistinguishable
+    from a successful run and masked the real problem. This diagnostic frame makes
+    the failure loud and actionable so users can see WHY their prompt didn't work.
+    """
+    yield ("text", f"Agent unavailable — {reason}")
+    yield (
+        "a2ui",
+        update_components(
+            SURFACE_ID,
+            [
+                {
+                    "id": "root",
+                    "component": "Column",
+                    "spacing": 12,
+                    "children": ["title", "sub", "reason", "hint"],
+                },
+                {
+                    "id": "title",
+                    "component": "Text",
+                    "text": "⚠ Agent unavailable",
+                    "variant": "h2",
+                },
+                {
+                    "id": "sub",
+                    "component": "Text",
+                    "text": f"Prompt received: '{prompt or '(default demo)'}'",
+                    "variant": "body",
+                },
+                {
+                    "id": "reason",
+                    "component": "Text",
+                    "text": reason,
+                    "variant": "caption",
+                },
+                {
+                    "id": "hint",
+                    "component": "Text",
+                    "text": (
+                        "Check the Python server logs for the full traceback. "
+                        "Common causes: google-adk not installed, GOOGLE_API_KEY missing, "
+                        "or the Gemini free-tier quota exceeded."
+                    ),
+                    "variant": "body",
+                },
+            ],
+        ),
+    )
+
+
 async def _fallback_stream(prompt: str) -> AsyncIterator[tuple[str, Any]]:
+    """Retained for the no-prompt default demo only. Emits the booking form."""
     yield ("text", f"Rendering '{prompt or 'default demo'}' (offline fallback)… ")
     yield ("a2ui", default_booking_components(SURFACE_ID))
 
@@ -388,9 +453,14 @@ def _action_to_prompt(body: dict[str, Any]) -> str:
     except (TypeError, ValueError):
         ctx_json = str(context)
     return (
-        f"The user triggered the '{name}' action with context {ctx_json}. "
-        "If the action asks for more UI, call emit_ui with the appropriate "
-        "component list; otherwise acknowledge briefly."
+        f"The user triggered the UI action named '{name}' on the current surface. "
+        f"Submitted context values: {ctx_json}. "
+        "Rules for your reply:\n"
+        "  1. Default: ONE short acknowledgement sentence (<15 words). Do NOT emit new UI.\n"
+        "  2. Only call emit_ui if the action name clearly implies navigation/refinement "
+        "(e.g. 'navigate_to_X', 'add_Y', 'show_Z'). In that case, emit a UI that matches "
+        "the action's intent — NOT the default booking form.\n"
+        "  3. Never fall back to the booking form for an unrelated action."
     )
 
 
@@ -418,11 +488,28 @@ async def events_post(
 
 @app.get("/health")
 async def health() -> dict[str, Any]:
+    adk_available = False
+    adk_error: Optional[str] = None
+    try:
+        import google.adk  # type: ignore  # noqa: F401
+        adk_available = True
+    except ImportError as exc:
+        adk_error = f"{exc.__class__.__name__}: {exc}"
+
+    auth_mode = None
+    if os.environ.get("GOOGLE_API_KEY"):
+        auth_mode = "GOOGLE_API_KEY"
+    elif os.environ.get("GOOGLE_GENAI_USE_VERTEXAI"):
+        auth_mode = "vertex-ai-adc"
+
     return {
-        "status": "ok",
+        "status": "ok" if adk_available else "degraded",
         "surfaceId": SURFACE_ID,
         "model": MODEL_ID,
         "activeThreads": len(THREAD_SESSIONS),
+        "adkAvailable": adk_available,
+        "adkError": adk_error,
+        "authMode": auth_mode,
     }
 
 
