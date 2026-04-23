@@ -5,7 +5,7 @@ Compose Multiplatform renderer for A2UI surfaces. Ships the `SurfaceController`,
 ## When to use / when not to
 
 - **Use** for Compose UI rendering of A2UI frames — Android, Desktop, iOS, Web (JS/Wasm).
-- **Use** when you want a turnkey Material3 catalog and only need to register escape-hatch components (e.g. `Image` with Coil).
+- **Use** when you want a turnkey Material3 catalog — `Image` uses Coil 3 out of the box; override via `registry.register("Image") { ... }` to plug your own loader.
 - **Don't use** in headless or non-Compose contexts — use `:a2cui-core` directly.
 
 ## Install
@@ -54,7 +54,7 @@ dependencies {
 
 `Text`, `Column`, `Row`, `Card`, `Button`, `TextField`, `CheckBox`, `Slider`, `ChoicePicker`, `List`, `Tabs`, `Modal`, `DateTimeInput`, `Image`, `Icon`.
 
-`List` supports both flat-children mode and iteration-scope mode: `items: {path: "/users"}` plus the first child as a template — `BindingResolver.withScope(...)` rewrites per-item `{path}` refs relative to the iteration element. `Image` / `Icon` render labelled placeholders by default — hosts override via `registry.register("Image") { node, scope -> /* Coil */ }` after `registerAll(Material3BasicCatalog)`.
+`List` supports both flat-children mode and iteration-scope mode: `items: {path: "/users"}` plus the first child as a template — `BindingResolver.withScope(...)` rewrites per-item `{path}` refs relative to the iteration element. `Image` uses Coil 3 by default; override via `registry.register("Image") { ... }` to plug your own loader. `Icon` renders a labelled placeholder by default.
 
 ## Minimal example
 
@@ -93,7 +93,7 @@ registry.register("Rating", RatingFactory)
 ## Known limitations
 
 - `Material3BasicCatalog` uses `TabRow` (deprecated in favour of `PrimaryTabRow` — warning only).
-- `Image` / `Icon` render placeholders until the host overrides.
+- `Image` uses Coil 3 by default; override via `registry.register("Image") { ... }` to plug your own loader. `Icon` renders a placeholder until the host overrides.
 - Paparazzi / Android snapshot tests are outstanding; JVM `compose-ui-test` harnesses are wired.
 - Compose MP deprecation warnings for `compose.runtime` / `compose.foundation` / `compose.material3` are non-blocking.
 

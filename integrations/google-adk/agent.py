@@ -1,5 +1,6 @@
 """
-Google ADK → AG-UI → A2UI bridge with **free-form prompt generation**.
+Google ADK → AG-UI → A2UI bridge with **free-form prompt generation** and
+**round-trip client actions** on a shared multi-turn session.
 
 Users type a prompt like "login form with email, password, submit button" in
 the Compose client. The server passes the prompt to a Gemini-backed ADK agent.
@@ -7,12 +8,22 @@ The agent replies with a short narration, then calls the `emit_ui` tool with a
 list of A2UI ComponentNodes describing the requested UI. The server forwards
 those nodes as a CUSTOM(name=a2ui) event carrying one `updateComponents` frame.
 
+When the user later clicks a Button / submits a form, the Compose client POSTs
+an ``A2uiClientMessage.Action`` envelope to ``POST /events``. The same ADK
+session is reused (keyed off an ``X-Thread-Id`` header), so the agent can
+refine the UI conversationally.
+
 Endpoints
 ---------
 
     GET  /events?prompt=<url-encoded>    # streams SSE for the given prompt
     GET  /events                         # streams SSE for the default demo
+    POST /events                         # action body; streams SSE response
     GET  /health
+
+Every response includes the resolved ``X-Thread-Id`` header (echoing the
+request header when supplied, otherwise generating a fresh one). Clients
+should persist this value for the duration of a conversation.
 
 Env vars
 --------
@@ -32,12 +43,17 @@ import os
 import random
 from typing import Any, AsyncIterator, Optional
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Header, Query, Request
+from fastapi.responses import JSONResponse
 from sse_starlette.sse import EventSourceResponse
 
 SURFACE_ID = os.environ.get("A2UI_SURFACE_ID", "demo")
 FRAME_DELAY_MS = int(os.environ.get("A2UI_FRAME_DELAY_MS", "200"))
 MODEL_ID = os.environ.get("A2UI_MODEL", "gemini-flash-latest")
+
+# In-memory thread-id -> ADK session-id store. A single process instance is
+# assumed; persistence across restarts is out of scope for this example.
+THREAD_SESSIONS: dict[str, str] = {}
 
 
 # --- A2UI v0.9 frame builders -----------------------------------------------
@@ -129,7 +145,8 @@ Canonical example — emit this SHAPE verbatim (change content to match the user
 
 Workflow for any request:
   1. Reply with ONE short narration sentence (< 15 words).
-  2. Call the `emit_ui` tool exactly once with the full component list.
+  2. If the request (or the user-triggered action it describes) asks for more UI,
+     call the `emit_ui` tool exactly once with the full component list.
   3. Stop.
 
 Never invent component types outside the allowed set. Never omit "id" or "component".
@@ -139,17 +156,7 @@ Never invent component types outside the allowed set. Never omit "id" or "compon
 # --- ADK tool ---------------------------------------------------------------
 
 def emit_ui(components: list[dict[str, Any]], title: str = "") -> dict[str, Any]:
-    """Render the given A2UI component list on the client surface.
-
-    Args:
-        components: A list of A2UI v0.9 ComponentNode objects. Must include
-            exactly one node with id="root". Every child id must exist as a
-            sibling. Only components from the Material 3 basic catalog.
-        title: Optional human-readable title for logging. Not rendered.
-
-    Returns:
-        A frames list the server will forward to the client as CUSTOM(a2ui).
-    """
+    """Render the given A2UI component list on the client surface."""
     repaired, warnings = _repair_components(components)
     return {
         "surfaceId": SURFACE_ID,
@@ -160,14 +167,6 @@ def emit_ui(components: list[dict[str, Any]], title: str = "") -> dict[str, Any]
 
 
 def _repair_components(components: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[str]]:
-    """Best-effort normalisation of model output before it hits the client.
-
-    - Drops nodes missing `id`.
-    - Maps common aliases for `component`: `type`, `component_type`, `componentType`.
-    - Drops nodes whose component isn't in the allowed catalog; strips those ids from any
-      `children` array so surviving parents don't reference missing nodes.
-    - Ensures exactly one `root`; promotes the first node if needed.
-    """
     warnings: list[str] = []
     fixed: list[dict[str, Any]] = []
     for raw in components:
@@ -206,23 +205,52 @@ def _repair_components(components: list[dict[str, Any]]) -> tuple[list[dict[str,
 
     if not any(n["id"] == "root" for n in fixed) and fixed:
         fixed[0]["id"] = "root"
-        warnings.append(f"Promoted first node to id='root'")
+        warnings.append("Promoted first node to id='root'")
 
     return fixed, warnings
 
 
 # --- ADK-driven streaming ---------------------------------------------------
 
-async def _adk_stream_for_prompt(prompt: str) -> AsyncIterator[tuple[str, Any]]:
-    """Yield `(kind, payload)` tuples from a live ADK run.
+APP_NAME = "a2cui-adk-demo"
+USER_ID = "u"
 
-    kind ∈ {"text", "a2ui"}: text deltas or A2UI frames.
-    Falls back to a deterministic script when ADK isn't available.
+
+async def _resolve_session(session_service: Any, thread_id: str) -> str:
+    """Return the ADK session id bound to ``thread_id``, creating one if new."""
+    existing = THREAD_SESSIONS.get(thread_id)
+    if existing is not None:
+        return existing
+    session_id = f"s-{random.randint(1, 1_000_000)}-{thread_id[-8:]}"
+    await session_service.create_session(
+        app_name=APP_NAME, user_id=USER_ID, session_id=session_id
+    )
+    THREAD_SESSIONS[thread_id] = session_id
+    return session_id
+
+
+# Shared per-process session service so multiple turns keyed on the same
+# thread-id observe the same history.
+_SESSION_SERVICE_SINGLETON: Any = None
+
+
+def _session_service() -> Any:
+    global _SESSION_SERVICE_SINGLETON
+    if _SESSION_SERVICE_SINGLETON is None:
+        from google.adk.sessions import InMemorySessionService  # type: ignore
+        _SESSION_SERVICE_SINGLETON = InMemorySessionService()
+    return _SESSION_SERVICE_SINGLETON
+
+
+async def _adk_stream_for_prompt(prompt: str, thread_id: str) -> AsyncIterator[tuple[str, Any]]:
+    """Yield ``(kind, payload)`` tuples from a live ADK run keyed off ``thread_id``.
+
+    kind ∈ {"text", "a2ui"}. Falls back to a deterministic script when ADK is
+    unavailable.
     """
     try:
         from google.adk.agents import Agent  # type: ignore
         from google.adk.runners import Runner  # type: ignore
-        from google.adk.sessions import InMemorySessionService  # type: ignore
         from google.genai import types  # type: ignore
     except ImportError:
         async for item in _fallback_stream(prompt):
@@ -235,18 +263,15 @@ async def _adk_stream_for_prompt(prompt: str) -> AsyncIterator[tuple[str, Any]]:
         instruction=CATALOG_SYSTEM_PROMPT,
         tools=[emit_ui],
     )
-    session_service = InMemorySessionService()
-    app_name = "a2cui-adk-demo"
-    user_id = "u"
-    session_id = f"s-{random.randint(1, 1_000_000)}"
-    await session_service.create_session(app_name=app_name, user_id=user_id, session_id=session_id)
+    session_service = _session_service()
+    session_id = await _resolve_session(session_service, thread_id)
 
-    runner = Runner(agent=agent, app_name=app_name, session_service=session_service)
+    runner = Runner(agent=agent, app_name=APP_NAME, session_service=session_service)
     message = types.Content(role="user", parts=[types.Part(text=prompt)])
 
     try:
         async for event in runner.run_async(
-            user_id=user_id,
+            user_id=USER_ID,
             session_id=session_id,
             new_message=message,
         ):
@@ -283,22 +308,33 @@ def _evt(type_: str, **fields: Any) -> dict[str, str]:
     return {"data": json.dumps({"type": type_, **fields})}
 
 
-async def agui_stream(prompt: Optional[str]) -> AsyncIterator[dict[str, str]]:
-    thread_id = f"thread-{random.randint(1, 1_000_000)}"
+def _ensure_thread_id(header_value: Optional[str]) -> str:
+    if header_value and header_value.strip():
+        return header_value.strip()
+    return f"thread-{random.randint(1, 1_000_000_000)}"
+
+
+async def agui_stream(
+    prompt: Optional[str],
+    thread_id: str,
+    reset_surface: bool,
+) -> AsyncIterator[dict[str, str]]:
     run_id = f"run-{random.randint(1, 1_000_000)}"
-    message_id = "msg-1"
+    message_id = f"msg-{random.randint(1, 1_000_000)}"
 
     yield _evt("RUN_STARTED", threadId=thread_id, runId=run_id)
     await asyncio.sleep(FRAME_DELAY_MS / 1000)
 
-    # Every run first resets the surface so successive prompts don't accumulate state.
-    yield _evt("CUSTOM", name="a2ui", value=create_surface(SURFACE_ID))
-    await asyncio.sleep(FRAME_DELAY_MS / 1000)
+    if reset_surface:
+        yield _evt("CUSTOM", name="a2ui", value=create_surface(SURFACE_ID))
+        await asyncio.sleep(FRAME_DELAY_MS / 1000)
 
     message_open = False
     saw_text = False
 
-    async for kind, payload in _adk_stream_for_prompt(prompt or "Render the default booking form."):
+    async for kind, payload in _adk_stream_for_prompt(
+        prompt or "Render the default booking form.", thread_id
+    ):
         if kind == "text":
             if not message_open:
                 yield _evt("TEXT_MESSAGE_START", messageId=message_id, role="assistant")
@@ -329,13 +365,65 @@ app = FastAPI(title="A2CUI Google ADK Agent — Prompt-driven UI Generator")
 
 
 @app.get("/events")
-async def events(prompt: Optional[str] = Query(default=None)) -> EventSourceResponse:
-    return EventSourceResponse(agui_stream(prompt))
+async def events(
+    prompt: Optional[str] = Query(default=None),
+    x_thread_id: Optional[str] = Header(default=None, alias="X-Thread-Id"),
+) -> EventSourceResponse:
+    thread_id = _ensure_thread_id(x_thread_id)
+    return EventSourceResponse(
+        agui_stream(prompt, thread_id, reset_surface=True),
+        headers={"X-Thread-Id": thread_id},
+    )
+
+
+def _action_to_prompt(body: dict[str, Any]) -> str:
+    """Turn an ``A2uiClientMessage.Action`` envelope into a user-turn prompt."""
+    action = body.get("action") if isinstance(body, dict) else None
+    if not isinstance(action, dict):
+        return "The user triggered an action. Continue the conversation."
+    name = action.get("name", "unnamed")
+    context = action.get("context", {})
+    try:
+        ctx_json = json.dumps(context, ensure_ascii=False, sort_keys=True)
+    except (TypeError, ValueError):
+        ctx_json = str(context)
+    return (
+        f"The user triggered the '{name}' action with context {ctx_json}. "
+        "If the action asks for more UI, call emit_ui with the appropriate "
+        "component list; otherwise acknowledge briefly."
+    )
+
+
+@app.post("/events")
+async def events_post(
+    request: Request,
+    x_thread_id: Optional[str] = Header(default=None, alias="X-Thread-Id"),
+) -> Any:
+    try:
+        body = await request.json()
+    except Exception:
+        return JSONResponse({"error": "invalid JSON body"}, status_code=400)
+    if not isinstance(body, dict):
+        return JSONResponse({"error": "expected object body"}, status_code=400)
+
+    thread_id = _ensure_thread_id(x_thread_id)
+    prompt = _action_to_prompt(body)
+    # Follow-up turns don't reset the surface — the client keeps its current UI
+    # and the agent patches it (or narrates) conversationally.
+    return EventSourceResponse(
+        agui_stream(prompt, thread_id, reset_surface=False),
+        headers={"X-Thread-Id": thread_id},
+    )
 
 
 @app.get("/health")
-async def health() -> dict[str, str]:
-    return {"status": "ok", "surfaceId": SURFACE_ID, "model": MODEL_ID}
+async def health() -> dict[str, Any]:
+    return {
+        "status": "ok",
+        "surfaceId": SURFACE_ID,
+        "model": MODEL_ID,
+        "activeThreads": len(THREAD_SESSIONS),
+    }
 
 
 if __name__ == "__main__":

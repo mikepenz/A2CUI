@@ -5,9 +5,18 @@ import io.ktor.server.cio.CIO
 import io.ktor.server.engine.ApplicationEngine
 import io.ktor.server.engine.EmbeddedServer
 import io.ktor.server.engine.embeddedServer
+import io.ktor.http.ContentType
+import io.ktor.http.HttpMethod
+import io.ktor.server.request.receiveText
+import io.ktor.server.response.respondText
+import io.ktor.server.routing.RoutingContext
+import io.ktor.server.routing.method
+import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import io.ktor.server.sse.SSE
 import io.ktor.server.sse.sse
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.CopyOnWriteArrayList
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
@@ -33,6 +42,20 @@ public class MockAguiServer(
 ) {
     private var engine: EmbeddedServer<*, *>? = null
     private val json = Json { encodeDefaults = false }
+
+    /**
+     * In-memory record of every `POST /events` payload the server has received.
+     * Useful for tests asserting the client round-tripped an action envelope.
+     * Entries are `(threadId, rawJsonBody)` pairs. Ordered by arrival.
+     */
+    public val receivedActions: MutableList<Pair<String, String>> = CopyOnWriteArrayList()
+
+    /**
+     * Thread-id → synthetic "session id" mapping, populated by `POST /events`.
+     * Mirrors the ADK integration's session-store semantics so tests can
+     * assert multi-turn re-use on the same thread id.
+     */
+    public val threadSessions: MutableMap<String, String> = ConcurrentHashMap()
 
     /** Start the server on the configured port (0 = ephemeral). Returns the bound port. */
     public fun start(wait: Boolean = false): Int {
@@ -78,6 +101,18 @@ public class MockAguiServer(
                         put("outcome", "success")
                     })
                 }
+
+                // POST /events — accepts an A2uiClientMessage.Action body and
+                // streams a short SSE acknowledgement. Thread id is echoed via
+                // the `X-Thread-Id` request/response header (generated when
+                // missing) so the sample test can verify session plumbing.
+                route("/events") {
+                    method(HttpMethod.Post) {
+                        handle {
+                            handlePostEvents(this)
+                        }
+                    }
+                }
             }
         }
         engine = server
@@ -96,6 +131,32 @@ public class MockAguiServer(
     public fun stop(gracePeriodMillis: Long = 0L, timeoutMillis: Long = 1_000L) {
         engine?.stop(gracePeriodMillis, timeoutMillis)
         engine = null
+    }
+
+    private suspend fun handlePostEvents(ctx: RoutingContext) {
+        val call = ctx.call
+        val body = call.receiveText()
+        val suppliedThreadId = call.request.headers["X-Thread-Id"]
+        val effectiveThreadId = suppliedThreadId
+            ?: "thread-${kotlin.random.Random.nextInt()}"
+        receivedActions.add(effectiveThreadId to body)
+        threadSessions.getOrPut(effectiveThreadId) {
+            "s-${kotlin.random.Random.nextInt()}"
+        }
+        call.response.headers.append("X-Thread-Id", effectiveThreadId)
+        val runId = "run-${kotlin.random.Random.nextInt()}"
+        val sb = StringBuilder()
+        sb.appendLine("data: ${encodeEvent("RUN_STARTED") { put("threadId", effectiveThreadId); put("runId", runId) }}")
+        sb.appendLine()
+        sb.appendLine("data: ${encodeEvent("TEXT_MESSAGE_START") { put("messageId", "msg-ack"); put("role", "assistant") }}")
+        sb.appendLine()
+        sb.appendLine("data: ${encodeEvent("TEXT_MESSAGE_CONTENT") { put("messageId", "msg-ack"); put("delta", "ack") }}")
+        sb.appendLine()
+        sb.appendLine("data: ${encodeEvent("TEXT_MESSAGE_END") { put("messageId", "msg-ack") }}")
+        sb.appendLine()
+        sb.appendLine("data: ${encodeEvent("RUN_FINISHED") { put("threadId", effectiveThreadId); put("runId", runId); put("outcome", "success") }}")
+        sb.appendLine()
+        call.respondText(sb.toString(), contentType = ContentType.parse("text/event-stream"))
     }
 
     private inline fun encodeEvent(type: String, builder: kotlinx.serialization.json.JsonObjectBuilder.() -> Unit): String {

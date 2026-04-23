@@ -38,12 +38,22 @@ import dev.mikepenz.a2cui.agui.mockserver.MockAguiServer
 import dev.mikepenz.a2cui.compose.A2cuiSurface
 import dev.mikepenz.a2cui.compose.catalog.Material3BasicCatalog
 import dev.mikepenz.a2cui.compose.rememberSurfaceController
+import dev.mikepenz.a2cui.core.A2uiClientMessage
+import dev.mikepenz.a2cui.core.A2uiJson
 import dev.mikepenz.a2cui.transport.FakeTransport
 import dev.mikepenz.a2cui.transport.SseTransport
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.sse.SSE
+import io.ktor.client.plugins.sse.sse
+import io.ktor.client.request.header
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.HttpMethod
+import io.ktor.http.contentType
 import io.ktor.http.encodeURLQueryComponent
+import kotlinx.coroutines.launch
+import java.util.UUID
 
 fun main() = application {
     Window(
@@ -92,6 +102,8 @@ private fun A2cuiLiveApp() {
         if (externalUrl == null) MockAguiServer(port = 0, surfaceId = "demo", frameDelayMillis = 200L) else null
     }
     val httpClient = remember { HttpClient(CIO) { install(SSE) } }
+    // Stable per-app-run thread id so every GET/POST to /events shares an ADK session.
+    val threadId = remember { "thread-${UUID.randomUUID()}" }
 
     // Prompt state + a monotonic generation counter. Incrementing the counter
     // is the signal to (re-)subscribe to /events with the current prompt.
@@ -111,14 +123,36 @@ private fun A2cuiLiveApp() {
         }
     }
 
-    LaunchedEffect(controller) {
-        controller.events.collect { msg -> outbound.add(msg.toString()) }
+    LaunchedEffect(controller, httpClient, externalUrl, server, threadId) {
+        controller.events.collect { msg ->
+            outbound.add(msg.toString())
+            // Only outbound Action envelopes round-trip to the agent — Error / Viewport stay local.
+            if (msg !is A2uiClientMessage.Action) return@collect
+            val baseUrl = externalUrl ?: run {
+                val port = server?.resolvedPort() ?: return@collect
+                "http://127.0.0.1:$port/events"
+            }
+            launch {
+                try {
+                    postActionSse(
+                        httpClient = httpClient,
+                        url = baseUrl,
+                        threadId = threadId,
+                        action = msg,
+                        onFrame = { raw -> a2uiConduit.emit(raw) },
+                        onLog = { line -> eventLog.add(line) },
+                    )
+                } catch (t: Throwable) {
+                    eventLog.add("[post-error] ${t.message}")
+                }
+            }
+        }
     }
 
     // Re-subscribe to SSE every time `generation` increments. Each new subscription
     // uses the current prompt string in the query parameter so the agent regenerates
     // the UI from scratch. `generation == 0` kicks off the initial default run.
-    LaunchedEffect(server, httpClient, externalUrl, generation) {
+    LaunchedEffect(server, httpClient, externalUrl, generation, threadId) {
         val baseUrl = externalUrl ?: run {
             val port = server!!.resolvedPort()
             "http://127.0.0.1:$port/events"
@@ -126,7 +160,11 @@ private fun A2cuiLiveApp() {
         val url = withPrompt(baseUrl, prompt.takeIf { generation > 0 })
         eventLog.add("[request] $url")
 
-        val transport = SseTransport(httpClient = httpClient, receiveUrl = url)
+        val transport = SseTransport(
+            httpClient = httpClient,
+            receiveUrl = url,
+            headers = mapOf("X-Thread-Id" to threadId),
+        )
         val parser = AguiEventParser()
 
         transport.incoming().collect { raw ->
@@ -213,3 +251,52 @@ private fun A2cuiLiveApp() {
         }
     }
 }
+
+/**
+ * POST an [A2uiClientMessage.Action] envelope to the agent and consume the SSE
+ * response inline. Every CUSTOM(a2ui) event encountered is forwarded to
+ * [onFrame] (typically a [FakeTransport.emit] so `AguiA2cuiBridge` picks it up
+ * like a primary-stream frame). All raw SSE data lines are logged via [onLog].
+ *
+ * Ktor's `SseTransport` only does GET today, so this runs its own POST-SSE
+ * session via the shared [HttpClient]. The Ktor `SSE` plugin supports
+ * arbitrary HTTP methods as long as the server responds with
+ * `text/event-stream`, which the ADK agent's `POST /events` does.
+ */
+private suspend fun postActionSse(
+    httpClient: HttpClient,
+    url: String,
+    threadId: String,
+    action: A2uiClientMessage.Action,
+    onFrame: suspend (String) -> Unit,
+    onLog: (String) -> Unit,
+) {
+    val body = A2uiJson.encodeToString(A2uiClientMessage.serializer(), action)
+    onLog("[post] $url thread=$threadId name=${action.action.name}")
+    val parser = AguiEventParser()
+    httpClient.sse(
+        urlString = url,
+        request = {
+            method = HttpMethod.Post
+            header("X-Thread-Id", threadId)
+            contentType(ContentType.Application.Json)
+            setBody(body)
+        },
+    ) {
+        incoming.collect { event ->
+            val data = event.data ?: return@collect
+            if (data.isEmpty()) return@collect
+            onLog("[post-sse] $data")
+            when (val parsed = parser.parseOne(data)) {
+                is AguiStreamEvent.Event -> {
+                    val evt = parsed.event
+                    if (evt is AguiEvent.Custom && evt.name == "a2ui") {
+                        onFrame(evt.value.toString())
+                    }
+                }
+                is AguiStreamEvent.ParseError -> onLog("[post-parse-error] ${parsed.message}")
+            }
+        }
+    }
+}
+

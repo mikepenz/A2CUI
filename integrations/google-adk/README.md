@@ -98,6 +98,8 @@ booking form that the ADK agent emitted via `render_booking_form`.
 
 ## Wire contract (what A2CUI expects)
 
+### GET /events — initial prompt turn
+
 Each HTTP response is a single SSE stream containing:
 
 ```
@@ -119,6 +121,42 @@ Every `CUSTOM` event with `name = "a2ui"` carries exactly one A2UI v0.9 frame
 (`createSurface`, `updateComponents`, `updateDataModel`, `deleteSurface`). See
 [`a2cui-core` README](../../a2cui-core/README.md) for the frame shape.
 
+### POST /events — client-originated action turn
+
+When the Compose client fires an `A2uiClientMessage.Action` (a Button click,
+form submit, etc.), it POSTs the serialized envelope to the same path:
+
+```
+POST /events HTTP/1.1
+Content-Type: application/json
+X-Thread-Id: thread-42
+
+{"version":"v0.9","action":{"surfaceId":"demo","name":"submit_booking",
+  "sourceComponentId":"submit",
+  "context":{"email":"me@example.com","name":"Ada"}}}
+```
+
+The response is the same SSE shape as `GET /events` — `RUN_STARTED` →
+(`TEXT_MESSAGE_*` and/or `CUSTOM(a2ui)`) → `RUN_FINISHED`. The server
+converts the action envelope into a synthetic user-turn prompt of the form
+`The user triggered the '<name>' action with context <json>. …` and lets the
+ADK agent decide whether to narrate, emit more UI, or both. Unlike `GET`, the
+POST stream does **not** start with a `createSurface` reset — the client's
+existing surface is preserved so the agent can refine it conversationally.
+
+### Thread id / multi-turn sessions
+
+- Clients SHOULD supply an `X-Thread-Id` header on every GET and POST. A
+  single UUID per app run is sufficient.
+- Requests without the header get a server-generated thread id.
+- Either way the resolved thread id is echoed back as an `X-Thread-Id`
+  response header.
+- The server keeps an in-memory `threadId → ADK session_id` map. All requests
+  sharing a thread id reuse the same `Runner.run_async(session_id=…)` call and
+  therefore observe full conversational history.
+- Sessions live for the lifetime of the Python process. Restart the server to
+  clear state.
+
 ---
 
 ## Extending this example
@@ -130,10 +168,10 @@ Every `CUSTOM` event with `name = "a2ui"` carries exactly one A2UI v0.9 frame
   the bridge forwards every tool result with a `version` field on to the
   client as a `CUSTOM(a2ui)` event.
 - **Use a different model** — set `A2UI_MODEL=gemini-2.5-pro` (or any ADK-supported id).
-- **Wire client → server events** — A2CUI's `SurfaceController.events` already
-  emits outbound actions. To route them back into ADK, add a `POST /events`
-  endpoint that decodes `A2uiClientMessage.Action` payloads and forwards them
-  into a new ADK run as `types.Content(role="user", parts=[Part(text=...)])`.
+- **Customise action → prompt translation** — `_action_to_prompt()` in
+  `agent.py` shapes the synthetic user-turn prompt the agent sees for each
+  `POST /events` action. Edit it to surface richer context (e.g. embedded
+  data-model snapshots) before the ADK run.
 
 ---
 

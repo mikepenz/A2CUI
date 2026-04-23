@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Tab
-import androidx.compose.material3.TabRow
+import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -20,7 +20,7 @@ internal val TabsFactory: ComponentFactory = @Composable { node, scope ->
     var selected by remember { mutableStateOf(0) }
     val selectedIndex = selected.coerceIn(0, (node.children.size - 1).coerceAtLeast(0))
     Column {
-        TabRow(selectedTabIndex = selectedIndex) {
+        PrimaryTabRow(selectedTabIndex = selectedIndex) {
             node.children.forEachIndexed { i, _ ->
                 Tab(
                     selected = i == selectedIndex,

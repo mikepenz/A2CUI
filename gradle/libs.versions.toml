@@ -7,6 +7,7 @@ kermit = "2.1.0"
 turbine = "1.2.1"
 junit5 = "5.11.4"
 compose = "1.10.3"
+coil = "3.4.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -34,6 +35,9 @@ compose-material3 = { module = "org.jetbrains.compose.material3:material3", vers
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
 compose-ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose" }
 compose-ui-test-junit4 = { module = "org.jetbrains.compose.ui:ui-test-junit4", version.ref = "compose" }
+
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil" }
 
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }

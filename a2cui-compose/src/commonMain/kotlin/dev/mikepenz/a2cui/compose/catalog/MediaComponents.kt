@@ -12,27 +12,41 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import dev.mikepenz.a2cui.compose.ComponentFactory
 
 /**
- * Image placeholder. A real image-loading pipeline (Coil / resource handles) lives outside
- * `:a2cui-compose` so the core module stays free of network deps; host apps can override
- * this registration with `registry.register("Image") { node, scope -> ... }`.
+ * Image factory. Uses Coil 3 Multiplatform's [AsyncImage] against the resolved `src` property
+ * (url or `file://` URI). Falls back to `url` for backwards compatibility. When the resolved
+ * src is empty, renders a muted placeholder box. Hosts may override this registration with
+ * `registry.register("Image") { node, scope -> ... }` to plug an alternative loader.
  */
 internal val ImageFactory: ComponentFactory = @Composable { node, scope ->
-    val url = scope.resolveString(node, "url")
+    val src = scope.resolveString(node, "src").ifEmpty { scope.resolveString(node, "url") }
     val size = scope.resolveInt(node, "size", default = 96).dp
-    Box(
-        modifier = Modifier
-            .size(size)
-            .clip(RoundedCornerShape(4.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant)
-            .padding(4.dp),
-    ) {
-        Text(
-            text = if (url.isNotEmpty()) "🖼 $url" else "🖼",
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+    val contentDescription = scope.resolveString(node, "contentDescription", default = "")
+    val shape = RoundedCornerShape(4.dp)
+    if (src.isEmpty()) {
+        Box(
+            modifier = Modifier
+                .size(size)
+                .clip(shape)
+                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .padding(4.dp),
+        ) {
+            Text(
+                text = "🖼",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    } else {
+        AsyncImage(
+            model = src,
+            contentDescription = contentDescription,
+            modifier = Modifier
+                .size(size)
+                .clip(shape),
         )
     }
 }
