@@ -1,0 +1,798 @@
+public final class dev/mikepenz/a2cui/agui/AguiA2cuiBridge {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Ldev/mikepenz/a2cui/core/A2uiParser;Ljava/lang/String;)V
+	public synthetic fun <init> (Ldev/mikepenz/a2cui/core/A2uiParser;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun a2uiFrames (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+	public final fun getA2uiCustomEventName ()Ljava/lang/String;
+	public final fun interrupts (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+	public final fun toolCalls (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract interface class dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$Companion;
+	public abstract fun getTimestamp ()Ljava/lang/Long;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$Custom : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$Custom$Companion;
+	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$Custom;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$Custom;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$Custom;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getName ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public final fun getValue ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$Custom$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$Custom$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$Custom;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$Custom;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$Custom$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonArray;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot;Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessages ()Lkotlinx/serialization/json/JsonArray;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$MessagesSnapshot$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$Raw : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$Raw$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$Raw;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$Raw;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$Raw;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEvent ()Lkotlinx/serialization/json/JsonElement;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$Raw$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$Raw$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$Raw;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$Raw;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$Raw$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$RunError : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$RunError$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunError;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$RunError;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$RunError$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$RunError$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunError;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$RunError;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$RunError$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$RunFinished : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/List;
+	public final fun component5 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInterrupts ()Ljava/util/List;
+	public final fun getOutcome ()Ljava/lang/String;
+	public final fun getRunId ()Ljava/lang/String;
+	public final fun getThreadId ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$RunFinished$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$RunFinished;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$RunFinished$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$RunStarted : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRunId ()Ljava/lang/String;
+	public final fun getThreadId ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$RunStarted$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$RunStarted;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$RunStarted$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StateDelta : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonArray;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta;Lkotlinx/serialization/json/JsonArray;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDelta ()Lkotlinx/serialization/json/JsonArray;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$StateDelta$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$StateDelta;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StateDelta$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot$Companion;
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot;Lkotlinx/serialization/json/JsonElement;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSnapshot ()Lkotlinx/serialization/json/JsonElement;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StateSnapshot$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StepFinished : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getStepName ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$StepFinished$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$StepFinished;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StepFinished$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StepStarted : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getStepName ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$StepStarted$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$StepStarted;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$StepStarted$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDelta ()Ljava/lang/String;
+	public final fun getMessageId ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageContent$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessageId ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageEnd$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessageId ()Ljava/lang/String;
+	public final fun getRole ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$TextMessageStart$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDelta ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public final fun getToolCallId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallArgs$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getTimestamp ()Ljava/lang/Long;
+	public final fun getToolCallId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallEnd$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContent ()Ljava/lang/String;
+	public final fun getMessageId ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public final fun getToolCallId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallResult$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart : dev/mikepenz/a2cui/agui/AguiEvent {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getParentMessageId ()Ljava/lang/String;
+	public fun getTimestamp ()Ljava/lang/Long;
+	public final fun getToolCallId ()Ljava/lang/String;
+	public final fun getToolCallName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEvent$ToolCallStart$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiEventParser {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/Json;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/Json;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun parse (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+	public final fun parseOne (Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/AguiStreamEvent;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiJsonKt {
+	public static final fun getAguiJson ()Lkotlinx/serialization/json/Json;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiStateReducer {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Ldev/mikepenz/a2cui/core/DataModel;)V
+	public synthetic fun <init> (Ldev/mikepenz/a2cui/core/DataModel;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun apply (Ldev/mikepenz/a2cui/agui/AguiEvent;)V
+	public final fun getOutbound ()Lkotlinx/coroutines/flow/SharedFlow;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getStore ()Ldev/mikepenz/a2cui/core/DataModel;
+	public final fun writeLocal (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+}
+
+public abstract interface class dev/mikepenz/a2cui/agui/AguiStreamEvent {
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiStreamEvent$Event : dev/mikepenz/a2cui/agui/AguiStreamEvent {
+	public static final field $stable I
+	public fun <init> (Ldev/mikepenz/a2cui/agui/AguiEvent;)V
+	public final fun component1 ()Ldev/mikepenz/a2cui/agui/AguiEvent;
+	public final fun copy (Ldev/mikepenz/a2cui/agui/AguiEvent;)Ldev/mikepenz/a2cui/agui/AguiStreamEvent$Event;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiStreamEvent$Event;Ldev/mikepenz/a2cui/agui/AguiEvent;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiStreamEvent$Event;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEvent ()Ldev/mikepenz/a2cui/agui/AguiEvent;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/AguiStreamEvent$ParseError : dev/mikepenz/a2cui/agui/AguiStreamEvent {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/AguiStreamEvent$ParseError;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/AguiStreamEvent$ParseError;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/AguiStreamEvent$ParseError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getRaw ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/Interrupt {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/agui/Interrupt$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component6 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;)Ldev/mikepenz/a2cui/agui/Interrupt;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/Interrupt;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/Interrupt;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExpiresAt ()Ljava/lang/Long;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getReason ()Ljava/lang/String;
+	public final fun getResponseSchema ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getToolCallId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/agui/Interrupt$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/Interrupt$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/agui/Interrupt;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/agui/Interrupt;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/Interrupt$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/agui/InterruptAwaiter {
+	public static final field $stable I
+	public fun <init> (Ldev/mikepenz/a2cui/agui/AguiA2cuiBridge;)V
+	public final fun awaitApproval (Lkotlinx/coroutines/flow/Flow;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;Lkotlinx/serialization/json/JsonObject;)V
+	public synthetic fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;Lkotlinx/serialization/json/JsonObject;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;Lkotlinx/serialization/json/JsonObject;)Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse;Ljava/lang/String;Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInterruptId ()Ljava/lang/String;
+	public final fun getPayload ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getStatus ()Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status : java/lang/Enum {
+	public static final field CANCELLED Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;
+	public static final field RESOLVED Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;
+	public static fun values ()[Ldev/mikepenz/a2cui/agui/InterruptAwaiter$ApprovalResponse$Status;
+}
+
+public final class dev/mikepenz/a2cui/agui/JsonPatch {
+	public static final field $stable I
+	public static final field INSTANCE Ldev/mikepenz/a2cui/agui/JsonPatch;
+	public final fun apply (Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonArray;)Lkotlinx/serialization/json/JsonElement;
+}
+
+public final class dev/mikepenz/a2cui/agui/RememberCoAgentStateKt {
+	public static final fun rememberCoAgentState (Ljava/lang/String;Ljava/lang/Object;Lkotlinx/serialization/KSerializer;Ldev/mikepenz/a2cui/agui/AguiStateReducer;Lkotlinx/serialization/json/Json;Landroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/MutableState;
+}
+
+public abstract interface class dev/mikepenz/a2cui/agui/ToolCallEvent {
+	public abstract fun getToolCallId ()Ljava/lang/String;
+	public abstract fun getToolCallName ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/ToolCallEvent$Args : dev/mikepenz/a2cui/agui/ToolCallEvent {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$Args;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/ToolCallEvent$Args;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$Args;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/lang/String;
+	public fun getToolCallId ()Ljava/lang/String;
+	public fun getToolCallName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/ToolCallEvent$ArgsComplete : dev/mikepenz/a2cui/agui/ToolCallEvent {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$ArgsComplete;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/ToolCallEvent$ArgsComplete;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$ArgsComplete;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/lang/String;
+	public fun getToolCallId ()Ljava/lang/String;
+	public fun getToolCallName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/ToolCallEvent$Result : dev/mikepenz/a2cui/agui/ToolCallEvent {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$Result;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/ToolCallEvent$Result;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$Result;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContent ()Ljava/lang/String;
+	public final fun getMessageId ()Ljava/lang/String;
+	public fun getToolCallId ()Ljava/lang/String;
+	public fun getToolCallName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/agui/ToolCallEvent$Started : dev/mikepenz/a2cui/agui/ToolCallEvent {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$Started;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/agui/ToolCallEvent$Started;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/agui/ToolCallEvent$Started;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getParentMessageId ()Ljava/lang/String;
+	public fun getToolCallId ()Ljava/lang/String;
+	public fun getToolCallName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

@@ -1,0 +1,177 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-compose>
+abstract interface dev.mikepenz.a2cui.compose/Catalog { // dev.mikepenz.a2cui.compose/Catalog|null[0]
+    abstract val id // dev.mikepenz.a2cui.compose/Catalog.id|{}id[0]
+        abstract fun <get-id>(): kotlin/String // dev.mikepenz.a2cui.compose/Catalog.id.<get-id>|<get-id>(){}[0]
+
+    abstract fun install(dev.mikepenz.a2cui.compose/ComponentRegistry) // dev.mikepenz.a2cui.compose/Catalog.install|install(dev.mikepenz.a2cui.compose.ComponentRegistry){}[0]
+    open fun toJsonSchema(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.compose/Catalog.toJsonSchema|toJsonSchema(){}[0]
+}
+
+final class dev.mikepenz.a2cui.compose.catalog/ActionSpec { // dev.mikepenz.a2cui.compose.catalog/ActionSpec|null[0]
+    constructor <init>(kotlin/String? = ..., kotlinx.serialization.json/JsonObject? = ..., kotlin/String? = ..., kotlinx.serialization.json/JsonObject? = ...) // dev.mikepenz.a2cui.compose.catalog/ActionSpec.<init>|<init>(kotlin.String?;kotlinx.serialization.json.JsonObject?;kotlin.String?;kotlinx.serialization.json.JsonObject?){}[0]
+
+    final val callArgs // dev.mikepenz.a2cui.compose.catalog/ActionSpec.callArgs|{}callArgs[0]
+        final fun <get-callArgs>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.callArgs.<get-callArgs>|<get-callArgs>(){}[0]
+    final val callFn // dev.mikepenz.a2cui.compose.catalog/ActionSpec.callFn|{}callFn[0]
+        final fun <get-callFn>(): kotlin/String? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.callFn.<get-callFn>|<get-callFn>(){}[0]
+    final val eventContext // dev.mikepenz.a2cui.compose.catalog/ActionSpec.eventContext|{}eventContext[0]
+        final fun <get-eventContext>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.eventContext.<get-eventContext>|<get-eventContext>(){}[0]
+    final val eventName // dev.mikepenz.a2cui.compose.catalog/ActionSpec.eventName|{}eventName[0]
+        final fun <get-eventName>(): kotlin/String? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.eventName.<get-eventName>|<get-eventName>(){}[0]
+
+    final fun component1(): kotlin/String? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.component1|component1(){}[0]
+    final fun component2(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.component3|component3(){}[0]
+    final fun component4(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose.catalog/ActionSpec.component4|component4(){}[0]
+    final fun copy(kotlin/String? = ..., kotlinx.serialization.json/JsonObject? = ..., kotlin/String? = ..., kotlinx.serialization.json/JsonObject? = ...): dev.mikepenz.a2cui.compose.catalog/ActionSpec // dev.mikepenz.a2cui.compose.catalog/ActionSpec.copy|copy(kotlin.String?;kotlinx.serialization.json.JsonObject?;kotlin.String?;kotlinx.serialization.json.JsonObject?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.compose.catalog/ActionSpec.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.compose.catalog/ActionSpec.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.compose.catalog/ActionSpec.toString|toString(){}[0]
+}
+
+final class dev.mikepenz.a2cui.compose/A2cuiTheme { // dev.mikepenz.a2cui.compose/A2cuiTheme|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonObject?) // dev.mikepenz.a2cui.compose/A2cuiTheme.<init>|<init>(kotlinx.serialization.json.JsonObject?){}[0]
+
+    final val hints // dev.mikepenz.a2cui.compose/A2cuiTheme.hints|{}hints[0]
+        final fun <get-hints>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose/A2cuiTheme.hints.<get-hints>|<get-hints>(){}[0]
+
+    final fun component1(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose/A2cuiTheme.component1|component1(){}[0]
+    final fun copy(kotlinx.serialization.json/JsonObject? = ...): dev.mikepenz.a2cui.compose/A2cuiTheme // dev.mikepenz.a2cui.compose/A2cuiTheme.copy|copy(kotlinx.serialization.json.JsonObject?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.compose/A2cuiTheme.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.compose/A2cuiTheme.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.compose/A2cuiTheme.toString|toString(){}[0]
+
+    final object Companion { // dev.mikepenz.a2cui.compose/A2cuiTheme.Companion|null[0]
+        final val Empty // dev.mikepenz.a2cui.compose/A2cuiTheme.Companion.Empty|{}Empty[0]
+            final fun <get-Empty>(): dev.mikepenz.a2cui.compose/A2cuiTheme // dev.mikepenz.a2cui.compose/A2cuiTheme.Companion.Empty.<get-Empty>|<get-Empty>(){}[0]
+    }
+}
+
+final class dev.mikepenz.a2cui.compose/ComponentRegistry { // dev.mikepenz.a2cui.compose/ComponentRegistry|null[0]
+    constructor <init>() // dev.mikepenz.a2cui.compose/ComponentRegistry.<init>|<init>(){}[0]
+
+    final val names // dev.mikepenz.a2cui.compose/ComponentRegistry.names|{}names[0]
+        final fun <get-names>(): kotlin.collections/Set<kotlin/String> // dev.mikepenz.a2cui.compose/ComponentRegistry.names.<get-names>|<get-names>(){}[0]
+
+    final fun contains(kotlin/String): kotlin/Boolean // dev.mikepenz.a2cui.compose/ComponentRegistry.contains|contains(kotlin.String){}[0]
+    final fun get(kotlin/String): kotlin/Function4<dev.mikepenz.a2cui.core/ComponentNode, dev.mikepenz.a2cui.compose/RenderScope, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>? // dev.mikepenz.a2cui.compose/ComponentRegistry.get|get(kotlin.String){}[0]
+    final fun register(kotlin/String, kotlin/Function4<dev.mikepenz.a2cui.core/ComponentNode, dev.mikepenz.a2cui.compose/RenderScope, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>): dev.mikepenz.a2cui.compose/ComponentRegistry // dev.mikepenz.a2cui.compose/ComponentRegistry.register|register(kotlin.String;kotlin.Function4<dev.mikepenz.a2cui.core.ComponentNode,dev.mikepenz.a2cui.compose.RenderScope,androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>){}[0]
+    final fun registerAll(dev.mikepenz.a2cui.compose/Catalog): dev.mikepenz.a2cui.compose/ComponentRegistry // dev.mikepenz.a2cui.compose/ComponentRegistry.registerAll|registerAll(dev.mikepenz.a2cui.compose.Catalog){}[0]
+}
+
+final class dev.mikepenz.a2cui.compose/EventSpec { // dev.mikepenz.a2cui.compose/EventSpec|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonObject = ...) // dev.mikepenz.a2cui.compose/EventSpec.<init>|<init>(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+
+    final val context // dev.mikepenz.a2cui.compose/EventSpec.context|{}context[0]
+        final fun <get-context>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.compose/EventSpec.context.<get-context>|<get-context>(){}[0]
+    final val name // dev.mikepenz.a2cui.compose/EventSpec.name|{}name[0]
+        final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.compose/EventSpec.name.<get-name>|<get-name>(){}[0]
+    final val sourceComponentId // dev.mikepenz.a2cui.compose/EventSpec.sourceComponentId|{}sourceComponentId[0]
+        final fun <get-sourceComponentId>(): kotlin/String // dev.mikepenz.a2cui.compose/EventSpec.sourceComponentId.<get-sourceComponentId>|<get-sourceComponentId>(){}[0]
+
+    final fun component1(): kotlin/String // dev.mikepenz.a2cui.compose/EventSpec.component1|component1(){}[0]
+    final fun component2(): kotlin/String // dev.mikepenz.a2cui.compose/EventSpec.component2|component2(){}[0]
+    final fun component3(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.compose/EventSpec.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonObject = ...): dev.mikepenz.a2cui.compose/EventSpec // dev.mikepenz.a2cui.compose/EventSpec.copy|copy(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.compose/EventSpec.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.compose/EventSpec.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.compose/EventSpec.toString|toString(){}[0]
+}
+
+final class dev.mikepenz.a2cui.compose/RenderScope { // dev.mikepenz.a2cui.compose/RenderScope|null[0]
+    final val dataModel // dev.mikepenz.a2cui.compose/RenderScope.dataModel|{}dataModel[0]
+        final fun <get-dataModel>(): dev.mikepenz.a2cui.core/DataModel // dev.mikepenz.a2cui.compose/RenderScope.dataModel.<get-dataModel>|<get-dataModel>(){}[0]
+    final val nodesById // dev.mikepenz.a2cui.compose/RenderScope.nodesById|{}nodesById[0]
+        final fun <get-nodesById>(): kotlin.collections/Map<kotlin/String, dev.mikepenz.a2cui.core/ComponentNode> // dev.mikepenz.a2cui.compose/RenderScope.nodesById.<get-nodesById>|<get-nodesById>(){}[0]
+    final val registry // dev.mikepenz.a2cui.compose/RenderScope.registry|{}registry[0]
+        final fun <get-registry>(): dev.mikepenz.a2cui.compose/ComponentRegistry // dev.mikepenz.a2cui.compose/RenderScope.registry.<get-registry>|<get-registry>(){}[0]
+    final val resolver // dev.mikepenz.a2cui.compose/RenderScope.resolver|{}resolver[0]
+        final fun <get-resolver>(): dev.mikepenz.a2cui.core/BindingResolver // dev.mikepenz.a2cui.compose/RenderScope.resolver.<get-resolver>|<get-resolver>(){}[0]
+    final val surfaceId // dev.mikepenz.a2cui.compose/RenderScope.surfaceId|{}surfaceId[0]
+        final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.compose/RenderScope.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+    final val theme // dev.mikepenz.a2cui.compose/RenderScope.theme|{}theme[0]
+        final fun <get-theme>(): dev.mikepenz.a2cui.compose/A2cuiTheme // dev.mikepenz.a2cui.compose/RenderScope.theme.<get-theme>|<get-theme>(){}[0]
+
+    final fun Child(kotlin/String, androidx.compose.runtime/Composer?, kotlin/Int) // dev.mikepenz.a2cui.compose/RenderScope.Child|Child(kotlin.String;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+    final fun emit(dev.mikepenz.a2cui.compose/EventSpec) // dev.mikepenz.a2cui.compose/RenderScope.emit|emit(dev.mikepenz.a2cui.compose.EventSpec){}[0]
+}
+
+final class dev.mikepenz.a2cui.compose/SurfaceController { // dev.mikepenz.a2cui.compose/SurfaceController|null[0]
+    constructor <init>(dev.mikepenz.a2cui.compose/ComponentRegistry, dev.mikepenz.a2cui.transport/A2uiTransport, kotlinx.coroutines/CoroutineScope, dev.mikepenz.a2cui.core/A2uiParser = ...) // dev.mikepenz.a2cui.compose/SurfaceController.<init>|<init>(dev.mikepenz.a2cui.compose.ComponentRegistry;dev.mikepenz.a2cui.transport.A2uiTransport;kotlinx.coroutines.CoroutineScope;dev.mikepenz.a2cui.core.A2uiParser){}[0]
+
+    final val events // dev.mikepenz.a2cui.compose/SurfaceController.events|{}events[0]
+        final fun <get-events>(): kotlinx.coroutines.flow/SharedFlow<dev.mikepenz.a2cui.core/A2uiClientMessage> // dev.mikepenz.a2cui.compose/SurfaceController.events.<get-events>|<get-events>(){}[0]
+    final val registry // dev.mikepenz.a2cui.compose/SurfaceController.registry|{}registry[0]
+        final fun <get-registry>(): dev.mikepenz.a2cui.compose/ComponentRegistry // dev.mikepenz.a2cui.compose/SurfaceController.registry.<get-registry>|<get-registry>(){}[0]
+    final val surfaces // dev.mikepenz.a2cui.compose/SurfaceController.surfaces|{}surfaces[0]
+        final fun <get-surfaces>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/Map<kotlin/String, dev.mikepenz.a2cui.compose/SurfaceState>> // dev.mikepenz.a2cui.compose/SurfaceController.surfaces.<get-surfaces>|<get-surfaces>(){}[0]
+
+    final fun close() // dev.mikepenz.a2cui.compose/SurfaceController.close|close(){}[0]
+    final fun dispatch(kotlin/String, kotlin/String, kotlin/String, kotlinx.serialization.json/JsonObject) // dev.mikepenz.a2cui.compose/SurfaceController.dispatch|dispatch(kotlin.String;kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+    final fun start() // dev.mikepenz.a2cui.compose/SurfaceController.start|start(){}[0]
+}
+
+final class dev.mikepenz.a2cui.compose/SurfaceState { // dev.mikepenz.a2cui.compose/SurfaceState|null[0]
+    final val catalogId // dev.mikepenz.a2cui.compose/SurfaceState.catalogId|{}catalogId[0]
+        final fun <get-catalogId>(): kotlin/String // dev.mikepenz.a2cui.compose/SurfaceState.catalogId.<get-catalogId>|<get-catalogId>(){}[0]
+    final val dataModel // dev.mikepenz.a2cui.compose/SurfaceState.dataModel|{}dataModel[0]
+        final fun <get-dataModel>(): dev.mikepenz.a2cui.core/DataModel // dev.mikepenz.a2cui.compose/SurfaceState.dataModel.<get-dataModel>|<get-dataModel>(){}[0]
+    final val nodesById // dev.mikepenz.a2cui.compose/SurfaceState.nodesById|{}nodesById[0]
+        final fun <get-nodesById>(): kotlin.collections/Map<kotlin/String, dev.mikepenz.a2cui.core/ComponentNode> // dev.mikepenz.a2cui.compose/SurfaceState.nodesById.<get-nodesById>|<get-nodesById>(){}[0]
+    final val rootId // dev.mikepenz.a2cui.compose/SurfaceState.rootId|{}rootId[0]
+        final fun <get-rootId>(): kotlin/String // dev.mikepenz.a2cui.compose/SurfaceState.rootId.<get-rootId>|<get-rootId>(){}[0]
+    final val surfaceId // dev.mikepenz.a2cui.compose/SurfaceState.surfaceId|{}surfaceId[0]
+        final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.compose/SurfaceState.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+    final val theme // dev.mikepenz.a2cui.compose/SurfaceState.theme|{}theme[0]
+        final fun <get-theme>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.compose/SurfaceState.theme.<get-theme>|<get-theme>(){}[0]
+
+    final object Companion { // dev.mikepenz.a2cui.compose/SurfaceState.Companion|null[0]
+        final const val DEFAULT_ROOT_ID // dev.mikepenz.a2cui.compose/SurfaceState.Companion.DEFAULT_ROOT_ID|{}DEFAULT_ROOT_ID[0]
+            final fun <get-DEFAULT_ROOT_ID>(): kotlin/String // dev.mikepenz.a2cui.compose/SurfaceState.Companion.DEFAULT_ROOT_ID.<get-DEFAULT_ROOT_ID>|<get-DEFAULT_ROOT_ID>(){}[0]
+    }
+}
+
+final object dev.mikepenz.a2cui.compose.catalog/Material3BasicCatalog : dev.mikepenz.a2cui.compose/Catalog { // dev.mikepenz.a2cui.compose.catalog/Material3BasicCatalog|null[0]
+    final val id // dev.mikepenz.a2cui.compose.catalog/Material3BasicCatalog.id|{}id[0]
+        final fun <get-id>(): kotlin/String // dev.mikepenz.a2cui.compose.catalog/Material3BasicCatalog.id.<get-id>|<get-id>(){}[0]
+
+    final fun install(dev.mikepenz.a2cui.compose/ComponentRegistry) // dev.mikepenz.a2cui.compose.catalog/Material3BasicCatalog.install|install(dev.mikepenz.a2cui.compose.ComponentRegistry){}[0]
+}
+
+final val dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_ActionSpec$stableprop // dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_ActionSpec$stableprop|#static{}dev_mikepenz_a2cui_compose_catalog_ActionSpec$stableprop[0]
+final val dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_Material3BasicCatalog$stableprop // dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_Material3BasicCatalog$stableprop|#static{}dev_mikepenz_a2cui_compose_catalog_Material3BasicCatalog$stableprop[0]
+final val dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_A2cuiTheme$stableprop // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_A2cuiTheme$stableprop|#static{}dev_mikepenz_a2cui_compose_A2cuiTheme$stableprop[0]
+final val dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_ComponentRegistry$stableprop // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_ComponentRegistry$stableprop|#static{}dev_mikepenz_a2cui_compose_ComponentRegistry$stableprop[0]
+final val dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_EventSpec$stableprop // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_EventSpec$stableprop|#static{}dev_mikepenz_a2cui_compose_EventSpec$stableprop[0]
+final val dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_RenderScope$stableprop // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_RenderScope$stableprop|#static{}dev_mikepenz_a2cui_compose_RenderScope$stableprop[0]
+final val dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceController$stableprop // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceController$stableprop|#static{}dev_mikepenz_a2cui_compose_SurfaceController$stableprop[0]
+final val dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceState$stableprop // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceState$stableprop|#static{}dev_mikepenz_a2cui_compose_SurfaceState$stableprop[0]
+
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/emitAction(dev.mikepenz.a2cui.core/ComponentNode, kotlinx.serialization.json/JsonObject = ...) // dev.mikepenz.a2cui.compose.catalog/emitAction|emitAction@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlinx.serialization.json.JsonObject){}[0]
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/resolve(dev.mikepenz.a2cui.core/ComponentNode, kotlin/String): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.compose.catalog/resolve|resolve@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlin.String){}[0]
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/resolveBool(dev.mikepenz.a2cui.core/ComponentNode, kotlin/String, kotlin/Boolean = ...): kotlin/Boolean // dev.mikepenz.a2cui.compose.catalog/resolveBool|resolveBool@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlin.String;kotlin.Boolean){}[0]
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/resolveDouble(dev.mikepenz.a2cui.core/ComponentNode, kotlin/String, kotlin/Double = ...): kotlin/Double // dev.mikepenz.a2cui.compose.catalog/resolveDouble|resolveDouble@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlin.String;kotlin.Double){}[0]
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/resolveInt(dev.mikepenz.a2cui.core/ComponentNode, kotlin/String, kotlin/Int = ...): kotlin/Int // dev.mikepenz.a2cui.compose.catalog/resolveInt|resolveInt@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlin.String;kotlin.Int){}[0]
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/resolveString(dev.mikepenz.a2cui.core/ComponentNode, kotlin/String, kotlin/String = ...): kotlin/String // dev.mikepenz.a2cui.compose.catalog/resolveString|resolveString@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlin.String;kotlin.String){}[0]
+final fun (dev.mikepenz.a2cui.compose/RenderScope).dev.mikepenz.a2cui.compose.catalog/resolveStringList(dev.mikepenz.a2cui.core/ComponentNode, kotlin/String): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.compose.catalog/resolveStringList|resolveStringList@dev.mikepenz.a2cui.compose.RenderScope(dev.mikepenz.a2cui.core.ComponentNode;kotlin.String){}[0]
+final fun (kotlinx.serialization.json/JsonElement?).dev.mikepenz.a2cui.compose.catalog/displayString(): kotlin/String // dev.mikepenz.a2cui.compose.catalog/displayString|displayString@kotlinx.serialization.json.JsonElement?(){}[0]
+final fun dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_ActionSpec$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_ActionSpec$stableprop_getter|dev_mikepenz_a2cui_compose_catalog_ActionSpec$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_Material3BasicCatalog$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose.catalog/dev_mikepenz_a2cui_compose_catalog_Material3BasicCatalog$stableprop_getter|dev_mikepenz_a2cui_compose_catalog_Material3BasicCatalog$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose.catalog/parseAction(kotlinx.serialization.json/JsonElement?): dev.mikepenz.a2cui.compose.catalog/ActionSpec? // dev.mikepenz.a2cui.compose.catalog/parseAction|parseAction(kotlinx.serialization.json.JsonElement?){}[0]
+final fun dev.mikepenz.a2cui.compose.catalog/pathOf(kotlinx.serialization.json/JsonObject, kotlin/String): kotlin/String? // dev.mikepenz.a2cui.compose.catalog/pathOf|pathOf(kotlinx.serialization.json.JsonObject;kotlin.String){}[0]
+final fun dev.mikepenz.a2cui.compose/A2cuiSurface(kotlin/String, dev.mikepenz.a2cui.compose/SurfaceController, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // dev.mikepenz.a2cui.compose/A2cuiSurface|A2cuiSurface(kotlin.String;dev.mikepenz.a2cui.compose.SurfaceController;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun dev.mikepenz.a2cui.compose/FallbackPlaceholder(kotlin/String, kotlin/String, androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // dev.mikepenz.a2cui.compose/FallbackPlaceholder|FallbackPlaceholder(kotlin.String;kotlin.String;androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_A2cuiTheme$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_A2cuiTheme$stableprop_getter|dev_mikepenz_a2cui_compose_A2cuiTheme$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_ComponentRegistry$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_ComponentRegistry$stableprop_getter|dev_mikepenz_a2cui_compose_ComponentRegistry$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_EventSpec$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_EventSpec$stableprop_getter|dev_mikepenz_a2cui_compose_EventSpec$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_RenderScope$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_RenderScope$stableprop_getter|dev_mikepenz_a2cui_compose_RenderScope$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceController$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceController$stableprop_getter|dev_mikepenz_a2cui_compose_SurfaceController$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceState$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.compose/dev_mikepenz_a2cui_compose_SurfaceState$stableprop_getter|dev_mikepenz_a2cui_compose_SurfaceState$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.compose/rememberSurfaceController(kotlin.collections/List<dev.mikepenz.a2cui.compose/Catalog>, dev.mikepenz.a2cui.transport/A2uiTransport, androidx.compose.runtime/Composer?, kotlin/Int): dev.mikepenz.a2cui.compose/SurfaceController // dev.mikepenz.a2cui.compose/rememberSurfaceController|rememberSurfaceController(kotlin.collections.List<dev.mikepenz.a2cui.compose.Catalog>;dev.mikepenz.a2cui.transport.A2uiTransport;androidx.compose.runtime.Composer?;kotlin.Int){}[0]

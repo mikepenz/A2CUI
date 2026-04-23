@@ -1,0 +1,27 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-adaptive-cards>
+final object dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper { // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper|null[0]
+    final fun map(kotlinx.serialization.json/JsonObject, kotlin/String = ...): dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.map|map(kotlinx.serialization.json.JsonObject;kotlin.String){}[0]
+
+    final class Result { // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result|null[0]
+        constructor <init>(dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents?, kotlin.collections/List<kotlin/String>) // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.<init>|<init>(dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents?;kotlin.collections.List<kotlin.String>){}[0]
+
+        final val frame // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.frame|{}frame[0]
+            final fun <get-frame>(): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents? // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.frame.<get-frame>|<get-frame>(){}[0]
+        final val warnings // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.warnings|{}warnings[0]
+            final fun <get-warnings>(): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.warnings.<get-warnings>|<get-warnings>(){}[0]
+
+        final fun component1(): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents? // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.component2|component2(){}[0]
+        final fun copy(dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents? = ..., kotlin.collections/List<kotlin/String> = ...): dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.copy|copy(dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents?;kotlin.collections.List<kotlin.String>){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.adaptivecards/AdaptiveCardsMapper.Result.toString|toString(){}[0]
+    }
+}

@@ -1,0 +1,46 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-transport>
+abstract interface dev.mikepenz.a2cui.transport/A2uiTransport : kotlin/AutoCloseable { // dev.mikepenz.a2cui.transport/A2uiTransport|null[0]
+    abstract fun close() // dev.mikepenz.a2cui.transport/A2uiTransport.close|close(){}[0]
+    abstract fun incoming(): kotlinx.coroutines.flow/Flow<kotlin/String> // dev.mikepenz.a2cui.transport/A2uiTransport.incoming|incoming(){}[0]
+    abstract suspend fun sendRaw(kotlin/String) // dev.mikepenz.a2cui.transport/A2uiTransport.sendRaw|sendRaw(kotlin.String){}[0]
+    open suspend fun send(dev.mikepenz.a2cui.core/A2uiClientMessage) // dev.mikepenz.a2cui.transport/A2uiTransport.send|send(dev.mikepenz.a2cui.core.A2uiClientMessage){}[0]
+
+    final object Companion // dev.mikepenz.a2cui.transport/A2uiTransport.Companion|null[0]
+}
+
+final class dev.mikepenz.a2cui.transport/FakeTransport : dev.mikepenz.a2cui.transport/A2uiTransport { // dev.mikepenz.a2cui.transport/FakeTransport|null[0]
+    constructor <init>(kotlin.collections/List<kotlin/String> = ...) // dev.mikepenz.a2cui.transport/FakeTransport.<init>|<init>(kotlin.collections.List<kotlin.String>){}[0]
+
+    final val sent // dev.mikepenz.a2cui.transport/FakeTransport.sent|{}sent[0]
+        final fun <get-sent>(): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.transport/FakeTransport.sent.<get-sent>|<get-sent>(){}[0]
+
+    final fun close() // dev.mikepenz.a2cui.transport/FakeTransport.close|close(){}[0]
+    final fun incoming(): kotlinx.coroutines.flow/Flow<kotlin/String> // dev.mikepenz.a2cui.transport/FakeTransport.incoming|incoming(){}[0]
+    final fun tryEmit(kotlin/String) // dev.mikepenz.a2cui.transport/FakeTransport.tryEmit|tryEmit(kotlin.String){}[0]
+    final suspend fun emit(kotlin/String) // dev.mikepenz.a2cui.transport/FakeTransport.emit|emit(kotlin.String){}[0]
+    final suspend fun emitAll(kotlin.collections/Iterable<kotlin/String>) // dev.mikepenz.a2cui.transport/FakeTransport.emitAll|emitAll(kotlin.collections.Iterable<kotlin.String>){}[0]
+    final suspend fun sendRaw(kotlin/String) // dev.mikepenz.a2cui.transport/FakeTransport.sendRaw|sendRaw(kotlin.String){}[0]
+}
+
+final class dev.mikepenz.a2cui.transport/SseTransport : dev.mikepenz.a2cui.transport/A2uiTransport { // dev.mikepenz.a2cui.transport/SseTransport|null[0]
+    constructor <init>(io.ktor.client/HttpClient, kotlin/String, kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // dev.mikepenz.a2cui.transport/SseTransport.<init>|<init>(io.ktor.client.HttpClient;kotlin.String;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+    final fun close() // dev.mikepenz.a2cui.transport/SseTransport.close|close(){}[0]
+    final fun incoming(): kotlinx.coroutines.flow/Flow<kotlin/String> // dev.mikepenz.a2cui.transport/SseTransport.incoming|incoming(){}[0]
+    final suspend fun sendRaw(kotlin/String) // dev.mikepenz.a2cui.transport/SseTransport.sendRaw|sendRaw(kotlin.String){}[0]
+}
+
+final class dev.mikepenz.a2cui.transport/WebSocketTransport : dev.mikepenz.a2cui.transport/A2uiTransport { // dev.mikepenz.a2cui.transport/WebSocketTransport|null[0]
+    constructor <init>(io.ktor.client/HttpClient, kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // dev.mikepenz.a2cui.transport/WebSocketTransport.<init>|<init>(io.ktor.client.HttpClient;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+    final fun close() // dev.mikepenz.a2cui.transport/WebSocketTransport.close|close(){}[0]
+    final fun incoming(): kotlinx.coroutines.flow/Flow<kotlin/String> // dev.mikepenz.a2cui.transport/WebSocketTransport.incoming|incoming(){}[0]
+    final suspend fun sendRaw(kotlin/String) // dev.mikepenz.a2cui.transport/WebSocketTransport.sendRaw|sendRaw(kotlin.String){}[0]
+}

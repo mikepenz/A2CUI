@@ -4,6 +4,11 @@ plugins {
 }
 
 kotlin {
+    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+    abiValidation {
+        enabled.set(true)
+    }
+
     android {
         namespace = "dev.mikepenz.a2cui.codegen.annotations"
     }

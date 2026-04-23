@@ -1,0 +1,540 @@
+public abstract interface class dev/mikepenz/a2cui/core/A2uiClientMessage {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiClientMessage$Companion;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Action : dev/mikepenz/a2cui/core/A2uiClientMessage {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiClientMessage$Action$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component5 ()Ljava/lang/Long;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Ljava/lang/Long;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContext ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSourceComponentId ()Ljava/lang/String;
+	public final fun getSurfaceId ()Ljava/lang/String;
+	public final fun getTimestamp ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Action$Body$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Action$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Error : dev/mikepenz/a2cui/core/A2uiClientMessage {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiClientMessage$Error$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getSurfaceId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiClientMessage$Error$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface class dev/mikepenz/a2cui/core/A2uiFrame {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$Companion;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$CreateSurface : dev/mikepenz/a2cui/core/A2uiFrame {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;)Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCreateSurface ()Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun component4 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;Z)Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;ZILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCatalogId ()Ljava/lang/String;
+	public final fun getSendDataModel ()Z
+	public final fun getSurfaceId ()Ljava/lang/String;
+	public final fun getTheme ()Lkotlinx/serialization/json/JsonObject;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Body$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$CreateSurface$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface : dev/mikepenz/a2cui/core/A2uiFrame {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;)Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeleteSurface ()Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSurfaceId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Body$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$DeleteSurface$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents : dev/mikepenz/a2cui/core/A2uiFrame {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUpdateComponents ()Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getComponents ()Ljava/util/List;
+	public final fun getSurfaceId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Body$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateComponents$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel : dev/mikepenz/a2cui/core/A2uiFrame {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Companion;
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUpdateDataModel ()Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;
+	public fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body {
+	public static final field Companion Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPath ()Ljava/lang/String;
+	public final fun getSurfaceId ()Ljava/lang/String;
+	public final fun getValue ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class dev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Ldev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Body$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiFrame$UpdateDataModel$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiJsonKt {
+	public static final fun getA2uiJson ()Lkotlinx/serialization/json/Json;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiParser {
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/Json;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/Json;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun encode (Ldev/mikepenz/a2cui/core/A2uiClientMessage;)Ljava/lang/String;
+	public final fun encodeFrame (Ldev/mikepenz/a2cui/core/A2uiFrame;)Ljava/lang/String;
+	public final fun parse (Lkotlinx/coroutines/flow/Flow;)Lkotlinx/coroutines/flow/Flow;
+	public final fun parseOne (Ljava/lang/String;)Ldev/mikepenz/a2cui/core/A2uiStreamEvent;
+	public final fun wrapError (Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;)Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error;
+}
+
+public abstract interface class dev/mikepenz/a2cui/core/A2uiStreamEvent {
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiStreamEvent$Frame : dev/mikepenz/a2cui/core/A2uiStreamEvent {
+	public fun <init> (Ldev/mikepenz/a2cui/core/A2uiFrame;)V
+	public final fun component1 ()Ldev/mikepenz/a2cui/core/A2uiFrame;
+	public final fun copy (Ldev/mikepenz/a2cui/core/A2uiFrame;)Ldev/mikepenz/a2cui/core/A2uiStreamEvent$Frame;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiStreamEvent$Frame;Ldev/mikepenz/a2cui/core/A2uiFrame;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiStreamEvent$Frame;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFrame ()Ldev/mikepenz/a2cui/core/A2uiFrame;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/A2uiStreamEvent$ParseError : dev/mikepenz/a2cui/core/A2uiStreamEvent {
+	public fun <init> (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public final fun copy (Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;)Ldev/mikepenz/a2cui/core/A2uiStreamEvent$ParseError;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/A2uiStreamEvent$ParseError;Ljava/lang/String;Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/A2uiStreamEvent$ParseError;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Ldev/mikepenz/a2cui/core/A2uiClientMessage$Error$Body;
+	public final fun getRaw ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/BindingResolver {
+	public fun <init> (Ldev/mikepenz/a2cui/core/DataModel;Ldev/mikepenz/a2cui/core/BindingResolver$CallDispatcher;)V
+	public synthetic fun <init> (Ldev/mikepenz/a2cui/core/DataModel;Ldev/mikepenz/a2cui/core/BindingResolver$CallDispatcher;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun resolve (Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+	public final fun resolveProperty (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;)Lkotlinx/serialization/json/JsonElement;
+}
+
+public abstract interface class dev/mikepenz/a2cui/core/BindingResolver$CallDispatcher {
+	public static final field Companion Ldev/mikepenz/a2cui/core/BindingResolver$CallDispatcher$Companion;
+	public abstract fun invoke (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;)Lkotlinx/serialization/json/JsonElement;
+}
+
+public final class dev/mikepenz/a2cui/core/BindingResolver$CallDispatcher$Companion {
+	public final fun getNoop ()Ldev/mikepenz/a2cui/core/BindingResolver$CallDispatcher;
+}
+
+public final class dev/mikepenz/a2cui/core/ComponentNode {
+	public static final field Companion Ldev/mikepenz/a2cui/core/ComponentNode$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlinx/serialization/json/JsonObject;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlinx/serialization/json/JsonObject;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlinx/serialization/json/JsonObject;)Ldev/mikepenz/a2cui/core/ComponentNode;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/ComponentNode;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChildren ()Ljava/util/List;
+	public final fun getComponent ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getProperties ()Lkotlinx/serialization/json/JsonObject;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/ComponentNode$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class dev/mikepenz/a2cui/core/DataModel {
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getRoot ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun observe (Ljava/lang/String;)Lkotlinx/coroutines/flow/Flow;
+	public final fun read (Ljava/lang/String;)Lkotlinx/serialization/json/JsonElement;
+	public final fun snapshot ()Lkotlinx/serialization/json/JsonElement;
+	public final fun write (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+}
+
+public final class dev/mikepenz/a2cui/core/ErrorCode {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/ErrorCode;
+	public static final field PARSE_ERROR Ljava/lang/String;
+	public static final field UNKNOWN_ACTION Ljava/lang/String;
+	public static final field UNKNOWN_COMPONENT Ljava/lang/String;
+	public static final field UNKNOWN_SURFACE Ljava/lang/String;
+	public static final field VALIDATION_FAILED Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/JsonPointer {
+	public static final field INSTANCE Ldev/mikepenz/a2cui/core/JsonPointer;
+	public final fun encode (Ljava/util/List;)Ljava/lang/String;
+	public final fun parse (Ljava/lang/String;)Ljava/util/List;
+	public final fun read (Lkotlinx/serialization/json/JsonElement;Ljava/lang/String;)Lkotlinx/serialization/json/JsonElement;
+	public final fun write (Lkotlinx/serialization/json/JsonElement;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Lkotlinx/serialization/json/JsonElement;
+}
+
+public abstract interface class dev/mikepenz/a2cui/core/PropertyValue {
+	public static final field Companion Ldev/mikepenz/a2cui/core/PropertyValue$Companion;
+}
+
+public final class dev/mikepenz/a2cui/core/PropertyValue$Call : dev/mikepenz/a2cui/core/PropertyValue {
+	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun copy (Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;)Ldev/mikepenz/a2cui/core/PropertyValue$Call;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/PropertyValue$Call;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/PropertyValue$Call;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getFunction ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/PropertyValue$Companion {
+	public final fun classify (Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/core/PropertyValue;
+}
+
+public final class dev/mikepenz/a2cui/core/PropertyValue$Literal : dev/mikepenz/a2cui/core/PropertyValue {
+	public fun <init> (Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/core/PropertyValue$Literal;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/PropertyValue$Literal;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/PropertyValue$Literal;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/PropertyValue$Path : dev/mikepenz/a2cui/core/PropertyValue {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/mikepenz/a2cui/core/PropertyValue$Path;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/core/PropertyValue$Path;Ljava/lang/String;ILjava/lang/Object;)Ldev/mikepenz/a2cui/core/PropertyValue$Path;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPath ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/core/VersionKt {
+	public static final field A2CUI_VERSION Ljava/lang/String;
+	public static final field A2UI_PROTOCOL_VERSION Ljava/lang/String;
+}
+

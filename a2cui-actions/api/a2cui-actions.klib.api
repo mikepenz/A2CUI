@@ -1,0 +1,191 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-actions>
+sealed interface <#A: out kotlin/Any?> dev.mikepenz.a2cui.actions/ToolCallStatus { // dev.mikepenz.a2cui.actions/ToolCallStatus|null[0]
+    final class <#A1: kotlin/Any?> Complete : dev.mikepenz.a2cui.actions/ToolCallStatus<#A1> { // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete|null[0]
+        constructor <init>(#A1, kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.<init>|<init>(1:0;kotlinx.serialization.json.JsonElement){}[0]
+
+        final val args // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.args|{}args[0]
+            final fun <get-args>(): #A1 // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.args.<get-args>|<get-args>(){}[0]
+        final val result // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.result|{}result[0]
+            final fun <get-result>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.result.<get-result>|<get-result>(){}[0]
+
+        final fun component1(): #A1 // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.component1|component1(){}[0]
+        final fun component2(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.component2|component2(){}[0]
+        final fun copy(#A1 = ..., kotlinx.serialization.json/JsonElement = ...): dev.mikepenz.a2cui.actions/ToolCallStatus.Complete<#A1> // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.copy|copy(1:0;kotlinx.serialization.json.JsonElement){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.actions/ToolCallStatus.Complete.toString|toString(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> Executing : dev.mikepenz.a2cui.actions/ToolCallStatus<#A1> { // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing|null[0]
+        constructor <init>(#A1) // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.<init>|<init>(1:0){}[0]
+
+        final val args // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.args|{}args[0]
+            final fun <get-args>(): #A1 // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.args.<get-args>|<get-args>(){}[0]
+
+        final fun component1(): #A1 // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.component1|component1(){}[0]
+        final fun copy(#A1 = ...): dev.mikepenz.a2cui.actions/ToolCallStatus.Executing<#A1> // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.actions/ToolCallStatus.Executing.toString|toString(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> Failed : dev.mikepenz.a2cui.actions/ToolCallStatus<#A1> { // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed|null[0]
+        constructor <init>(kotlin/Throwable, kotlinx.serialization.json/JsonObject) // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.<init>|<init>(kotlin.Throwable;kotlinx.serialization.json.JsonObject){}[0]
+
+        final val error // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.error|{}error[0]
+            final fun <get-error>(): kotlin/Throwable // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.error.<get-error>|<get-error>(){}[0]
+        final val partial // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.partial|{}partial[0]
+            final fun <get-partial>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.partial.<get-partial>|<get-partial>(){}[0]
+
+        final fun component1(): kotlin/Throwable // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.component1|component1(){}[0]
+        final fun component2(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.component2|component2(){}[0]
+        final fun copy(kotlin/Throwable = ..., kotlinx.serialization.json/JsonObject = ...): dev.mikepenz.a2cui.actions/ToolCallStatus.Failed<#A1> // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.copy|copy(kotlin.Throwable;kotlinx.serialization.json.JsonObject){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.actions/ToolCallStatus.Failed.toString|toString(){}[0]
+    }
+
+    final class <#A1: kotlin/Any?> InProgress : dev.mikepenz.a2cui.actions/ToolCallStatus<#A1> { // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonObject) // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.<init>|<init>(kotlinx.serialization.json.JsonObject){}[0]
+
+        final val partial // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.partial|{}partial[0]
+            final fun <get-partial>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.partial.<get-partial>|<get-partial>(){}[0]
+
+        final fun component1(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.component1|component1(){}[0]
+        final fun copy(kotlinx.serialization.json/JsonObject = ...): dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress<#A1> // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.copy|copy(kotlinx.serialization.json.JsonObject){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.actions/ToolCallStatus.InProgress.toString|toString(){}[0]
+    }
+}
+
+final class <#A: kotlin/Any> dev.mikepenz.a2cui.actions/TypedArgsAccumulator { // dev.mikepenz.a2cui.actions/TypedArgsAccumulator|null[0]
+    constructor <init>(kotlinx.serialization/KSerializer<#A>, kotlinx.serialization.json/Json = ..., dev.mikepenz.a2cui.actions/StreamingArgsMerger = ...) // dev.mikepenz.a2cui.actions/TypedArgsAccumulator.<init>|<init>(kotlinx.serialization.KSerializer<1:0>;kotlinx.serialization.json.Json;dev.mikepenz.a2cui.actions.StreamingArgsMerger){}[0]
+
+    final var status // dev.mikepenz.a2cui.actions/TypedArgsAccumulator.status|{}status[0]
+        final fun <get-status>(): dev.mikepenz.a2cui.actions/ToolCallStatus<#A> // dev.mikepenz.a2cui.actions/TypedArgsAccumulator.status.<get-status>|<get-status>(){}[0]
+
+    final fun onDelta(kotlin/String): dev.mikepenz.a2cui.actions/ToolCallStatus<#A> // dev.mikepenz.a2cui.actions/TypedArgsAccumulator.onDelta|onDelta(kotlin.String){}[0]
+    final fun onEnd(kotlinx.serialization.json/JsonElement = ...): dev.mikepenz.a2cui.actions/ToolCallStatus<#A> // dev.mikepenz.a2cui.actions/TypedArgsAccumulator.onEnd|onEnd(kotlinx.serialization.json.JsonElement){}[0]
+}
+
+final class dev.mikepenz.a2cui.actions/ActionDescriptor { // dev.mikepenz.a2cui.actions/ActionDescriptor|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonObject = ...) // dev.mikepenz.a2cui.actions/ActionDescriptor.<init>|<init>(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+
+    final val description // dev.mikepenz.a2cui.actions/ActionDescriptor.description|{}description[0]
+        final fun <get-description>(): kotlin/String // dev.mikepenz.a2cui.actions/ActionDescriptor.description.<get-description>|<get-description>(){}[0]
+    final val name // dev.mikepenz.a2cui.actions/ActionDescriptor.name|{}name[0]
+        final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.actions/ActionDescriptor.name.<get-name>|<get-name>(){}[0]
+    final val parameters // dev.mikepenz.a2cui.actions/ActionDescriptor.parameters|{}parameters[0]
+        final fun <get-parameters>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ActionDescriptor.parameters.<get-parameters>|<get-parameters>(){}[0]
+
+    final fun component1(): kotlin/String // dev.mikepenz.a2cui.actions/ActionDescriptor.component1|component1(){}[0]
+    final fun component2(): kotlin/String // dev.mikepenz.a2cui.actions/ActionDescriptor.component2|component2(){}[0]
+    final fun component3(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ActionDescriptor.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonObject = ...): dev.mikepenz.a2cui.actions/ActionDescriptor // dev.mikepenz.a2cui.actions/ActionDescriptor.copy|copy(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.actions/ActionDescriptor.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.actions/ActionDescriptor.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.actions/ActionDescriptor.toString|toString(){}[0]
+}
+
+final class dev.mikepenz.a2cui.actions/ActionRegistration { // dev.mikepenz.a2cui.actions/ActionRegistration|null[0]
+    constructor <init>(dev.mikepenz.a2cui.actions/ActionDescriptor, kotlin/Function3<dev.mikepenz.a2cui.actions/ToolCallStatus<*>, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>, kotlin/Function0<dev.mikepenz.a2cui.actions/TypedArgsAccumulator<*>>? = ...) // dev.mikepenz.a2cui.actions/ActionRegistration.<init>|<init>(dev.mikepenz.a2cui.actions.ActionDescriptor;kotlin.Function3<dev.mikepenz.a2cui.actions.ToolCallStatus<*>,androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>;kotlin.Function0<dev.mikepenz.a2cui.actions.TypedArgsAccumulator<*>>?){}[0]
+
+    final val accumulatorFactory // dev.mikepenz.a2cui.actions/ActionRegistration.accumulatorFactory|{}accumulatorFactory[0]
+        final fun <get-accumulatorFactory>(): kotlin/Function0<dev.mikepenz.a2cui.actions/TypedArgsAccumulator<*>>? // dev.mikepenz.a2cui.actions/ActionRegistration.accumulatorFactory.<get-accumulatorFactory>|<get-accumulatorFactory>(){}[0]
+    final val descriptor // dev.mikepenz.a2cui.actions/ActionRegistration.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): dev.mikepenz.a2cui.actions/ActionDescriptor // dev.mikepenz.a2cui.actions/ActionRegistration.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+    final val render // dev.mikepenz.a2cui.actions/ActionRegistration.render|{}render[0]
+        final fun <get-render>(): kotlin/Function3<dev.mikepenz.a2cui.actions/ToolCallStatus<*>, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit> // dev.mikepenz.a2cui.actions/ActionRegistration.render.<get-render>|<get-render>(){}[0]
+}
+
+final class dev.mikepenz.a2cui.actions/ActionRegistry { // dev.mikepenz.a2cui.actions/ActionRegistry|null[0]
+    constructor <init>() // dev.mikepenz.a2cui.actions/ActionRegistry.<init>|<init>(){}[0]
+
+    final val entries // dev.mikepenz.a2cui.actions/ActionRegistry.entries|{}entries[0]
+        final fun <get-entries>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/Map<kotlin/String, dev.mikepenz.a2cui.actions/ActionRegistration>> // dev.mikepenz.a2cui.actions/ActionRegistry.entries.<get-entries>|<get-entries>(){}[0]
+
+    final fun descriptors(): kotlin.collections/List<dev.mikepenz.a2cui.actions/ActionDescriptor> // dev.mikepenz.a2cui.actions/ActionRegistry.descriptors|descriptors(){}[0]
+    final fun get(kotlin/String): dev.mikepenz.a2cui.actions/ActionRegistration? // dev.mikepenz.a2cui.actions/ActionRegistry.get|get(kotlin.String){}[0]
+    final fun register(dev.mikepenz.a2cui.actions/ActionRegistration) // dev.mikepenz.a2cui.actions/ActionRegistry.register|register(dev.mikepenz.a2cui.actions.ActionRegistration){}[0]
+    final fun unregister(kotlin/String) // dev.mikepenz.a2cui.actions/ActionRegistry.unregister|unregister(kotlin.String){}[0]
+}
+
+final class dev.mikepenz.a2cui.actions/ReadableEntry { // dev.mikepenz.a2cui.actions/ReadableEntry|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.actions/ReadableEntry.<init>|<init>(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+
+    final val description // dev.mikepenz.a2cui.actions/ReadableEntry.description|{}description[0]
+        final fun <get-description>(): kotlin/String // dev.mikepenz.a2cui.actions/ReadableEntry.description.<get-description>|<get-description>(){}[0]
+    final val id // dev.mikepenz.a2cui.actions/ReadableEntry.id|{}id[0]
+        final fun <get-id>(): kotlin/String // dev.mikepenz.a2cui.actions/ReadableEntry.id.<get-id>|<get-id>(){}[0]
+    final val value // dev.mikepenz.a2cui.actions/ReadableEntry.value|{}value[0]
+        final fun <get-value>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.actions/ReadableEntry.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // dev.mikepenz.a2cui.actions/ReadableEntry.component1|component1(){}[0]
+    final fun component2(): kotlin/String // dev.mikepenz.a2cui.actions/ReadableEntry.component2|component2(){}[0]
+    final fun component3(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.actions/ReadableEntry.component3|component3(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonElement = ...): dev.mikepenz.a2cui.actions/ReadableEntry // dev.mikepenz.a2cui.actions/ReadableEntry.copy|copy(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.actions/ReadableEntry.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.actions/ReadableEntry.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.actions/ReadableEntry.toString|toString(){}[0]
+}
+
+final class dev.mikepenz.a2cui.actions/ReadableRegistry { // dev.mikepenz.a2cui.actions/ReadableRegistry|null[0]
+    constructor <init>() // dev.mikepenz.a2cui.actions/ReadableRegistry.<init>|<init>(){}[0]
+
+    final val entries // dev.mikepenz.a2cui.actions/ReadableRegistry.entries|{}entries[0]
+        final fun <get-entries>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/Map<kotlin/String, dev.mikepenz.a2cui.actions/ReadableEntry>> // dev.mikepenz.a2cui.actions/ReadableRegistry.entries.<get-entries>|<get-entries>(){}[0]
+
+    final fun asPromptObject(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/ReadableRegistry.asPromptObject|asPromptObject(){}[0]
+    final fun put(dev.mikepenz.a2cui.actions/ReadableEntry) // dev.mikepenz.a2cui.actions/ReadableRegistry.put|put(dev.mikepenz.a2cui.actions.ReadableEntry){}[0]
+    final fun remove(kotlin/String) // dev.mikepenz.a2cui.actions/ReadableRegistry.remove|remove(kotlin.String){}[0]
+}
+
+final class dev.mikepenz.a2cui.actions/StreamingArgsMerger { // dev.mikepenz.a2cui.actions/StreamingArgsMerger|null[0]
+    constructor <init>(kotlinx.serialization.json/Json = ...) // dev.mikepenz.a2cui.actions/StreamingArgsMerger.<init>|<init>(kotlinx.serialization.json.Json){}[0]
+
+    final fun append(kotlin/String): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/StreamingArgsMerger.append|append(kotlin.String){}[0]
+    final fun buffered(): kotlin/String // dev.mikepenz.a2cui.actions/StreamingArgsMerger.buffered|buffered(){}[0]
+    final fun finalParse(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.actions/StreamingArgsMerger.finalParse|finalParse(){}[0]
+
+    final object Companion // dev.mikepenz.a2cui.actions/StreamingArgsMerger.Companion|null[0]
+}
+
+final val dev.mikepenz.a2cui.actions/LocalActionRegistry // dev.mikepenz.a2cui.actions/LocalActionRegistry|{}LocalActionRegistry[0]
+    final fun <get-LocalActionRegistry>(): androidx.compose.runtime/ProvidableCompositionLocal<dev.mikepenz.a2cui.actions/ActionRegistry> // dev.mikepenz.a2cui.actions/LocalActionRegistry.<get-LocalActionRegistry>|<get-LocalActionRegistry>(){}[0]
+final val dev.mikepenz.a2cui.actions/LocalReadableRegistry // dev.mikepenz.a2cui.actions/LocalReadableRegistry|{}LocalReadableRegistry[0]
+    final fun <get-LocalReadableRegistry>(): androidx.compose.runtime/ProvidableCompositionLocal<dev.mikepenz.a2cui.actions/ReadableRegistry> // dev.mikepenz.a2cui.actions/LocalReadableRegistry.<get-LocalReadableRegistry>|<get-LocalReadableRegistry>(){}[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionDescriptor$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionDescriptor$stableprop|#static{}dev_mikepenz_a2cui_actions_ActionDescriptor$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistration$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistration$stableprop|#static{}dev_mikepenz_a2cui_actions_ActionRegistration$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistry$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistry$stableprop|#static{}dev_mikepenz_a2cui_actions_ActionRegistry$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableEntry$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableEntry$stableprop|#static{}dev_mikepenz_a2cui_actions_ReadableEntry$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableRegistry$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableRegistry$stableprop|#static{}dev_mikepenz_a2cui_actions_ReadableRegistry$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_StreamingArgsMerger$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_StreamingArgsMerger$stableprop|#static{}dev_mikepenz_a2cui_actions_StreamingArgsMerger$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Complete$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Complete$stableprop|#static{}dev_mikepenz_a2cui_actions_ToolCallStatus_Complete$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Executing$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Executing$stableprop|#static{}dev_mikepenz_a2cui_actions_ToolCallStatus_Executing$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Failed$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Failed$stableprop|#static{}dev_mikepenz_a2cui_actions_ToolCallStatus_Failed$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_InProgress$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_InProgress$stableprop|#static{}dev_mikepenz_a2cui_actions_ToolCallStatus_InProgress$stableprop[0]
+final val dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_TypedArgsAccumulator$stableprop // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_TypedArgsAccumulator$stableprop|#static{}dev_mikepenz_a2cui_actions_TypedArgsAccumulator$stableprop[0]
+
+final fun <#A: kotlin/Any> dev.mikepenz.a2cui.actions/decodeArgs(kotlin/String, kotlinx.serialization/KSerializer<#A>, kotlinx.serialization.json/Json = ...): kotlin/Result<#A> // dev.mikepenz.a2cui.actions/decodeArgs|decodeArgs(kotlin.String;kotlinx.serialization.KSerializer<0:0>;kotlinx.serialization.json.Json){0§<kotlin.Any>}[0]
+final fun <#A: kotlin/Any> dev.mikepenz.a2cui.actions/rememberAction(kotlin/String, kotlin/String, kotlinx.serialization/KSerializer<#A>, kotlinx.serialization.json/JsonObject?, kotlinx.serialization.json/Json?, kotlin/Function3<dev.mikepenz.a2cui.actions/ToolCallStatus<#A>, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // dev.mikepenz.a2cui.actions/rememberAction|rememberAction(kotlin.String;kotlin.String;kotlinx.serialization.KSerializer<0:0>;kotlinx.serialization.json.JsonObject?;kotlinx.serialization.json.Json?;kotlin.Function3<dev.mikepenz.a2cui.actions.ToolCallStatus<0:0>,androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any>}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionDescriptor$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionDescriptor$stableprop_getter|dev_mikepenz_a2cui_actions_ActionDescriptor$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistration$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistration$stableprop_getter|dev_mikepenz_a2cui_actions_ActionRegistration$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistry$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ActionRegistry$stableprop_getter|dev_mikepenz_a2cui_actions_ActionRegistry$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableEntry$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableEntry$stableprop_getter|dev_mikepenz_a2cui_actions_ReadableEntry$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableRegistry$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ReadableRegistry$stableprop_getter|dev_mikepenz_a2cui_actions_ReadableRegistry$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_StreamingArgsMerger$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_StreamingArgsMerger$stableprop_getter|dev_mikepenz_a2cui_actions_StreamingArgsMerger$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Complete$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Complete$stableprop_getter|dev_mikepenz_a2cui_actions_ToolCallStatus_Complete$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Executing$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Executing$stableprop_getter|dev_mikepenz_a2cui_actions_ToolCallStatus_Executing$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Failed$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_Failed$stableprop_getter|dev_mikepenz_a2cui_actions_ToolCallStatus_Failed$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_InProgress$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_ToolCallStatus_InProgress$stableprop_getter|dev_mikepenz_a2cui_actions_ToolCallStatus_InProgress$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_TypedArgsAccumulator$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.actions/dev_mikepenz_a2cui_actions_TypedArgsAccumulator$stableprop_getter|dev_mikepenz_a2cui_actions_TypedArgsAccumulator$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.actions/rememberReadable(kotlin/String, kotlin/String, kotlin/String, androidx.compose.runtime/Composer?, kotlin/Int) // dev.mikepenz.a2cui.actions/rememberReadable|rememberReadable(kotlin.String;kotlin.String;kotlin.String;androidx.compose.runtime.Composer?;kotlin.Int){}[0]
+final fun dev.mikepenz.a2cui.actions/rememberReadable(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonElement, androidx.compose.runtime/Composer?, kotlin/Int) // dev.mikepenz.a2cui.actions/rememberReadable|rememberReadable(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement;androidx.compose.runtime.Composer?;kotlin.Int){}[0]

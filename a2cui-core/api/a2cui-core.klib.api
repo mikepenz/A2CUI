@@ -1,0 +1,569 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-core>
+sealed interface dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2cui.core/A2uiClientMessage|null[0]
+    abstract val version // dev.mikepenz.a2cui.core/A2uiClientMessage.version|{}version[0]
+        abstract fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.version.<get-version>|<get-version>(){}[0]
+
+    final class Action : dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2cui.core/A2uiClientMessage.Action|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body) // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Action.Body){}[0]
+
+        final val action // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.action|{}action[0]
+            final fun <get-action>(): dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.action.<get-action>|<get-action>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body = ...): dev.mikepenz.a2cui.core/A2uiClientMessage.Action // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Action.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlinx.serialization.json/JsonObject = ..., kotlin/Long? = ...) // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject;kotlin.Long?){}[0]
+
+            final val context // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.context|{}context[0]
+                final fun <get-context>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.context.<get-context>|<get-context>(){}[0]
+            final val name // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.name|{}name[0]
+                final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.name.<get-name>|<get-name>(){}[0]
+            final val sourceComponentId // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.sourceComponentId|{}sourceComponentId[0]
+                final fun <get-sourceComponentId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.sourceComponentId.<get-sourceComponentId>|<get-sourceComponentId>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+            final val timestamp // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.timestamp|{}timestamp[0]
+                final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.component2|component2(){}[0]
+            final fun component3(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.component3|component3(){}[0]
+            final fun component4(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.component4|component4(){}[0]
+            final fun component5(): kotlin/Long? // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.component5|component5(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonObject = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject;kotlin.Long?){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body> { // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body) // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiClientMessage.Action.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body> // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Action> { // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiClientMessage.Action // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiClientMessage.Action) // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiClientMessage.Action){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Action> // dev.mikepenz.a2cui.core/A2uiClientMessage.Action.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Error : dev.mikepenz.a2cui.core/A2uiClientMessage { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body) // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Error.Body){}[0]
+
+        final val error // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.error|{}error[0]
+            final fun <get-error>(): dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.error.<get-error>|<get-error>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body = ...): dev.mikepenz.a2cui.core/A2uiClientMessage.Error // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Error.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/String? = ...) // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+
+            final val code // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.code|{}code[0]
+                final fun <get-code>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.code.<get-code>|<get-code>(){}[0]
+            final val message // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.message|{}message[0]
+                final fun <get-message>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.message.<get-message>|<get-message>(){}[0]
+            final val path // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.path|{}path[0]
+                final fun <get-path>(): kotlin/String? // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.path.<get-path>|<get-path>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String? // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.component2|component2(){}[0]
+            final fun component3(): kotlin/String? // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.component3|component3(){}[0]
+            final fun component4(): kotlin/String? // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.component4|component4(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ...): dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body> { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body) // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiClientMessage.Error.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body> // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Error> { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiClientMessage.Error // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiClientMessage.Error) // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiClientMessage.Error){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage.Error> // dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // dev.mikepenz.a2cui.core/A2uiClientMessage.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiClientMessage> // dev.mikepenz.a2cui.core/A2uiClientMessage.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // dev.mikepenz.a2cui.core/A2uiClientMessage.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame|null[0]
+    abstract val version // dev.mikepenz.a2cui.core/A2uiFrame.version|{}version[0]
+        abstract fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.version.<get-version>|<get-version>(){}[0]
+
+    final class CreateSurface : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body) // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.CreateSurface.Body){}[0]
+
+        final val createSurface // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.createSurface|{}createSurface[0]
+            final fun <get-createSurface>(): dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.createSurface.<get-createSurface>|<get-createSurface>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body = ...): dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.CreateSurface.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonObject? = ..., kotlin/Boolean = ...) // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.<init>|<init>(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject?;kotlin.Boolean){}[0]
+
+            final val catalogId // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.catalogId|{}catalogId[0]
+                final fun <get-catalogId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.catalogId.<get-catalogId>|<get-catalogId>(){}[0]
+            final val sendDataModel // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.sendDataModel|{}sendDataModel[0]
+                final fun <get-sendDataModel>(): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.sendDataModel.<get-sendDataModel>|<get-sendDataModel>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+            final val theme // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.theme|{}theme[0]
+                final fun <get-theme>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.theme.<get-theme>|<get-theme>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.component2|component2(){}[0]
+            final fun component3(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.component3|component3(){}[0]
+            final fun component4(): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.component4|component4(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonObject? = ..., kotlin/Boolean = ...): dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.copy|copy(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonObject?;kotlin.Boolean){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body> { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body) // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.CreateSurface.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body> // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface> { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface) // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.CreateSurface){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface> // dev.mikepenz.a2cui.core/A2uiFrame.CreateSurface.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class DeleteSurface : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body) // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.DeleteSurface.Body){}[0]
+
+        final val deleteSurface // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.deleteSurface|{}deleteSurface[0]
+            final fun <get-deleteSurface>(): dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.deleteSurface.<get-deleteSurface>|<get-deleteSurface>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body = ...): dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.DeleteSurface.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body|null[0]
+            constructor <init>(kotlin/String) // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.<init>|<init>(kotlin.String){}[0]
+
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.component1|component1(){}[0]
+            final fun copy(kotlin/String = ...): dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.copy|copy(kotlin.String){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body> { // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body) // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.DeleteSurface.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body> // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface> { // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface) // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.DeleteSurface){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface> // dev.mikepenz.a2cui.core/A2uiFrame.DeleteSurface.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class UpdateComponents : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents.Body){}[0]
+
+        final val updateComponents // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.updateComponents|{}updateComponents[0]
+            final fun <get-updateComponents>(): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.updateComponents.<get-updateComponents>|<get-updateComponents>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body = ...): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body|null[0]
+            constructor <init>(kotlin/String, kotlin.collections/List<dev.mikepenz.a2cui.core/ComponentNode>) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.<init>|<init>(kotlin.String;kotlin.collections.List<dev.mikepenz.a2cui.core.ComponentNode>){}[0]
+
+            final val components // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.components|{}components[0]
+                final fun <get-components>(): kotlin.collections/List<dev.mikepenz.a2cui.core/ComponentNode> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.components.<get-components>|<get-components>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.component1|component1(){}[0]
+            final fun component2(): kotlin.collections/List<dev.mikepenz.a2cui.core/ComponentNode> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.component2|component2(){}[0]
+            final fun copy(kotlin/String = ..., kotlin.collections/List<dev.mikepenz.a2cui.core/ComponentNode> = ...): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.copy|copy(kotlin.String;kotlin.collections.List<dev.mikepenz.a2cui.core.ComponentNode>){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body> { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.Companion|null[0]
+                final val $childSerializers // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.Companion.$childSerializers|{}$childSerializers[0]
+
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents> { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.UpdateComponents){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateComponents.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class UpdateDataModel : dev.mikepenz.a2cui.core/A2uiFrame { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.UpdateDataModel.Body){}[0]
+
+        final val updateDataModel // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.updateDataModel|{}updateDataModel[0]
+            final fun <get-updateDataModel>(): dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.updateDataModel.<get-updateDataModel>|<get-updateDataModel>(){}[0]
+        final val version // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.version|{}version[0]
+            final fun <get-version>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.version.<get-version>|<get-version>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body = ...): dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiFrame.UpdateDataModel.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.toString|toString(){}[0]
+
+        final class Body { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body|null[0]
+            constructor <init>(kotlin/String, kotlin/String, kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.<init>|<init>(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+
+            final val path // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.path|{}path[0]
+                final fun <get-path>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.path.<get-path>|<get-path>(){}[0]
+            final val surfaceId // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.surfaceId|{}surfaceId[0]
+                final fun <get-surfaceId>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.surfaceId.<get-surfaceId>|<get-surfaceId>(){}[0]
+            final val value // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.value|{}value[0]
+                final fun <get-value>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.value.<get-value>|<get-value>(){}[0]
+
+            final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.component1|component1(){}[0]
+            final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.component2|component2(){}[0]
+            final fun component3(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.component3|component3(){}[0]
+            final fun copy(kotlin/String = ..., kotlin/String = ..., kotlinx.serialization.json/JsonElement = ...): dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.copy|copy(kotlin.String;kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+            final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.equals|equals(kotlin.Any?){}[0]
+            final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.hashCode|hashCode(){}[0]
+            final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.toString|toString(){}[0]
+
+            final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body> { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.$serializer|null[0]
+                final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.$serializer.descriptor|{}descriptor[0]
+                    final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+                final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.$serializer.childSerializers|childSerializers(){}[0]
+                final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+                final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.UpdateDataModel.Body){}[0]
+            }
+
+            final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.Companion|null[0]
+                final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Body.Companion.serializer|serializer(){}[0]
+            }
+        }
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel> { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel) // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.core.A2uiFrame.UpdateDataModel){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel> // dev.mikepenz.a2cui.core/A2uiFrame.UpdateDataModel.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // dev.mikepenz.a2cui.core/A2uiFrame.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/A2uiFrame> // dev.mikepenz.a2cui.core/A2uiFrame.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // dev.mikepenz.a2cui.core/A2uiFrame.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface dev.mikepenz.a2cui.core/A2uiStreamEvent { // dev.mikepenz.a2cui.core/A2uiStreamEvent|null[0]
+    final class Frame : dev.mikepenz.a2cui.core/A2uiStreamEvent { // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame|null[0]
+        constructor <init>(dev.mikepenz.a2cui.core/A2uiFrame) // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.<init>|<init>(dev.mikepenz.a2cui.core.A2uiFrame){}[0]
+
+        final val frame // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.frame|{}frame[0]
+            final fun <get-frame>(): dev.mikepenz.a2cui.core/A2uiFrame // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.frame.<get-frame>|<get-frame>(){}[0]
+
+        final fun component1(): dev.mikepenz.a2cui.core/A2uiFrame // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.component1|component1(){}[0]
+        final fun copy(dev.mikepenz.a2cui.core/A2uiFrame = ...): dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.copy|copy(dev.mikepenz.a2cui.core.A2uiFrame){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiStreamEvent.Frame.toString|toString(){}[0]
+    }
+
+    final class ParseError : dev.mikepenz.a2cui.core/A2uiStreamEvent { // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body) // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Error.Body){}[0]
+
+        final val error // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.error|{}error[0]
+            final fun <get-error>(): dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.error.<get-error>|<get-error>(){}[0]
+        final val raw // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.raw|{}raw[0]
+            final fun <get-raw>(): kotlin/String // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.raw.<get-raw>|<get-raw>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body = ...): dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.copy|copy(kotlin.String;dev.mikepenz.a2cui.core.A2uiClientMessage.Error.Body){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/A2uiStreamEvent.ParseError.toString|toString(){}[0]
+    }
+}
+
+sealed interface dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.core/PropertyValue|null[0]
+    final class Call : dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.core/PropertyValue.Call|null[0]
+        constructor <init>(kotlin/String, kotlinx.serialization.json/JsonObject) // dev.mikepenz.a2cui.core/PropertyValue.Call.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+
+        final val args // dev.mikepenz.a2cui.core/PropertyValue.Call.args|{}args[0]
+            final fun <get-args>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.core/PropertyValue.Call.args.<get-args>|<get-args>(){}[0]
+        final val function // dev.mikepenz.a2cui.core/PropertyValue.Call.function|{}function[0]
+            final fun <get-function>(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Call.function.<get-function>|<get-function>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Call.component1|component1(){}[0]
+        final fun component2(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.core/PropertyValue.Call.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonObject = ...): dev.mikepenz.a2cui.core/PropertyValue.Call // dev.mikepenz.a2cui.core/PropertyValue.Call.copy|copy(kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/PropertyValue.Call.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/PropertyValue.Call.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Call.toString|toString(){}[0]
+    }
+
+    final class Literal : dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.core/PropertyValue.Literal|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.core/PropertyValue.Literal.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+        final val value // dev.mikepenz.a2cui.core/PropertyValue.Literal.value|{}value[0]
+            final fun <get-value>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/PropertyValue.Literal.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/PropertyValue.Literal.component1|component1(){}[0]
+        final fun copy(kotlinx.serialization.json/JsonElement = ...): dev.mikepenz.a2cui.core/PropertyValue.Literal // dev.mikepenz.a2cui.core/PropertyValue.Literal.copy|copy(kotlinx.serialization.json.JsonElement){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/PropertyValue.Literal.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/PropertyValue.Literal.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Literal.toString|toString(){}[0]
+    }
+
+    final class Path : dev.mikepenz.a2cui.core/PropertyValue { // dev.mikepenz.a2cui.core/PropertyValue.Path|null[0]
+        constructor <init>(kotlin/String) // dev.mikepenz.a2cui.core/PropertyValue.Path.<init>|<init>(kotlin.String){}[0]
+
+        final val path // dev.mikepenz.a2cui.core/PropertyValue.Path.path|{}path[0]
+            final fun <get-path>(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Path.path.<get-path>|<get-path>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Path.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): dev.mikepenz.a2cui.core/PropertyValue.Path // dev.mikepenz.a2cui.core/PropertyValue.Path.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/PropertyValue.Path.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/PropertyValue.Path.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/PropertyValue.Path.toString|toString(){}[0]
+    }
+
+    final object Companion { // dev.mikepenz.a2cui.core/PropertyValue.Companion|null[0]
+        final fun classify(kotlinx.serialization.json/JsonElement): dev.mikepenz.a2cui.core/PropertyValue // dev.mikepenz.a2cui.core/PropertyValue.Companion.classify|classify(kotlinx.serialization.json.JsonElement){}[0]
+    }
+}
+
+final class dev.mikepenz.a2cui.core/A2uiParser { // dev.mikepenz.a2cui.core/A2uiParser|null[0]
+    constructor <init>(kotlinx.serialization.json/Json = ...) // dev.mikepenz.a2cui.core/A2uiParser.<init>|<init>(kotlinx.serialization.json.Json){}[0]
+
+    final fun encode(dev.mikepenz.a2cui.core/A2uiClientMessage): kotlin/String // dev.mikepenz.a2cui.core/A2uiParser.encode|encode(dev.mikepenz.a2cui.core.A2uiClientMessage){}[0]
+    final fun encodeFrame(dev.mikepenz.a2cui.core/A2uiFrame): kotlin/String // dev.mikepenz.a2cui.core/A2uiParser.encodeFrame|encodeFrame(dev.mikepenz.a2cui.core.A2uiFrame){}[0]
+    final fun parse(kotlinx.coroutines.flow/Flow<kotlin/String>): kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.core/A2uiStreamEvent> // dev.mikepenz.a2cui.core/A2uiParser.parse|parse(kotlinx.coroutines.flow.Flow<kotlin.String>){}[0]
+    final fun parseOne(kotlin/String): dev.mikepenz.a2cui.core/A2uiStreamEvent // dev.mikepenz.a2cui.core/A2uiParser.parseOne|parseOne(kotlin.String){}[0]
+    final fun wrapError(dev.mikepenz.a2cui.core/A2uiClientMessage.Error.Body): dev.mikepenz.a2cui.core/A2uiClientMessage.Error // dev.mikepenz.a2cui.core/A2uiParser.wrapError|wrapError(dev.mikepenz.a2cui.core.A2uiClientMessage.Error.Body){}[0]
+}
+
+final class dev.mikepenz.a2cui.core/BindingResolver { // dev.mikepenz.a2cui.core/BindingResolver|null[0]
+    constructor <init>(dev.mikepenz.a2cui.core/DataModel, dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher = ...) // dev.mikepenz.a2cui.core/BindingResolver.<init>|<init>(dev.mikepenz.a2cui.core.DataModel;dev.mikepenz.a2cui.core.BindingResolver.CallDispatcher){}[0]
+
+    final fun resolve(kotlinx.serialization.json/JsonElement): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/BindingResolver.resolve|resolve(kotlinx.serialization.json.JsonElement){}[0]
+    final fun resolveProperty(kotlinx.serialization.json/JsonObject, kotlin/String): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/BindingResolver.resolveProperty|resolveProperty(kotlinx.serialization.json.JsonObject;kotlin.String){}[0]
+
+    abstract fun interface CallDispatcher { // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher|null[0]
+        abstract fun invoke(kotlin/String, kotlinx.serialization.json/JsonObject): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher.invoke|invoke(kotlin.String;kotlinx.serialization.json.JsonObject){}[0]
+
+        final object Companion { // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher.Companion|null[0]
+            final val Noop // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher.Companion.Noop|{}Noop[0]
+                final fun <get-Noop>(): dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher // dev.mikepenz.a2cui.core/BindingResolver.CallDispatcher.Companion.Noop.<get-Noop>|<get-Noop>(){}[0]
+        }
+    }
+}
+
+final class dev.mikepenz.a2cui.core/ComponentNode { // dev.mikepenz.a2cui.core/ComponentNode|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin.collections/List<kotlin/String> = ..., kotlinx.serialization.json/JsonObject = ...) // dev.mikepenz.a2cui.core/ComponentNode.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.List<kotlin.String>;kotlinx.serialization.json.JsonObject){}[0]
+
+    final val children // dev.mikepenz.a2cui.core/ComponentNode.children|{}children[0]
+        final fun <get-children>(): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.core/ComponentNode.children.<get-children>|<get-children>(){}[0]
+    final val component // dev.mikepenz.a2cui.core/ComponentNode.component|{}component[0]
+        final fun <get-component>(): kotlin/String // dev.mikepenz.a2cui.core/ComponentNode.component.<get-component>|<get-component>(){}[0]
+    final val id // dev.mikepenz.a2cui.core/ComponentNode.id|{}id[0]
+        final fun <get-id>(): kotlin/String // dev.mikepenz.a2cui.core/ComponentNode.id.<get-id>|<get-id>(){}[0]
+    final val properties // dev.mikepenz.a2cui.core/ComponentNode.properties|{}properties[0]
+        final fun <get-properties>(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.core/ComponentNode.properties.<get-properties>|<get-properties>(){}[0]
+
+    final fun component1(): kotlin/String // dev.mikepenz.a2cui.core/ComponentNode.component1|component1(){}[0]
+    final fun component2(): kotlin/String // dev.mikepenz.a2cui.core/ComponentNode.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.core/ComponentNode.component3|component3(){}[0]
+    final fun component4(): kotlinx.serialization.json/JsonObject // dev.mikepenz.a2cui.core/ComponentNode.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin.collections/List<kotlin/String> = ..., kotlinx.serialization.json/JsonObject = ...): dev.mikepenz.a2cui.core/ComponentNode // dev.mikepenz.a2cui.core/ComponentNode.copy|copy(kotlin.String;kotlin.String;kotlin.collections.List<kotlin.String>;kotlinx.serialization.json.JsonObject){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.core/ComponentNode.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.core/ComponentNode.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.core/ComponentNode.toString|toString(){}[0]
+
+    final object Companion { // dev.mikepenz.a2cui.core/ComponentNode.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.core/ComponentNode> // dev.mikepenz.a2cui.core/ComponentNode.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class dev.mikepenz.a2cui.core/DataModel { // dev.mikepenz.a2cui.core/DataModel|null[0]
+    constructor <init>(kotlinx.serialization.json/JsonElement = ...) // dev.mikepenz.a2cui.core/DataModel.<init>|<init>(kotlinx.serialization.json.JsonElement){}[0]
+
+    final val root // dev.mikepenz.a2cui.core/DataModel.root|{}root[0]
+        final fun <get-root>(): kotlinx.coroutines.flow/StateFlow<kotlinx.serialization.json/JsonElement> // dev.mikepenz.a2cui.core/DataModel.root.<get-root>|<get-root>(){}[0]
+
+    final fun observe(kotlin/String): kotlinx.coroutines.flow/Flow<kotlinx.serialization.json/JsonElement?> // dev.mikepenz.a2cui.core/DataModel.observe|observe(kotlin.String){}[0]
+    final fun read(kotlin/String): kotlinx.serialization.json/JsonElement? // dev.mikepenz.a2cui.core/DataModel.read|read(kotlin.String){}[0]
+    final fun snapshot(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/DataModel.snapshot|snapshot(){}[0]
+    final fun write(kotlin/String, kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.core/DataModel.write|write(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+}
+
+final object dev.mikepenz.a2cui.core/ErrorCode { // dev.mikepenz.a2cui.core/ErrorCode|null[0]
+    final const val PARSE_ERROR // dev.mikepenz.a2cui.core/ErrorCode.PARSE_ERROR|{}PARSE_ERROR[0]
+        final fun <get-PARSE_ERROR>(): kotlin/String // dev.mikepenz.a2cui.core/ErrorCode.PARSE_ERROR.<get-PARSE_ERROR>|<get-PARSE_ERROR>(){}[0]
+    final const val UNKNOWN_ACTION // dev.mikepenz.a2cui.core/ErrorCode.UNKNOWN_ACTION|{}UNKNOWN_ACTION[0]
+        final fun <get-UNKNOWN_ACTION>(): kotlin/String // dev.mikepenz.a2cui.core/ErrorCode.UNKNOWN_ACTION.<get-UNKNOWN_ACTION>|<get-UNKNOWN_ACTION>(){}[0]
+    final const val UNKNOWN_COMPONENT // dev.mikepenz.a2cui.core/ErrorCode.UNKNOWN_COMPONENT|{}UNKNOWN_COMPONENT[0]
+        final fun <get-UNKNOWN_COMPONENT>(): kotlin/String // dev.mikepenz.a2cui.core/ErrorCode.UNKNOWN_COMPONENT.<get-UNKNOWN_COMPONENT>|<get-UNKNOWN_COMPONENT>(){}[0]
+    final const val UNKNOWN_SURFACE // dev.mikepenz.a2cui.core/ErrorCode.UNKNOWN_SURFACE|{}UNKNOWN_SURFACE[0]
+        final fun <get-UNKNOWN_SURFACE>(): kotlin/String // dev.mikepenz.a2cui.core/ErrorCode.UNKNOWN_SURFACE.<get-UNKNOWN_SURFACE>|<get-UNKNOWN_SURFACE>(){}[0]
+    final const val VALIDATION_FAILED // dev.mikepenz.a2cui.core/ErrorCode.VALIDATION_FAILED|{}VALIDATION_FAILED[0]
+        final fun <get-VALIDATION_FAILED>(): kotlin/String // dev.mikepenz.a2cui.core/ErrorCode.VALIDATION_FAILED.<get-VALIDATION_FAILED>|<get-VALIDATION_FAILED>(){}[0]
+}
+
+final object dev.mikepenz.a2cui.core/JsonPointer { // dev.mikepenz.a2cui.core/JsonPointer|null[0]
+    final fun encode(kotlin.collections/List<kotlin/String>): kotlin/String // dev.mikepenz.a2cui.core/JsonPointer.encode|encode(kotlin.collections.List<kotlin.String>){}[0]
+    final fun parse(kotlin/String): kotlin.collections/List<kotlin/String> // dev.mikepenz.a2cui.core/JsonPointer.parse|parse(kotlin.String){}[0]
+    final fun read(kotlinx.serialization.json/JsonElement, kotlin/String): kotlinx.serialization.json/JsonElement? // dev.mikepenz.a2cui.core/JsonPointer.read|read(kotlinx.serialization.json.JsonElement;kotlin.String){}[0]
+    final fun write(kotlinx.serialization.json/JsonElement, kotlin/String, kotlinx.serialization.json/JsonElement): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.core/JsonPointer.write|write(kotlinx.serialization.json.JsonElement;kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+}
+
+final const val dev.mikepenz.a2cui.core/A2CUI_VERSION // dev.mikepenz.a2cui.core/A2CUI_VERSION|{}A2CUI_VERSION[0]
+    final fun <get-A2CUI_VERSION>(): kotlin/String // dev.mikepenz.a2cui.core/A2CUI_VERSION.<get-A2CUI_VERSION>|<get-A2CUI_VERSION>(){}[0]
+final const val dev.mikepenz.a2cui.core/A2UI_PROTOCOL_VERSION // dev.mikepenz.a2cui.core/A2UI_PROTOCOL_VERSION|{}A2UI_PROTOCOL_VERSION[0]
+    final fun <get-A2UI_PROTOCOL_VERSION>(): kotlin/String // dev.mikepenz.a2cui.core/A2UI_PROTOCOL_VERSION.<get-A2UI_PROTOCOL_VERSION>|<get-A2UI_PROTOCOL_VERSION>(){}[0]
+
+final val dev.mikepenz.a2cui.core/A2uiJson // dev.mikepenz.a2cui.core/A2uiJson|{}A2uiJson[0]
+    final fun <get-A2uiJson>(): kotlinx.serialization.json/Json // dev.mikepenz.a2cui.core/A2uiJson.<get-A2uiJson>|<get-A2uiJson>(){}[0]

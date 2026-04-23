@@ -1,0 +1,156 @@
+public final class dev/mikepenz/a2cui/actions/ActionDescriptor {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;)Ldev/mikepenz/a2cui/actions/ActionDescriptor;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/actions/ActionDescriptor;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ActionDescriptor;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getParameters ()Lkotlinx/serialization/json/JsonObject;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/actions/ActionRegistration {
+	public static final field $stable I
+	public fun <init> (Ldev/mikepenz/a2cui/actions/ActionDescriptor;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Ldev/mikepenz/a2cui/actions/ActionDescriptor;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAccumulatorFactory ()Lkotlin/jvm/functions/Function0;
+	public final fun getDescriptor ()Ldev/mikepenz/a2cui/actions/ActionDescriptor;
+	public final fun getRender ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class dev/mikepenz/a2cui/actions/ActionRegistry {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun descriptors ()Ljava/util/List;
+	public final fun get (Ljava/lang/String;)Ldev/mikepenz/a2cui/actions/ActionRegistration;
+	public final fun getEntries ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun register (Ldev/mikepenz/a2cui/actions/ActionRegistration;)V
+	public final fun unregister (Ljava/lang/String;)V
+}
+
+public final class dev/mikepenz/a2cui/actions/LocalActionRegistryKt {
+	public static final fun getLocalActionRegistry ()Landroidx/compose/runtime/ProvidableCompositionLocal;
+}
+
+public final class dev/mikepenz/a2cui/actions/ReadableEntry {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/actions/ReadableEntry;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/actions/ReadableEntry;Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ReadableEntry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getValue ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/actions/ReadableRegistry {
+	public static final field $stable I
+	public fun <init> ()V
+	public final fun asPromptObject ()Lkotlinx/serialization/json/JsonObject;
+	public final fun getEntries ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun put (Ldev/mikepenz/a2cui/actions/ReadableEntry;)V
+	public final fun remove (Ljava/lang/String;)V
+}
+
+public final class dev/mikepenz/a2cui/actions/RememberActionKt {
+	public static final fun decodeArgs (Ljava/lang/String;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/json/Json;)Ljava/lang/Object;
+	public static synthetic fun decodeArgs$default (Ljava/lang/String;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/json/Json;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun rememberAction (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/json/JsonObject;Lkotlinx/serialization/json/Json;Lkotlin/jvm/functions/Function3;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class dev/mikepenz/a2cui/actions/RememberReadableKt {
+	public static final fun getLocalReadableRegistry ()Landroidx/compose/runtime/ProvidableCompositionLocal;
+	public static final fun rememberReadable (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroidx/compose/runtime/Composer;I)V
+	public static final fun rememberReadable (Ljava/lang/String;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;Landroidx/compose/runtime/Composer;I)V
+}
+
+public final class dev/mikepenz/a2cui/actions/StreamingArgsMerger {
+	public static final field $stable I
+	public static final field Companion Ldev/mikepenz/a2cui/actions/StreamingArgsMerger$Companion;
+	public fun <init> ()V
+	public fun <init> (Lkotlinx/serialization/json/Json;)V
+	public synthetic fun <init> (Lkotlinx/serialization/json/Json;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun append (Ljava/lang/String;)Lkotlinx/serialization/json/JsonObject;
+	public final fun buffered ()Ljava/lang/String;
+	public final fun finalParse ()Lkotlinx/serialization/json/JsonObject;
+}
+
+public final class dev/mikepenz/a2cui/actions/StreamingArgsMerger$Companion {
+}
+
+public abstract interface class dev/mikepenz/a2cui/actions/ToolCallStatus {
+}
+
+public final class dev/mikepenz/a2cui/actions/ToolCallStatus$Complete : dev/mikepenz/a2cui/actions/ToolCallStatus {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Object;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Ljava/lang/Object;Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$Complete;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/actions/ToolCallStatus$Complete;Ljava/lang/Object;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$Complete;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/lang/Object;
+	public final fun getResult ()Lkotlinx/serialization/json/JsonElement;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/actions/ToolCallStatus$Executing : dev/mikepenz/a2cui/actions/ToolCallStatus {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$Executing;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/actions/ToolCallStatus$Executing;Ljava/lang/Object;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$Executing;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/actions/ToolCallStatus$Failed : dev/mikepenz/a2cui/actions/ToolCallStatus {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Throwable;Lkotlinx/serialization/json/JsonObject;)V
+	public final fun component1 ()Ljava/lang/Throwable;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun copy (Ljava/lang/Throwable;Lkotlinx/serialization/json/JsonObject;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$Failed;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/actions/ToolCallStatus$Failed;Ljava/lang/Throwable;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Ljava/lang/Throwable;
+	public final fun getPartial ()Lkotlinx/serialization/json/JsonObject;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/actions/ToolCallStatus$InProgress : dev/mikepenz/a2cui/actions/ToolCallStatus {
+	public static final field $stable I
+	public fun <init> (Lkotlinx/serialization/json/JsonObject;)V
+	public final fun component1 ()Lkotlinx/serialization/json/JsonObject;
+	public final fun copy (Lkotlinx/serialization/json/JsonObject;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$InProgress;
+	public static synthetic fun copy$default (Ldev/mikepenz/a2cui/actions/ToolCallStatus$InProgress;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ToolCallStatus$InProgress;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPartial ()Lkotlinx/serialization/json/JsonObject;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/mikepenz/a2cui/actions/TypedArgsAccumulator {
+	public static final field $stable I
+	public fun <init> (Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/json/Json;Ldev/mikepenz/a2cui/actions/StreamingArgsMerger;)V
+	public synthetic fun <init> (Lkotlinx/serialization/KSerializer;Lkotlinx/serialization/json/Json;Ldev/mikepenz/a2cui/actions/StreamingArgsMerger;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getStatus ()Ldev/mikepenz/a2cui/actions/ToolCallStatus;
+	public final fun onDelta (Ljava/lang/String;)Ldev/mikepenz/a2cui/actions/ToolCallStatus;
+	public final fun onEnd (Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/actions/ToolCallStatus;
+	public static synthetic fun onEnd$default (Ldev/mikepenz/a2cui/actions/TypedArgsAccumulator;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Ldev/mikepenz/a2cui/actions/ToolCallStatus;
+}
+

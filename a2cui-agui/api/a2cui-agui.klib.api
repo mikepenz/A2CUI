@@ -1,0 +1,882 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-agui>
+sealed interface dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent|null[0]
+    abstract val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.timestamp|{}timestamp[0]
+        abstract fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+    final class Custom : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.Custom|null[0]
+        constructor <init>(kotlin/String, kotlinx.serialization.json/JsonElement, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.Custom.<init>|<init>(kotlin.String;kotlinx.serialization.json.JsonElement;kotlin.Long?){}[0]
+
+        final val name // dev.mikepenz.a2cui.agui/AguiEvent.Custom.name|{}name[0]
+            final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.Custom.name.<get-name>|<get-name>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.Custom.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.Custom.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+        final val value // dev.mikepenz.a2cui.agui/AguiEvent.Custom.value|{}value[0]
+            final fun <get-value>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/AguiEvent.Custom.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.Custom.component1|component1(){}[0]
+        final fun component2(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/AguiEvent.Custom.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.Custom.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlinx.serialization.json/JsonElement = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.Custom // dev.mikepenz.a2cui.agui/AguiEvent.Custom.copy|copy(kotlin.String;kotlinx.serialization.json.JsonElement;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.Custom.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.Custom.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.Custom.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.Custom> { // dev.mikepenz.a2cui.agui/AguiEvent.Custom.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.Custom.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.Custom.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.Custom.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.Custom // dev.mikepenz.a2cui.agui/AguiEvent.Custom.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.Custom) // dev.mikepenz.a2cui.agui/AguiEvent.Custom.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.Custom){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.Custom.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.Custom> // dev.mikepenz.a2cui.agui/AguiEvent.Custom.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class MessagesSnapshot : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonArray, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.<init>|<init>(kotlinx.serialization.json.JsonArray;kotlin.Long?){}[0]
+
+        final val messages // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.messages|{}messages[0]
+            final fun <get-messages>(): kotlinx.serialization.json/JsonArray // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.messages.<get-messages>|<get-messages>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlinx.serialization.json/JsonArray // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.component2|component2(){}[0]
+        final fun copy(kotlinx.serialization.json/JsonArray = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.copy|copy(kotlinx.serialization.json.JsonArray;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot> { // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot) // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.MessagesSnapshot){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot> // dev.mikepenz.a2cui.agui/AguiEvent.MessagesSnapshot.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Raw : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.Raw|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonElement, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.Raw.<init>|<init>(kotlinx.serialization.json.JsonElement;kotlin.Long?){}[0]
+
+        final val event // dev.mikepenz.a2cui.agui/AguiEvent.Raw.event|{}event[0]
+            final fun <get-event>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/AguiEvent.Raw.event.<get-event>|<get-event>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.Raw.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.Raw.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/AguiEvent.Raw.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.Raw.component2|component2(){}[0]
+        final fun copy(kotlinx.serialization.json/JsonElement = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.Raw // dev.mikepenz.a2cui.agui/AguiEvent.Raw.copy|copy(kotlinx.serialization.json.JsonElement;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.Raw.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.Raw.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.Raw.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.Raw> { // dev.mikepenz.a2cui.agui/AguiEvent.Raw.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.Raw.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.Raw.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.Raw.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.Raw // dev.mikepenz.a2cui.agui/AguiEvent.Raw.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.Raw) // dev.mikepenz.a2cui.agui/AguiEvent.Raw.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.Raw){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.Raw.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.Raw> // dev.mikepenz.a2cui.agui/AguiEvent.Raw.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class RunError : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.RunError|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ..., kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.RunError.<init>|<init>(kotlin.String;kotlin.String?;kotlin.Long?){}[0]
+
+        final val code // dev.mikepenz.a2cui.agui/AguiEvent.RunError.code|{}code[0]
+            final fun <get-code>(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.RunError.code.<get-code>|<get-code>(){}[0]
+        final val message // dev.mikepenz.a2cui.agui/AguiEvent.RunError.message|{}message[0]
+            final fun <get-message>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunError.message.<get-message>|<get-message>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.RunError.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.RunError.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunError.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.RunError.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.RunError.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String? = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.RunError // dev.mikepenz.a2cui.agui/AguiEvent.RunError.copy|copy(kotlin.String;kotlin.String?;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.RunError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.RunError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunError.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.RunError> { // dev.mikepenz.a2cui.agui/AguiEvent.RunError.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.RunError.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.RunError.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.RunError.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.RunError // dev.mikepenz.a2cui.agui/AguiEvent.RunError.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.RunError) // dev.mikepenz.a2cui.agui/AguiEvent.RunError.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.RunError){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.RunError.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.RunError> // dev.mikepenz.a2cui.agui/AguiEvent.RunError.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class RunFinished : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin.collections/List<dev.mikepenz.a2cui.agui/Interrupt> = ..., kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.collections.List<dev.mikepenz.a2cui.agui.Interrupt>;kotlin.Long?){}[0]
+
+        final val interrupts // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.interrupts|{}interrupts[0]
+            final fun <get-interrupts>(): kotlin.collections/List<dev.mikepenz.a2cui.agui/Interrupt> // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.interrupts.<get-interrupts>|<get-interrupts>(){}[0]
+        final val outcome // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.outcome|{}outcome[0]
+            final fun <get-outcome>(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.outcome.<get-outcome>|<get-outcome>(){}[0]
+        final val runId // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.runId|{}runId[0]
+            final fun <get-runId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.runId.<get-runId>|<get-runId>(){}[0]
+        final val threadId // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.threadId|{}threadId[0]
+            final fun <get-threadId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.threadId.<get-threadId>|<get-threadId>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.component2|component2(){}[0]
+        final fun component3(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.component3|component3(){}[0]
+        final fun component4(): kotlin.collections/List<dev.mikepenz.a2cui.agui/Interrupt> // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.component4|component4(){}[0]
+        final fun component5(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.component5|component5(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin.collections/List<dev.mikepenz.a2cui.agui/Interrupt> = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.RunFinished // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.collections.List<dev.mikepenz.a2cui.agui.Interrupt>;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.RunFinished> { // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.RunFinished // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.RunFinished) // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.RunFinished){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.Companion|null[0]
+            final val $childSerializers // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.Companion.$childSerializers|{}$childSerializers[0]
+
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.RunFinished> // dev.mikepenz.a2cui.agui/AguiEvent.RunFinished.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class RunStarted : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.<init>|<init>(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+
+        final val runId // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.runId|{}runId[0]
+            final fun <get-runId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.runId.<get-runId>|<get-runId>(){}[0]
+        final val threadId // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.threadId|{}threadId[0]
+            final fun <get-threadId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.threadId.<get-threadId>|<get-threadId>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.RunStarted // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.copy|copy(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.RunStarted> { // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.RunStarted // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.RunStarted) // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.RunStarted){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.RunStarted> // dev.mikepenz.a2cui.agui/AguiEvent.RunStarted.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class StateDelta : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonArray, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.<init>|<init>(kotlinx.serialization.json.JsonArray;kotlin.Long?){}[0]
+
+        final val delta // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.delta|{}delta[0]
+            final fun <get-delta>(): kotlinx.serialization.json/JsonArray // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.delta.<get-delta>|<get-delta>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlinx.serialization.json/JsonArray // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.component2|component2(){}[0]
+        final fun copy(kotlinx.serialization.json/JsonArray = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.StateDelta // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.copy|copy(kotlinx.serialization.json.JsonArray;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StateDelta> { // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.StateDelta // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.StateDelta) // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.StateDelta){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StateDelta> // dev.mikepenz.a2cui.agui/AguiEvent.StateDelta.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class StateSnapshot : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot|null[0]
+        constructor <init>(kotlinx.serialization.json/JsonElement, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.<init>|<init>(kotlinx.serialization.json.JsonElement;kotlin.Long?){}[0]
+
+        final val snapshot // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.snapshot|{}snapshot[0]
+            final fun <get-snapshot>(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.component2|component2(){}[0]
+        final fun copy(kotlinx.serialization.json/JsonElement = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.copy|copy(kotlinx.serialization.json.JsonElement;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot> { // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot) // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.StateSnapshot){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot> // dev.mikepenz.a2cui.agui/AguiEvent.StateSnapshot.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class StepFinished : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished|null[0]
+        constructor <init>(kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.<init>|<init>(kotlin.String;kotlin.Long?){}[0]
+
+        final val stepName // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.stepName|{}stepName[0]
+            final fun <get-stepName>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.stepName.<get-stepName>|<get-stepName>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.StepFinished // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.copy|copy(kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StepFinished> { // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.StepFinished // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.StepFinished) // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.StepFinished){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StepFinished> // dev.mikepenz.a2cui.agui/AguiEvent.StepFinished.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class StepStarted : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted|null[0]
+        constructor <init>(kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.<init>|<init>(kotlin.String;kotlin.Long?){}[0]
+
+        final val stepName // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.stepName|{}stepName[0]
+            final fun <get-stepName>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.stepName.<get-stepName>|<get-stepName>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.StepStarted // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.copy|copy(kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StepStarted> { // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.StepStarted // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.StepStarted) // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.StepStarted){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.StepStarted> // dev.mikepenz.a2cui.agui/AguiEvent.StepStarted.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class TextMessageContent : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.<init>|<init>(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+
+        final val delta // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.delta|{}delta[0]
+            final fun <get-delta>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.delta.<get-delta>|<get-delta>(){}[0]
+        final val messageId // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.messageId|{}messageId[0]
+            final fun <get-messageId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.messageId.<get-messageId>|<get-messageId>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.copy|copy(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent> { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent) // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.TextMessageContent){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent> // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageContent.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class TextMessageEnd : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd|null[0]
+        constructor <init>(kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.<init>|<init>(kotlin.String;kotlin.Long?){}[0]
+
+        final val messageId // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.messageId|{}messageId[0]
+            final fun <get-messageId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.messageId.<get-messageId>|<get-messageId>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.copy|copy(kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd> { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd) // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.TextMessageEnd){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd> // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageEnd.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class TextMessageStart : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart|null[0]
+        constructor <init>(kotlin/String, kotlin/String = ..., kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.<init>|<init>(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+
+        final val messageId // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.messageId|{}messageId[0]
+            final fun <get-messageId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.messageId.<get-messageId>|<get-messageId>(){}[0]
+        final val role // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.role|{}role[0]
+            final fun <get-role>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.role.<get-role>|<get-role>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.copy|copy(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart> { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart) // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.TextMessageStart){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart> // dev.mikepenz.a2cui.agui/AguiEvent.TextMessageStart.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class ToolCallArgs : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.<init>|<init>(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+
+        final val delta // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.delta|{}delta[0]
+            final fun <get-delta>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.delta.<get-delta>|<get-delta>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.component2|component2(){}[0]
+        final fun component3(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.copy|copy(kotlin.String;kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs> { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.ToolCallArgs){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallArgs.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class ToolCallEnd : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd|null[0]
+        constructor <init>(kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.<init>|<init>(kotlin.String;kotlin.Long?){}[0]
+
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.component1|component1(){}[0]
+        final fun component2(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.copy|copy(kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd> { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.ToolCallEnd){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallEnd.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class ToolCallResult : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ..., kotlin/String, kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.<init>|<init>(kotlin.String;kotlin.String?;kotlin.String;kotlin.Long?){}[0]
+
+        final val content // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.content|{}content[0]
+            final fun <get-content>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.content.<get-content>|<get-content>(){}[0]
+        final val messageId // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.messageId|{}messageId[0]
+            final fun <get-messageId>(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.messageId.<get-messageId>|<get-messageId>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.component1|component1(){}[0]
+        final fun component2(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.component2|component2(){}[0]
+        final fun component3(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.component3|component3(){}[0]
+        final fun component4(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.component4|component4(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String? = ..., kotlin/String = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.copy|copy(kotlin.String;kotlin.String?;kotlin.String;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult> { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.ToolCallResult){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallResult.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class ToolCallStart : dev.mikepenz.a2cui.agui/AguiEvent { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.Long?){}[0]
+
+        final val parentMessageId // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.parentMessageId|{}parentMessageId[0]
+            final fun <get-parentMessageId>(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.parentMessageId.<get-parentMessageId>|<get-parentMessageId>(){}[0]
+        final val timestamp // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.timestamp|{}timestamp[0]
+            final fun <get-timestamp>(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+        final val toolCallName // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.toolCallName|{}toolCallName[0]
+            final fun <get-toolCallName>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.toolCallName.<get-toolCallName>|<get-toolCallName>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.component2|component2(){}[0]
+        final fun component3(): kotlin/String? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.component3|component3(){}[0]
+        final fun component4(): kotlin/Long? // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.component4|component4(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.Long?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart> { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.$serializer|null[0]
+            final val descriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart) // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.AguiEvent.ToolCallStart){}[0]
+        }
+
+        final object Companion { // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart> // dev.mikepenz.a2cui.agui/AguiEvent.ToolCallStart.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // dev.mikepenz.a2cui.agui/AguiEvent.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/AguiEvent> // dev.mikepenz.a2cui.agui/AguiEvent.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // dev.mikepenz.a2cui.agui/AguiEvent.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+}
+
+sealed interface dev.mikepenz.a2cui.agui/AguiStreamEvent { // dev.mikepenz.a2cui.agui/AguiStreamEvent|null[0]
+    final class Event : dev.mikepenz.a2cui.agui/AguiStreamEvent { // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event|null[0]
+        constructor <init>(dev.mikepenz.a2cui.agui/AguiEvent) // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.<init>|<init>(dev.mikepenz.a2cui.agui.AguiEvent){}[0]
+
+        final val event // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.event|{}event[0]
+            final fun <get-event>(): dev.mikepenz.a2cui.agui/AguiEvent // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.event.<get-event>|<get-event>(){}[0]
+
+        final fun component1(): dev.mikepenz.a2cui.agui/AguiEvent // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.component1|component1(){}[0]
+        final fun copy(dev.mikepenz.a2cui.agui/AguiEvent = ...): dev.mikepenz.a2cui.agui/AguiStreamEvent.Event // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.copy|copy(dev.mikepenz.a2cui.agui.AguiEvent){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiStreamEvent.Event.toString|toString(){}[0]
+    }
+
+    final class ParseError : dev.mikepenz.a2cui.agui/AguiStreamEvent { // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val message // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.message|{}message[0]
+            final fun <get-message>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.message.<get-message>|<get-message>(){}[0]
+        final val raw // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.raw|{}raw[0]
+            final fun <get-raw>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.raw.<get-raw>|<get-raw>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/AguiStreamEvent.ParseError.toString|toString(){}[0]
+    }
+}
+
+sealed interface dev.mikepenz.a2cui.agui/ToolCallEvent { // dev.mikepenz.a2cui.agui/ToolCallEvent|null[0]
+    abstract val toolCallId // dev.mikepenz.a2cui.agui/ToolCallEvent.toolCallId|{}toolCallId[0]
+        abstract fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+    abstract val toolCallName // dev.mikepenz.a2cui.agui/ToolCallEvent.toolCallName|{}toolCallName[0]
+        abstract fun <get-toolCallName>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.toolCallName.<get-toolCallName>|<get-toolCallName>(){}[0]
+
+    final class Args : dev.mikepenz.a2cui.agui/ToolCallEvent { // dev.mikepenz.a2cui.agui/ToolCallEvent.Args|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String) // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.<init>|<init>(kotlin.String;kotlin.String;kotlin.String){}[0]
+
+        final val args // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.args|{}args[0]
+            final fun <get-args>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.args.<get-args>|<get-args>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+        final val toolCallName // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.toolCallName|{}toolCallName[0]
+            final fun <get-toolCallName>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.toolCallName.<get-toolCallName>|<get-toolCallName>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.component2|component2(){}[0]
+        final fun component3(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ...): dev.mikepenz.a2cui.agui/ToolCallEvent.Args // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.copy|copy(kotlin.String;kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Args.toString|toString(){}[0]
+    }
+
+    final class ArgsComplete : dev.mikepenz.a2cui.agui/ToolCallEvent { // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String) // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.<init>|<init>(kotlin.String;kotlin.String;kotlin.String){}[0]
+
+        final val args // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.args|{}args[0]
+            final fun <get-args>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.args.<get-args>|<get-args>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+        final val toolCallName // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.toolCallName|{}toolCallName[0]
+            final fun <get-toolCallName>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.toolCallName.<get-toolCallName>|<get-toolCallName>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.component2|component2(){}[0]
+        final fun component3(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ...): dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.copy|copy(kotlin.String;kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.ArgsComplete.toString|toString(){}[0]
+    }
+
+    final class Result : dev.mikepenz.a2cui.agui/ToolCallEvent { // dev.mikepenz.a2cui.agui/ToolCallEvent.Result|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String, kotlin/String? = ...) // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.<init>|<init>(kotlin.String;kotlin.String;kotlin.String;kotlin.String?){}[0]
+
+        final val content // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.content|{}content[0]
+            final fun <get-content>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.content.<get-content>|<get-content>(){}[0]
+        final val messageId // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.messageId|{}messageId[0]
+            final fun <get-messageId>(): kotlin/String? // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.messageId.<get-messageId>|<get-messageId>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+        final val toolCallName // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.toolCallName|{}toolCallName[0]
+            final fun <get-toolCallName>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.toolCallName.<get-toolCallName>|<get-toolCallName>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.component2|component2(){}[0]
+        final fun component3(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.component3|component3(){}[0]
+        final fun component4(): kotlin/String? // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.component4|component4(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String = ..., kotlin/String? = ...): dev.mikepenz.a2cui.agui/ToolCallEvent.Result // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.copy|copy(kotlin.String;kotlin.String;kotlin.String;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Result.toString|toString(){}[0]
+    }
+
+    final class Started : dev.mikepenz.a2cui.agui/ToolCallEvent { // dev.mikepenz.a2cui.agui/ToolCallEvent.Started|null[0]
+        constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ...) // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?){}[0]
+
+        final val parentMessageId // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.parentMessageId|{}parentMessageId[0]
+            final fun <get-parentMessageId>(): kotlin/String? // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.parentMessageId.<get-parentMessageId>|<get-parentMessageId>(){}[0]
+        final val toolCallId // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.toolCallId|{}toolCallId[0]
+            final fun <get-toolCallId>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+        final val toolCallName // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.toolCallName|{}toolCallName[0]
+            final fun <get-toolCallName>(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.toolCallName.<get-toolCallName>|<get-toolCallName>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.component1|component1(){}[0]
+        final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.component2|component2(){}[0]
+        final fun component3(): kotlin/String? // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ...): dev.mikepenz.a2cui.agui/ToolCallEvent.Started // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.copy|copy(kotlin.String;kotlin.String;kotlin.String?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/ToolCallEvent.Started.toString|toString(){}[0]
+    }
+}
+
+final class dev.mikepenz.a2cui.agui/AguiA2cuiBridge { // dev.mikepenz.a2cui.agui/AguiA2cuiBridge|null[0]
+    constructor <init>(dev.mikepenz.a2cui.core/A2uiParser = ..., kotlin/String = ...) // dev.mikepenz.a2cui.agui/AguiA2cuiBridge.<init>|<init>(dev.mikepenz.a2cui.core.A2uiParser;kotlin.String){}[0]
+
+    final val a2uiCustomEventName // dev.mikepenz.a2cui.agui/AguiA2cuiBridge.a2uiCustomEventName|{}a2uiCustomEventName[0]
+        final fun <get-a2uiCustomEventName>(): kotlin/String // dev.mikepenz.a2cui.agui/AguiA2cuiBridge.a2uiCustomEventName.<get-a2uiCustomEventName>|<get-a2uiCustomEventName>(){}[0]
+
+    final fun a2uiFrames(kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.agui/AguiEvent>): kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.core/A2uiStreamEvent> // dev.mikepenz.a2cui.agui/AguiA2cuiBridge.a2uiFrames|a2uiFrames(kotlinx.coroutines.flow.Flow<dev.mikepenz.a2cui.agui.AguiEvent>){}[0]
+    final fun interrupts(kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.agui/AguiEvent>): kotlinx.coroutines.flow/Flow<kotlin.collections/List<dev.mikepenz.a2cui.agui/Interrupt>> // dev.mikepenz.a2cui.agui/AguiA2cuiBridge.interrupts|interrupts(kotlinx.coroutines.flow.Flow<dev.mikepenz.a2cui.agui.AguiEvent>){}[0]
+    final fun toolCalls(kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.agui/AguiEvent>): kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.agui/ToolCallEvent> // dev.mikepenz.a2cui.agui/AguiA2cuiBridge.toolCalls|toolCalls(kotlinx.coroutines.flow.Flow<dev.mikepenz.a2cui.agui.AguiEvent>){}[0]
+}
+
+final class dev.mikepenz.a2cui.agui/AguiEventParser { // dev.mikepenz.a2cui.agui/AguiEventParser|null[0]
+    constructor <init>(kotlinx.serialization.json/Json = ...) // dev.mikepenz.a2cui.agui/AguiEventParser.<init>|<init>(kotlinx.serialization.json.Json){}[0]
+
+    final fun parse(kotlinx.coroutines.flow/Flow<kotlin/String>): kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.agui/AguiStreamEvent> // dev.mikepenz.a2cui.agui/AguiEventParser.parse|parse(kotlinx.coroutines.flow.Flow<kotlin.String>){}[0]
+    final fun parseOne(kotlin/String): dev.mikepenz.a2cui.agui/AguiStreamEvent // dev.mikepenz.a2cui.agui/AguiEventParser.parseOne|parseOne(kotlin.String){}[0]
+}
+
+final class dev.mikepenz.a2cui.agui/AguiStateReducer { // dev.mikepenz.a2cui.agui/AguiStateReducer|null[0]
+    constructor <init>(dev.mikepenz.a2cui.core/DataModel = ...) // dev.mikepenz.a2cui.agui/AguiStateReducer.<init>|<init>(dev.mikepenz.a2cui.core.DataModel){}[0]
+
+    final val outbound // dev.mikepenz.a2cui.agui/AguiStateReducer.outbound|{}outbound[0]
+        final fun <get-outbound>(): kotlinx.coroutines.flow/SharedFlow<kotlinx.serialization.json/JsonArray> // dev.mikepenz.a2cui.agui/AguiStateReducer.outbound.<get-outbound>|<get-outbound>(){}[0]
+    final val state // dev.mikepenz.a2cui.agui/AguiStateReducer.state|{}state[0]
+        final fun <get-state>(): kotlinx.coroutines.flow/StateFlow<kotlinx.serialization.json/JsonElement> // dev.mikepenz.a2cui.agui/AguiStateReducer.state.<get-state>|<get-state>(){}[0]
+    final val store // dev.mikepenz.a2cui.agui/AguiStateReducer.store|{}store[0]
+        final fun <get-store>(): dev.mikepenz.a2cui.core/DataModel // dev.mikepenz.a2cui.agui/AguiStateReducer.store.<get-store>|<get-store>(){}[0]
+
+    final fun apply(dev.mikepenz.a2cui.agui/AguiEvent) // dev.mikepenz.a2cui.agui/AguiStateReducer.apply|apply(dev.mikepenz.a2cui.agui.AguiEvent){}[0]
+    final fun writeLocal(kotlin/String, kotlinx.serialization.json/JsonElement) // dev.mikepenz.a2cui.agui/AguiStateReducer.writeLocal|writeLocal(kotlin.String;kotlinx.serialization.json.JsonElement){}[0]
+}
+
+final class dev.mikepenz.a2cui.agui/Interrupt { // dev.mikepenz.a2cui.agui/Interrupt|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin/String? = ..., kotlin/String? = ..., kotlinx.serialization.json/JsonObject? = ..., kotlin/Long? = ...) // dev.mikepenz.a2cui.agui/Interrupt.<init>|<init>(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?;kotlinx.serialization.json.JsonObject?;kotlin.Long?){}[0]
+
+    final val expiresAt // dev.mikepenz.a2cui.agui/Interrupt.expiresAt|{}expiresAt[0]
+        final fun <get-expiresAt>(): kotlin/Long? // dev.mikepenz.a2cui.agui/Interrupt.expiresAt.<get-expiresAt>|<get-expiresAt>(){}[0]
+    final val id // dev.mikepenz.a2cui.agui/Interrupt.id|{}id[0]
+        final fun <get-id>(): kotlin/String // dev.mikepenz.a2cui.agui/Interrupt.id.<get-id>|<get-id>(){}[0]
+    final val message // dev.mikepenz.a2cui.agui/Interrupt.message|{}message[0]
+        final fun <get-message>(): kotlin/String? // dev.mikepenz.a2cui.agui/Interrupt.message.<get-message>|<get-message>(){}[0]
+    final val reason // dev.mikepenz.a2cui.agui/Interrupt.reason|{}reason[0]
+        final fun <get-reason>(): kotlin/String // dev.mikepenz.a2cui.agui/Interrupt.reason.<get-reason>|<get-reason>(){}[0]
+    final val responseSchema // dev.mikepenz.a2cui.agui/Interrupt.responseSchema|{}responseSchema[0]
+        final fun <get-responseSchema>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.agui/Interrupt.responseSchema.<get-responseSchema>|<get-responseSchema>(){}[0]
+    final val toolCallId // dev.mikepenz.a2cui.agui/Interrupt.toolCallId|{}toolCallId[0]
+        final fun <get-toolCallId>(): kotlin/String? // dev.mikepenz.a2cui.agui/Interrupt.toolCallId.<get-toolCallId>|<get-toolCallId>(){}[0]
+
+    final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/Interrupt.component1|component1(){}[0]
+    final fun component2(): kotlin/String // dev.mikepenz.a2cui.agui/Interrupt.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // dev.mikepenz.a2cui.agui/Interrupt.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // dev.mikepenz.a2cui.agui/Interrupt.component4|component4(){}[0]
+    final fun component5(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.agui/Interrupt.component5|component5(){}[0]
+    final fun component6(): kotlin/Long? // dev.mikepenz.a2cui.agui/Interrupt.component6|component6(){}[0]
+    final fun copy(kotlin/String = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String? = ..., kotlinx.serialization.json/JsonObject? = ..., kotlin/Long? = ...): dev.mikepenz.a2cui.agui/Interrupt // dev.mikepenz.a2cui.agui/Interrupt.copy|copy(kotlin.String;kotlin.String;kotlin.String?;kotlin.String?;kotlinx.serialization.json.JsonObject?;kotlin.Long?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/Interrupt.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/Interrupt.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/Interrupt.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<dev.mikepenz.a2cui.agui/Interrupt> { // dev.mikepenz.a2cui.agui/Interrupt.$serializer|null[0]
+        final val descriptor // dev.mikepenz.a2cui.agui/Interrupt.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // dev.mikepenz.a2cui.agui/Interrupt.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // dev.mikepenz.a2cui.agui/Interrupt.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): dev.mikepenz.a2cui.agui/Interrupt // dev.mikepenz.a2cui.agui/Interrupt.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, dev.mikepenz.a2cui.agui/Interrupt) // dev.mikepenz.a2cui.agui/Interrupt.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;dev.mikepenz.a2cui.agui.Interrupt){}[0]
+    }
+
+    final object Companion { // dev.mikepenz.a2cui.agui/Interrupt.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<dev.mikepenz.a2cui.agui/Interrupt> // dev.mikepenz.a2cui.agui/Interrupt.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class dev.mikepenz.a2cui.agui/InterruptAwaiter { // dev.mikepenz.a2cui.agui/InterruptAwaiter|null[0]
+    constructor <init>(dev.mikepenz.a2cui.agui/AguiA2cuiBridge) // dev.mikepenz.a2cui.agui/InterruptAwaiter.<init>|<init>(dev.mikepenz.a2cui.agui.AguiA2cuiBridge){}[0]
+
+    final suspend fun awaitApproval(kotlinx.coroutines.flow/Flow<dev.mikepenz.a2cui.agui/AguiEvent>): kotlin/Pair<kotlin.collections/List<dev.mikepenz.a2cui.agui/Interrupt>, kotlinx.coroutines/CompletableDeferred<kotlin.collections/List<dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse>>> // dev.mikepenz.a2cui.agui/InterruptAwaiter.awaitApproval|awaitApproval(kotlinx.coroutines.flow.Flow<dev.mikepenz.a2cui.agui.AguiEvent>){}[0]
+
+    final class ApprovalResponse { // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse|null[0]
+        constructor <init>(kotlin/String, dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status, kotlinx.serialization.json/JsonObject? = ...) // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.agui.InterruptAwaiter.ApprovalResponse.Status;kotlinx.serialization.json.JsonObject?){}[0]
+
+        final val interruptId // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.interruptId|{}interruptId[0]
+            final fun <get-interruptId>(): kotlin/String // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.interruptId.<get-interruptId>|<get-interruptId>(){}[0]
+        final val payload // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.payload|{}payload[0]
+            final fun <get-payload>(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.payload.<get-payload>|<get-payload>(){}[0]
+        final val status // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.status|{}status[0]
+            final fun <get-status>(): dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.status.<get-status>|<get-status>(){}[0]
+
+        final fun component1(): kotlin/String // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.component1|component1(){}[0]
+        final fun component2(): dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.component2|component2(){}[0]
+        final fun component3(): kotlinx.serialization.json/JsonObject? // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status = ..., kotlinx.serialization.json/JsonObject? = ...): dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.copy|copy(kotlin.String;dev.mikepenz.a2cui.agui.InterruptAwaiter.ApprovalResponse.Status;kotlinx.serialization.json.JsonObject?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.toString|toString(){}[0]
+
+        final enum class Status : kotlin/Enum<dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status> { // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status|null[0]
+            enum entry CANCELLED // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status.CANCELLED|null[0]
+            enum entry RESOLVED // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status.RESOLVED|null[0]
+
+            final val entries // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status.entries|#static{}entries[0]
+                final fun <get-entries>(): kotlin.enums/EnumEntries<dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status> // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status.entries.<get-entries>|<get-entries>#static(){}[0]
+
+            final fun valueOf(kotlin/String): dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status.valueOf|valueOf#static(kotlin.String){}[0]
+            final fun values(): kotlin/Array<dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status> // dev.mikepenz.a2cui.agui/InterruptAwaiter.ApprovalResponse.Status.values|values#static(){}[0]
+        }
+    }
+}
+
+final object dev.mikepenz.a2cui.agui/JsonPatch { // dev.mikepenz.a2cui.agui/JsonPatch|null[0]
+    final fun apply(kotlinx.serialization.json/JsonElement, kotlinx.serialization.json/JsonArray): kotlinx.serialization.json/JsonElement // dev.mikepenz.a2cui.agui/JsonPatch.apply|apply(kotlinx.serialization.json.JsonElement;kotlinx.serialization.json.JsonArray){}[0]
+}
+
+final val dev.mikepenz.a2cui.agui/AguiJson // dev.mikepenz.a2cui.agui/AguiJson|{}AguiJson[0]
+    final fun <get-AguiJson>(): kotlinx.serialization.json/Json // dev.mikepenz.a2cui.agui/AguiJson.<get-AguiJson>|<get-AguiJson>(){}[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiA2cuiBridge$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiA2cuiBridge$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiA2cuiBridge$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEventParser$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEventParser$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEventParser$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_Custom$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_Custom_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_Raw$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_Raw_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_RunError$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_RunError_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_RunFinished$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_RunFinished_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_RunStarted$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_RunStarted_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StateDelta$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StateDelta_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StepFinished$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StepFinished_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StepStarted$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_StepStarted_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStateReducer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStateReducer$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiStateReducer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_Event$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_Event$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiStreamEvent_Event$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_ParseError$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_ParseError$stableprop|#static{}dev_mikepenz_a2cui_agui_AguiStreamEvent_ParseError$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt$stableprop|#static{}dev_mikepenz_a2cui_agui_Interrupt$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter$stableprop|#static{}dev_mikepenz_a2cui_agui_InterruptAwaiter$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter_ApprovalResponse$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter_ApprovalResponse$stableprop|#static{}dev_mikepenz_a2cui_agui_InterruptAwaiter_ApprovalResponse$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt_$serializer$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt_$serializer$stableprop|#static{}dev_mikepenz_a2cui_agui_Interrupt_$serializer$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_JsonPatch$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_JsonPatch$stableprop|#static{}dev_mikepenz_a2cui_agui_JsonPatch$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Args$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Args$stableprop|#static{}dev_mikepenz_a2cui_agui_ToolCallEvent_Args$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_ArgsComplete$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_ArgsComplete$stableprop|#static{}dev_mikepenz_a2cui_agui_ToolCallEvent_ArgsComplete$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Result$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Result$stableprop|#static{}dev_mikepenz_a2cui_agui_ToolCallEvent_Result$stableprop[0]
+final val dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Started$stableprop // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Started$stableprop|#static{}dev_mikepenz_a2cui_agui_ToolCallEvent_Started$stableprop[0]
+
+final fun <#A: kotlin/Any?> dev.mikepenz.a2cui.agui/rememberCoAgentState(kotlin/String, #A, kotlinx.serialization/KSerializer<#A>, dev.mikepenz.a2cui.agui/AguiStateReducer, kotlinx.serialization.json/Json?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int): androidx.compose.runtime/MutableState<#A> // dev.mikepenz.a2cui.agui/rememberCoAgentState|rememberCoAgentState(kotlin.String;0:0;kotlinx.serialization.KSerializer<0:0>;dev.mikepenz.a2cui.agui.AguiStateReducer;kotlinx.serialization.json.Json?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){0§<kotlin.Any?>}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiA2cuiBridge$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiA2cuiBridge$stableprop_getter|dev_mikepenz_a2cui_agui_AguiA2cuiBridge$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEventParser$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEventParser$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEventParser$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_Custom$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Custom_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_Custom_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_MessagesSnapshot_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_Raw$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_Raw_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_Raw_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_RunError$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunError_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_RunError_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_RunFinished$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunFinished_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_RunFinished_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_RunStarted$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_RunStarted_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_RunStarted_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StateDelta$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateDelta_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StateDelta_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StateSnapshot_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StepFinished$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepFinished_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StepFinished_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StepStarted$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_StepStarted_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_StepStarted_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_TextMessageContent_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_TextMessageEnd_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_TextMessageStart_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallArgs_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallEnd_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallResult_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiEvent_ToolCallStart_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStateReducer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStateReducer$stableprop_getter|dev_mikepenz_a2cui_agui_AguiStateReducer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_Event$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_Event$stableprop_getter|dev_mikepenz_a2cui_agui_AguiStreamEvent_Event$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_ParseError$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_AguiStreamEvent_ParseError$stableprop_getter|dev_mikepenz_a2cui_agui_AguiStreamEvent_ParseError$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt$stableprop_getter|dev_mikepenz_a2cui_agui_Interrupt$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter$stableprop_getter|dev_mikepenz_a2cui_agui_InterruptAwaiter$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter_ApprovalResponse$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_InterruptAwaiter_ApprovalResponse$stableprop_getter|dev_mikepenz_a2cui_agui_InterruptAwaiter_ApprovalResponse$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt_$serializer$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_Interrupt_$serializer$stableprop_getter|dev_mikepenz_a2cui_agui_Interrupt_$serializer$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_JsonPatch$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_JsonPatch$stableprop_getter|dev_mikepenz_a2cui_agui_JsonPatch$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Args$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Args$stableprop_getter|dev_mikepenz_a2cui_agui_ToolCallEvent_Args$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_ArgsComplete$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_ArgsComplete$stableprop_getter|dev_mikepenz_a2cui_agui_ToolCallEvent_ArgsComplete$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Result$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Result$stableprop_getter|dev_mikepenz_a2cui_agui_ToolCallEvent_Result$stableprop_getter(){}[0]
+final fun dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Started$stableprop_getter(): kotlin/Int // dev.mikepenz.a2cui.agui/dev_mikepenz_a2cui_agui_ToolCallEvent_Started$stableprop_getter|dev_mikepenz_a2cui_agui_ToolCallEvent_Started$stableprop_getter(){}[0]

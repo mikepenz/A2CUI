@@ -25,6 +25,11 @@ tasks.withType<Test> {
 }
 
 kotlin {
+    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+    abiValidation {
+        enabled.set(true)
+    }
+
     compilerOptions {
         freeCompilerArgs.addAll("-Xopt-in=kotlin.RequiresOptIn", "-Xallow-experimental-api")
     }

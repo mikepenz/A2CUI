@@ -1,0 +1,76 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, macosArm64, macosX64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dev.mikepenz.a2cui:a2cui-codegen-annotations>
+open annotation class dev.mikepenz.a2cui.codegen.annotations/A2uiComponent : kotlin/Annotation { // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent|null[0]
+    constructor <init>(kotlin/String, kotlin/String = ..., kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiProp> = ..., kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiEvent> = ..., kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiSlot> = ...) // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.<init>|<init>(kotlin.String;kotlin.String;kotlin.Array<dev.mikepenz.a2cui.codegen.annotations.A2uiProp>;kotlin.Array<dev.mikepenz.a2cui.codegen.annotations.A2uiEvent>;kotlin.Array<dev.mikepenz.a2cui.codegen.annotations.A2uiSlot>){}[0]
+
+    final val description // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.description|{}description[0]
+        final fun <get-description>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.description.<get-description>|<get-description>(){}[0]
+    final val events // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.events|{}events[0]
+        final fun <get-events>(): kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiEvent> // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.events.<get-events>|<get-events>(){}[0]
+    final val name // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.name|{}name[0]
+        final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.name.<get-name>|<get-name>(){}[0]
+    final val props // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.props|{}props[0]
+        final fun <get-props>(): kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiProp> // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.props.<get-props>|<get-props>(){}[0]
+    final val slots // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.slots|{}slots[0]
+        final fun <get-slots>(): kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiSlot> // dev.mikepenz.a2cui.codegen.annotations/A2uiComponent.slots.<get-slots>|<get-slots>(){}[0]
+}
+
+open annotation class dev.mikepenz.a2cui.codegen.annotations/A2uiEvent : kotlin/Annotation { // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent|null[0]
+    constructor <init>(kotlin/String, kotlin/String = ..., kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiProp> = ...) // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.<init>|<init>(kotlin.String;kotlin.String;kotlin.Array<dev.mikepenz.a2cui.codegen.annotations.A2uiProp>){}[0]
+
+    final val context // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.context|{}context[0]
+        final fun <get-context>(): kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiProp> // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.context.<get-context>|<get-context>(){}[0]
+    final val description // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.description|{}description[0]
+        final fun <get-description>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.description.<get-description>|<get-description>(){}[0]
+    final val name // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.name|{}name[0]
+        final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiEvent.name.<get-name>|<get-name>(){}[0]
+}
+
+open annotation class dev.mikepenz.a2cui.codegen.annotations/A2uiProp : kotlin/Annotation { // dev.mikepenz.a2cui.codegen.annotations/A2uiProp|null[0]
+    constructor <init>(kotlin/String, dev.mikepenz.a2cui.codegen.annotations/A2uiPropType = ..., kotlin/String = ..., kotlin/Boolean = ..., kotlin/String = ..., kotlin/Array<kotlin/String> = ...) // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.<init>|<init>(kotlin.String;dev.mikepenz.a2cui.codegen.annotations.A2uiPropType;kotlin.String;kotlin.Boolean;kotlin.String;kotlin.Array<kotlin.String>){}[0]
+
+    final val defaultValue // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.defaultValue|{}defaultValue[0]
+        final fun <get-defaultValue>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.defaultValue.<get-defaultValue>|<get-defaultValue>(){}[0]
+    final val description // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.description|{}description[0]
+        final fun <get-description>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.description.<get-description>|<get-description>(){}[0]
+    final val enumValues // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.enumValues|{}enumValues[0]
+        final fun <get-enumValues>(): kotlin/Array<kotlin/String> // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.enumValues.<get-enumValues>|<get-enumValues>(){}[0]
+    final val name // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.name|{}name[0]
+        final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.name.<get-name>|<get-name>(){}[0]
+    final val required // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.required|{}required[0]
+        final fun <get-required>(): kotlin/Boolean // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.required.<get-required>|<get-required>(){}[0]
+    final val type // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.type|{}type[0]
+        final fun <get-type>(): dev.mikepenz.a2cui.codegen.annotations/A2uiPropType // dev.mikepenz.a2cui.codegen.annotations/A2uiProp.type.<get-type>|<get-type>(){}[0]
+}
+
+open annotation class dev.mikepenz.a2cui.codegen.annotations/A2uiSlot : kotlin/Annotation { // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot|null[0]
+    constructor <init>(kotlin/String, kotlin/String = ..., kotlin/Boolean = ...) // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.<init>|<init>(kotlin.String;kotlin.String;kotlin.Boolean){}[0]
+
+    final val description // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.description|{}description[0]
+        final fun <get-description>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.description.<get-description>|<get-description>(){}[0]
+    final val multiple // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.multiple|{}multiple[0]
+        final fun <get-multiple>(): kotlin/Boolean // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.multiple.<get-multiple>|<get-multiple>(){}[0]
+    final val name // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.name|{}name[0]
+        final fun <get-name>(): kotlin/String // dev.mikepenz.a2cui.codegen.annotations/A2uiSlot.name.<get-name>|<get-name>(){}[0]
+}
+
+final enum class dev.mikepenz.a2cui.codegen.annotations/A2uiPropType : kotlin/Enum<dev.mikepenz.a2cui.codegen.annotations/A2uiPropType> { // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType|null[0]
+    enum entry ARRAY // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.ARRAY|null[0]
+    enum entry BOOLEAN // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.BOOLEAN|null[0]
+    enum entry INTEGER // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.INTEGER|null[0]
+    enum entry NUMBER // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.NUMBER|null[0]
+    enum entry OBJECT // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.OBJECT|null[0]
+    enum entry STRING // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.STRING|null[0]
+
+    final val entries // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<dev.mikepenz.a2cui.codegen.annotations/A2uiPropType> // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): dev.mikepenz.a2cui.codegen.annotations/A2uiPropType // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<dev.mikepenz.a2cui.codegen.annotations/A2uiPropType> // dev.mikepenz.a2cui.codegen.annotations/A2uiPropType.values|values#static(){}[0]
+}

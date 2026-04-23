@@ -1,0 +1,41 @@
+public abstract interface annotation class dev/mikepenz/a2cui/codegen/annotations/A2uiComponent : java/lang/annotation/Annotation {
+	public abstract fun description ()Ljava/lang/String;
+	public abstract fun events ()[Ldev/mikepenz/a2cui/codegen/annotations/A2uiEvent;
+	public abstract fun name ()Ljava/lang/String;
+	public abstract fun props ()[Ldev/mikepenz/a2cui/codegen/annotations/A2uiProp;
+	public abstract fun slots ()[Ldev/mikepenz/a2cui/codegen/annotations/A2uiSlot;
+}
+
+public abstract interface annotation class dev/mikepenz/a2cui/codegen/annotations/A2uiEvent : java/lang/annotation/Annotation {
+	public abstract fun context ()[Ldev/mikepenz/a2cui/codegen/annotations/A2uiProp;
+	public abstract fun description ()Ljava/lang/String;
+	public abstract fun name ()Ljava/lang/String;
+}
+
+public abstract interface annotation class dev/mikepenz/a2cui/codegen/annotations/A2uiProp : java/lang/annotation/Annotation {
+	public abstract fun defaultValue ()Ljava/lang/String;
+	public abstract fun description ()Ljava/lang/String;
+	public abstract fun enumValues ()[Ljava/lang/String;
+	public abstract fun name ()Ljava/lang/String;
+	public abstract fun required ()Z
+	public abstract fun type ()Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+}
+
+public final class dev/mikepenz/a2cui/codegen/annotations/A2uiPropType : java/lang/Enum {
+	public static final field ARRAY Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static final field BOOLEAN Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static final field INTEGER Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static final field NUMBER Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static final field OBJECT Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static final field STRING Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+	public static fun values ()[Ldev/mikepenz/a2cui/codegen/annotations/A2uiPropType;
+}
+
+public abstract interface annotation class dev/mikepenz/a2cui/codegen/annotations/A2uiSlot : java/lang/annotation/Annotation {
+	public abstract fun description ()Ljava/lang/String;
+	public abstract fun multiple ()Z
+	public abstract fun name ()Ljava/lang/String;
+}
+

@@ -1,0 +1,47 @@
+public abstract interface class dev/mikepenz/a2cui/transport/A2uiTransport : java/lang/AutoCloseable {
+	public static final field Companion Ldev/mikepenz/a2cui/transport/A2uiTransport$Companion;
+	public abstract fun close ()V
+	public abstract fun incoming ()Lkotlinx/coroutines/flow/Flow;
+	public fun send (Ldev/mikepenz/a2cui/core/A2uiClientMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun sendRaw (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/mikepenz/a2cui/transport/A2uiTransport$Companion {
+}
+
+public final class dev/mikepenz/a2cui/transport/A2uiTransport$DefaultImpls {
+	public static fun send (Ldev/mikepenz/a2cui/transport/A2uiTransport;Ldev/mikepenz/a2cui/core/A2uiClientMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/mikepenz/a2cui/transport/FakeTransport : dev/mikepenz/a2cui/transport/A2uiTransport {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close ()V
+	public final fun emit (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun emitAll (Ljava/lang/Iterable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getSent ()Ljava/util/List;
+	public fun incoming ()Lkotlinx/coroutines/flow/Flow;
+	public fun send (Ldev/mikepenz/a2cui/core/A2uiClientMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun sendRaw (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun tryEmit (Ljava/lang/String;)V
+}
+
+public final class dev/mikepenz/a2cui/transport/SseTransport : dev/mikepenz/a2cui/transport/A2uiTransport {
+	public fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close ()V
+	public fun incoming ()Lkotlinx/coroutines/flow/Flow;
+	public fun send (Ldev/mikepenz/a2cui/core/A2uiClientMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun sendRaw (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class dev/mikepenz/a2cui/transport/WebSocketTransport : dev/mikepenz/a2cui/transport/A2uiTransport {
+	public fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close ()V
+	public fun incoming ()Lkotlinx/coroutines/flow/Flow;
+	public fun send (Ldev/mikepenz/a2cui/core/A2uiClientMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun sendRaw (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
