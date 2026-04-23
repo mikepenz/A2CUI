@@ -30,6 +30,7 @@ Transport: **Server-Sent Events (SSE)**. Each SSE `data:` line is one JSON-encod
 | Directory | Stack | Endpoint (default) | Notes |
 |---|---|---|---|
 | [`pydantic-ai/`](./pydantic-ai/) | Python / FastAPI + `pydantic-ai` | `http://localhost:8000/events` | LLM optional. Hand-rolled SSE. |
+| [`google-adk/`](./google-adk/) | Python / FastAPI + `google-adk` (Gemini) | `http://localhost:8100/events` | Agent calls a `render_booking_form` tool whose returned frames are forwarded as `CUSTOM(a2ui)`. |
 | [`mastra/`](./mastra/) | TypeScript / Node / Mastra | `http://localhost:3000/agent/a2ui-booking` | Uses Mastra's AG-UI adapter. |
 
 ## Plugging into `:a2cui-sample-live`
@@ -43,6 +44,9 @@ Transport: **Server-Sent Events (SSE)**. Each SSE `data:` line is one JSON-encod
 ```bash
 # Pydantic AI
 AGUI_URL=http://localhost:8000/events ./gradlew :a2cui-sample-live:run
+
+# Google ADK
+AGUI_URL=http://localhost:8100/events ./gradlew :a2cui-sample-live:run
 
 # Mastra
 AGUI_URL=http://localhost:3000/agent/a2ui-booking ./gradlew :a2cui-sample-live:run

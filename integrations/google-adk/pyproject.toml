@@ -1,0 +1,15 @@
+[project]
+name = "a2cui-google-adk-integration"
+version = "0.1.0"
+description = "Google ADK agent exposing AG-UI-compatible SSE for A2CUI's :a2cui-sample-live"
+requires-python = ">=3.11"
+dependencies = [
+    "google-adk>=1.17",
+    "fastapi>=0.115",
+    "sse-starlette>=2.1",
+    "uvicorn[standard]>=0.32",
+]
+
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
