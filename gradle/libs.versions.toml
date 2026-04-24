@@ -41,7 +41,7 @@ coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.re
 
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.9.0" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.10.2" }
 junit5 = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
 
 [plugins]
