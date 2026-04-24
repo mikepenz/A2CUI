@@ -22,9 +22,9 @@ plugins {
 }
 
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-codegen-annotations:0.1.0-a01")
-    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a01")
-    ksp("dev.mikepenz.a2cui:a2cui-codegen:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-codegen-annotations:0.1.0-a02")
+    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a02")
+    ksp("dev.mikepenz.a2cui:a2cui-codegen:0.1.0-a02")
 }
 
 ksp {
@@ -38,7 +38,7 @@ Catalog-style:
 
 ```toml
 [versions]
-a2cui = "0.1.0-a01"
+a2cui = "0.1.0-a02"
 ksp = "2.3.6"
 
 [libraries]

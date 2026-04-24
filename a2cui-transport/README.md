@@ -13,7 +13,7 @@ Ktor-backed transports for streaming A2UI frames into an [A2cuiSurface](../a2cui
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-transport:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-transport:0.1.0-a02")
     // Pick the Ktor engine appropriate for your platform:
     implementation("io.ktor:ktor-client-okhttp:3.4.3")   // android / jvm
     // implementation("io.ktor:ktor-client-darwin:3.4.3") // ios / macos
@@ -25,7 +25,7 @@ Version catalog variant:
 
 ```toml
 [versions]
-a2cui = "0.1.0-a01"
+a2cui = "0.1.0-a02"
 ktor = "3.4.3"
 
 [libraries]

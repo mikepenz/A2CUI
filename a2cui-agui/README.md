@@ -13,9 +13,9 @@
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a01")
-    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a01")
-    implementation("dev.mikepenz.a2cui:a2cui-transport:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a02")
+    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a02")
+    implementation("dev.mikepenz.a2cui:a2cui-transport:0.1.0-a02")
 }
 ```
 

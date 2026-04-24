@@ -13,7 +13,7 @@ Pure-Kotlin types, parser, data model, and binding resolver for [A2UI v0.9](http
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-core:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-core:0.1.0-a02")
 }
 ```
 
@@ -22,7 +22,7 @@ With version catalog:
 ```toml
 # gradle/libs.versions.toml
 [versions]
-a2cui = "0.1.0-a01"
+a2cui = "0.1.0-a02"
 
 [libraries]
 a2cui-core = { module = "dev.mikepenz.a2cui:a2cui-core", version.ref = "a2cui" }

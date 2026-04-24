@@ -12,8 +12,8 @@ Maps [Adaptive Cards v1.6](https://adaptivecards.io/) JSON to an `A2uiFrame.Upda
 
 ```kotlin
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-adaptive-cards:0.1.0-a01")
-    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-adaptive-cards:0.1.0-a02")
+    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a02")
 }
 ```
 

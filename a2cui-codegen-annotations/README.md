@@ -11,7 +11,7 @@ Annotations consumed by the `:a2cui-codegen` KSP processor to declare custom A2U
 
 ```kotlin
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-codegen-annotations:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-codegen-annotations:0.1.0-a02")
 }
 // plus the KSP processor in your build (see :a2cui-codegen)
 ```

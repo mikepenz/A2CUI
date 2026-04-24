@@ -13,8 +13,8 @@ CopilotKit-style generative-UI actions for Compose: `rememberAction` registers a
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-actions:0.1.0-a01")
-    implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a01") // typical pairing
+    implementation("dev.mikepenz.a2cui:a2cui-actions:0.1.0-a02")
+    implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a02") // typical pairing
 }
 ```
 

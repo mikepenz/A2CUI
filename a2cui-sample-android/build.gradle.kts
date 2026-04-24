@@ -10,7 +10,7 @@ android {
         applicationId = "dev.mikepenz.a2cui.sample.android"
         minSdk = 23
         versionCode = 1
-        versionName = "0.1.0-a01"
+        versionName = "0.1.0-a02"
     }
 }
 

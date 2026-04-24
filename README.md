@@ -26,10 +26,10 @@ Add the dependency (planned coords — not yet published to Maven Central):
 ```kotlin
 // build.gradle.kts
 dependencies {
-    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a01")
+    implementation("dev.mikepenz.a2cui:a2cui-compose:0.1.0-a02")
     // optional:
-    // implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a01")
-    // implementation("dev.mikepenz.a2cui:a2cui-actions:0.1.0-a01")
+    // implementation("dev.mikepenz.a2cui:a2cui-agui:0.1.0-a02")
+    // implementation("dev.mikepenz.a2cui:a2cui-actions:0.1.0-a02")
 }
 ```
 
