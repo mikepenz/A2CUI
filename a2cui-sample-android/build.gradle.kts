@@ -22,6 +22,6 @@ dependencies {
     implementation(compose.material3)
     implementation(compose.ui)
 
-    implementation("androidx.activity:activity-compose:1.9.3")
+    implementation("androidx.activity:activity-compose:1.13.0")
     implementation("androidx.core:core-ktx:1.13.1")
 }
