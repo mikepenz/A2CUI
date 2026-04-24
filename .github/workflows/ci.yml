@@ -29,9 +29,13 @@ jobs:
       - name: Assemble & check
         run: ./gradlew assemble check
 
+      - name: Check Kotlin ABI
+        run: ./gradlew checkKotlinAbi
+
   ios:
     name: Build iOS targets
     runs-on: macos-15
+    if: false # Disable for now to reduce cost
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -49,25 +53,3 @@ jobs:
 
       - name: Compile iOS klibs + sample framework
         run: ./gradlew :a2cui-core:iosArm64MainKlibrary :a2cui-compose:iosArm64MainKlibrary :a2cui-sample-ios:assemble
-
-  abi-check:
-    name: Kotlin ABI check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-
-      - name: Setup Java
-        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
-        with:
-          distribution: 'zulu'
-          java-version: '21'
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
-
-      - name: Check Kotlin ABI
-        run: ./gradlew checkKotlinAbi
-
