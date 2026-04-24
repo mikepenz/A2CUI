@@ -39,4 +39,4 @@ kotlin {
 
 // Transitively pulls Coil 3, whose JS artifact touches `window` at module init —
 // that throws inside mocha's eager require, so the Node test runner can't load the bundle.
-tasks.matching { it.name == "jsNodeTest" }.configureEach { enabled = false }
+tasks.matching { it.name == "jsNodeTest" || it.name == "wasmJsNodeTest" }.configureEach { enabled = false }
