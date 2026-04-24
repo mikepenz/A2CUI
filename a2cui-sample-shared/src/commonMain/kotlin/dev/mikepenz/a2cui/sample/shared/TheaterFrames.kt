@@ -1,13 +1,15 @@
-package dev.mikepenz.a2cui.agui.mockserver
+package dev.mikepenz.a2cui.sample.shared
 
 /**
- * Raw A2UI JSON frames — mirror of `a2cui-sample-shared/SampleFrames.kt` (which is `internal`).
- * Kept here verbatim so the mock server can embed them as AG-UI `CUSTOM` values without crossing
- * the internal visibility boundary.
+ * Richer multi-section A2UI scenario: movie theater booking.
+ *
+ * Demonstrates iteration-scope `List` binding, `ChoicePicker`, `Slider`, `Card`, `Row`, `Image`,
+ * and a dynamic summary driven by data-model writes — the kind of surface a real production agent
+ * would stream rather than the single-form booking demo.
  */
-public object SampleA2uiFrames {
+internal object TheaterFrames {
 
-    public fun createSurface(id: String): String = """
+    fun createSurface(id: String): String = """
         {
           "version": "v0.9",
           "createSurface": {
@@ -17,33 +19,7 @@ public object SampleA2uiFrames {
         }
     """.trimIndent()
 
-    public fun bookingComponents(id: String): String = """
-        {
-          "version": "v0.9",
-          "updateComponents": {
-            "surfaceId": "$id",
-            "components": [
-              { "id": "root", "component": "Column", "spacing": 12, "children": ["title","sub","email","name","subscribe","submit"] },
-              { "id": "title", "component": "Text", "text": "Book your table", "variant": "h2" },
-              { "id": "sub",   "component": "Text", "text": "Live agent demo over SSE.", "variant": "body" },
-              { "id": "email", "component": "TextField", "label": "Email", "value": { "path": "/form/email" } },
-              { "id": "name",  "component": "TextField", "label": "Name",  "value": { "path": "/form/name" } },
-              { "id": "subscribe", "component": "CheckBox", "label": "Email me the receipt", "value": { "path": "/form/subscribe" } },
-              { "id": "submit", "component": "Button", "text": "Submit booking",
-                "action": { "event": { "name": "submit_booking",
-                  "context": { "email": { "path": "/form/email" }, "name": { "path": "/form/name" }, "subscribe": { "path": "/form/subscribe" } } } } }
-            ]
-          }
-        }
-    """.trimIndent()
-
-    public fun seedEmail(id: String): String = """
-        { "version": "v0.9",
-          "updateDataModel": { "surfaceId": "$id", "path": "/form/email", "value": "hello@example.com" } }
-    """.trimIndent()
-
-    /** Seed for the theater scenario — mirrors `TheaterFrames.seedCatalog`. */
-    public fun theaterSeed(id: String): String = """
+    fun seedCatalog(id: String): String = """
         { "version": "v0.9",
           "updateDataModel": { "surfaceId": "$id", "path": "", "value": {
             "movies": [
@@ -64,8 +40,7 @@ public object SampleA2uiFrames {
           } } }
     """.trimIndent()
 
-    /** Component tree for the theater scenario — mirrors `TheaterFrames.theaterComponents`. */
-    public fun theaterComponents(id: String): String = """
+    fun theaterComponents(id: String): String = """
         {
           "version": "v0.9",
           "updateComponents": {
@@ -110,7 +85,7 @@ public object SampleA2uiFrames {
               { "id": "seatingField", "component": "ChoicePicker", "label": "Seating",
                 "choices": ["Standard","Premium","IMAX"],
                 "value": { "path": "/booking/seating" } },
-              { "id": "snacksField", "component": "CheckBox", "label": "Add popcorn & drinks combo (+${'$'}8)",
+              { "id": "snacksField", "component": "CheckBox", "label": "Add popcorn & drinks combo (+$8)",
                 "value": { "path": "/booking/snacks" } },
 
               { "id": "summaryCard", "component": "Card", "children": ["summaryTitle","summaryMovie","summarySeats","summaryNote"] },
@@ -136,6 +111,3 @@ public object SampleA2uiFrames {
         }
     """.trimIndent()
 }
-
-/** Pre-baked scenarios the mock server can replay over SSE. */
-public enum class MockScenario { Booking, Theater }

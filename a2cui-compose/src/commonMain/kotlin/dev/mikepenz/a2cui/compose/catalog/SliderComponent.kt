@@ -59,7 +59,17 @@ internal val SliderFactory: ComponentFactory = @Composable { node, scope ->
         Slider(
             value = clamped,
             onValueChange = { next ->
-                if (path != null) scope.dataModel.write(path, JsonPrimitive(next))
+                if (path != null) {
+                    // When `step` is a positive integer the slider is discrete: write integer
+                    // primitives so paths bound to int-typed fields don't silently get `3.0`.
+                    // For step == 0 (continuous) keep float precision via Double.
+                    val v: JsonPrimitive = if (step > 0) {
+                        JsonPrimitive(next.roundToInt())
+                    } else {
+                        JsonPrimitive(next.toDouble())
+                    }
+                    scope.dataModel.write(path, v)
+                }
             },
             valueRange = min..max,
             steps = sliderSteps,

@@ -128,16 +128,12 @@ public final class dev/mikepenz/a2cui/compose/catalog/CatalogHelpersKt {
 	public static synthetic fun emitAction$default (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Lkotlinx/serialization/json/JsonObject;ILjava/lang/Object;)V
 	public static final fun parseAction (Lkotlinx/serialization/json/JsonElement;)Ldev/mikepenz/a2cui/compose/catalog/ActionSpec;
 	public static final fun pathOf (Lkotlinx/serialization/json/JsonObject;Ljava/lang/String;)Ljava/lang/String;
-	public static final fun resolve (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;)Lkotlinx/serialization/json/JsonElement;
-	public static final fun resolveBool (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Z)Z
-	public static synthetic fun resolveBool$default (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;ZILjava/lang/Object;)Z
-	public static final fun resolveDouble (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;D)D
-	public static synthetic fun resolveDouble$default (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;DILjava/lang/Object;)D
-	public static final fun resolveInt (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;I)I
-	public static synthetic fun resolveInt$default (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;IILjava/lang/Object;)I
-	public static final fun resolveString (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-	public static synthetic fun resolveString$default (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
-	public static final fun resolveStringList (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;)Ljava/util/List;
+	public static final fun resolve (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Landroidx/compose/runtime/Composer;I)Lkotlinx/serialization/json/JsonElement;
+	public static final fun resolveBool (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;ZLandroidx/compose/runtime/Composer;II)Z
+	public static final fun resolveDouble (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;DLandroidx/compose/runtime/Composer;II)D
+	public static final fun resolveInt (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;ILandroidx/compose/runtime/Composer;II)I
+	public static final fun resolveString (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Ljava/lang/String;Landroidx/compose/runtime/Composer;II)Ljava/lang/String;
+	public static final fun resolveStringList (Ldev/mikepenz/a2cui/compose/RenderScope;Ldev/mikepenz/a2cui/core/ComponentNode;Ljava/lang/String;Landroidx/compose/runtime/Composer;I)Ljava/util/List;
 }
 
 public final class dev/mikepenz/a2cui/compose/catalog/ComposableSingletons$ButtonComponentKt {
@@ -164,6 +160,8 @@ public final class dev/mikepenz/a2cui/compose/catalog/ComposableSingletons$DateT
 	public final fun getLambda$-1307231969$a2cui_compose ()Lkotlin/jvm/functions/Function4;
 	public final fun getLambda$-1631836008$a2cui_compose ()Lkotlin/jvm/functions/Function3;
 	public final fun getLambda$-550004959$a2cui_compose ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1752606149$a2cui_compose ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$2036591687$a2cui_compose ()Lkotlin/jvm/functions/Function3;
 	public final fun getLambda$749152972$a2cui_compose ()Lkotlin/jvm/functions/Function3;
 	public final fun getLambda$757151946$a2cui_compose ()Lkotlin/jvm/functions/Function3;
 }
