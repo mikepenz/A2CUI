@@ -29,4 +29,7 @@ local.properties
 .claude/
 .autoresearch/
 .specify/
-research/kotlin-js-store/
+
+research/
+STATUS.md
+SYNTHESIS.md
