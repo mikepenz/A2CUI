@@ -39,6 +39,7 @@ public class MockAguiServer(
     public val port: Int = 0,
     public val surfaceId: String = "demo",
     private val frameDelayMillis: Long = 100L,
+    public val scenario: MockScenario = MockScenario.Booking,
 ) {
     private var engine: EmbeddedServer<*, *>? = null
     private val json = Json { encodeDefaults = false }
@@ -75,19 +76,31 @@ public class MockAguiServer(
                     send(data = encodeEvent("TEXT_MESSAGE_START") {
                         put("messageId", messageId); put("role", "assistant")
                     })
+                    val greeting = when (scenario) {
+                        MockScenario.Booking -> "Rendering booking form…"
+                        MockScenario.Theater -> "Pulling tonight's showtimes…"
+                    }
                     send(data = encodeEvent("TEXT_MESSAGE_CONTENT") {
-                        put("messageId", messageId); put("delta", "Rendering booking form…")
+                        put("messageId", messageId); put("delta", greeting)
                     })
                     send(data = encodeEvent("TEXT_MESSAGE_END") {
                         put("messageId", messageId)
                     })
                     delay(frameDelayMillis)
 
-                    for (frame in listOf(
-                        SampleA2uiFrames.createSurface(surfaceId),
-                        SampleA2uiFrames.bookingComponents(surfaceId),
-                        SampleA2uiFrames.seedEmail(surfaceId),
-                    )) {
+                    val frames = when (scenario) {
+                        MockScenario.Booking -> listOf(
+                            SampleA2uiFrames.createSurface(surfaceId),
+                            SampleA2uiFrames.bookingComponents(surfaceId),
+                            SampleA2uiFrames.seedEmail(surfaceId),
+                        )
+                        MockScenario.Theater -> listOf(
+                            SampleA2uiFrames.createSurface(surfaceId),
+                            SampleA2uiFrames.theaterSeed(surfaceId),
+                            SampleA2uiFrames.theaterComponents(surfaceId),
+                        )
+                    }
+                    for (frame in frames) {
                         val value = Json.parseToJsonElement(frame)
                         send(data = encodeEvent("CUSTOM") {
                             put("name", "a2ui")

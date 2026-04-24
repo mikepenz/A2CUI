@@ -1,6 +1,9 @@
 package dev.mikepenz.a2cui.compose.catalog
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -12,13 +15,13 @@ import androidx.compose.material3.TimePicker
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import dev.mikepenz.a2cui.compose.ComponentFactory
 import kotlinx.serialization.json.JsonPrimitive
@@ -29,8 +32,10 @@ import kotlinx.serialization.json.JsonPrimitive
  *
  *  - `format: "date"` (default) → [DatePicker], value stored as `YYYY-MM-DD`.
  *  - `format: "time"` → [TimePicker], value stored as `HH:MM` (24-hour).
- *  - `format: "datetime"` → same as `date` for now; a two-step date+time flow can be layered on
- *    later without changing the wire contract.
+ *  - `format: "datetime"` → date picker followed by time picker; value stored as
+ *    `YYYY-MM-DDTHH:MM` (ISO-8601 local-time form, no timezone). Cancelling the time picker
+ *    after the date picker still commits the date portion at midnight (`T00:00`) so the field
+ *    is never left half-set.
  *
  * Manual text entry is deliberately NOT supported — the picker is the only input path so values
  * stay well-formed. Hosts that want free-text entry can `registry.register("DateTimeInput") { ... }`
@@ -51,26 +56,31 @@ internal val DateTimeInputFactory: ComponentFactory = @Composable { node, scope 
 
     var showPicker by remember { mutableStateOf(false) }
 
-    Box(
-        modifier = Modifier.pointerInput(Unit) {
-            // Intercept pointer taps on the whole field; OutlinedTextField itself is readOnly so
-            // the click doesn't request focus for IME input.
-            awaitPointerEventScope {
-                while (true) {
-                    val event = awaitPointerEvent()
-                    if (event.changes.any { it.pressed }) showPicker = true
-                }
-            }
+    // Read-only OutlinedTextField still consumes pointer events for focus/cursor handling, so
+    // wrapping it in `clickable` or hand-rolled pointerInput loops will either swallow the
+    // tap or leak forever. The Material-recommended pattern is `interactionSource` + observe
+    // press interactions: the TextField surfaces every press through the same flow whether the
+    // field is enabled, disabled, or read-only.
+    val interactionSource = remember { MutableInteractionSource() }
+    LaunchedEffect(interactionSource) {
+        interactionSource.interactions.collect { interaction ->
+            if (interaction is PressInteraction.Release) showPicker = true
         }
-    ) {
-        OutlinedTextField(
-            value = current,
-            onValueChange = {},
-            readOnly = true,
-            label = if (label.isNotEmpty()) { { Text(label) } } else null,
-            placeholder = { Text(if (format == "time") "HH:MM" else "YYYY-MM-DD") },
-        )
     }
+
+    OutlinedTextField(
+        value = current,
+        onValueChange = {},
+        readOnly = true,
+        label = if (label.isNotEmpty()) { { Text(label) } } else null,
+        placeholder = { Text(if (format == "time") "HH:MM" else "YYYY-MM-DD") },
+        interactionSource = interactionSource,
+        modifier = Modifier.fillMaxWidth(),
+    )
+
+    // For `datetime`, the date picker confirms first, then we switch into the time picker.
+    // `pendingDate` carries the chosen ISO date between the two stages.
+    var pendingDate by remember { mutableStateOf<String?>(null) }
 
     if (showPicker && path != null) {
         when (format) {
@@ -80,13 +90,51 @@ internal val DateTimeInputFactory: ComponentFactory = @Composable { node, scope 
                 TimePickerSheet(
                     onDismiss = { showPicker = false },
                     onConfirm = {
-                        val hh = state.hour.toString().padStart(2, '0')
-                        val mm = state.minute.toString().padStart(2, '0')
-                        scope.dataModel.write(path, JsonPrimitive("$hh:$mm"))
+                        scope.dataModel.write(path, JsonPrimitive(formatTime(state.hour, state.minute)))
                         showPicker = false
                     },
                 ) {
                     Box(Modifier.padding(24.dp)) { TimePicker(state = state) }
+                }
+            }
+            "datetime" -> {
+                if (pendingDate == null) {
+                    val state = rememberDatePickerState(initialSelectedDateMillis = parseDateMillis(current))
+                    DatePickerDialog(
+                        onDismissRequest = { showPicker = false },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                val millis = state.selectedDateMillis
+                                pendingDate = if (millis != null) millisToIsoDate(millis) else null
+                                if (pendingDate == null) showPicker = false
+                            }) { Text("Next") }
+                        },
+                        dismissButton = {
+                            TextButton(onClick = { showPicker = false }) { Text("Cancel") }
+                        },
+                    ) { DatePicker(state = state) }
+                } else {
+                    val (h0, m0) = parseTime(current.substringAfter('T', ""))
+                    val state = rememberTimePickerState(initialHour = h0, initialMinute = m0, is24Hour = true)
+                    TimePickerSheet(
+                        onDismiss = {
+                            // User cancelled the time stage — commit the date at midnight so we don't
+                            // leave the field half-set.
+                            scope.dataModel.write(path, JsonPrimitive("${pendingDate}T00:00"))
+                            pendingDate = null
+                            showPicker = false
+                        },
+                        onConfirm = {
+                            scope.dataModel.write(
+                                path,
+                                JsonPrimitive("${pendingDate}T${formatTime(state.hour, state.minute)}"),
+                            )
+                            pendingDate = null
+                            showPicker = false
+                        },
+                    ) {
+                        Box(Modifier.padding(24.dp)) { TimePicker(state = state) }
+                    }
                 }
             }
             else -> {
@@ -109,6 +157,12 @@ internal val DateTimeInputFactory: ComponentFactory = @Composable { node, scope 
             }
         }
     }
+}
+
+private fun formatTime(hour: Int, minute: Int): String {
+    val hh = hour.toString().padStart(2, '0')
+    val mm = minute.toString().padStart(2, '0')
+    return "$hh:$mm"
 }
 
 @Composable

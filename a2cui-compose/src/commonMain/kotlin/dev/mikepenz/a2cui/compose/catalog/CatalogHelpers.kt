@@ -1,5 +1,8 @@
 package dev.mikepenz.a2cui.compose.catalog
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import dev.mikepenz.a2cui.compose.EventSpec
 import dev.mikepenz.a2cui.compose.RenderScope
 import dev.mikepenz.a2cui.core.ComponentNode
@@ -14,23 +17,49 @@ import kotlinx.serialization.json.doubleOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.jsonPrimitive
 
-/** Resolve the property named [key] on [node] through the scope's binding resolver. */
-public fun RenderScope.resolve(node: ComponentNode, key: String): JsonElement =
-    resolver.resolveProperty(node.properties, key)
+/**
+ * Resolve [key] on [node] through the scope's binding resolver.
+ *
+ * **Reactive**: when the property is anything other than a plain literal (i.e. a `{path}`
+ * binding, a `{call}`, or a `{if}` conditional that depends on the data model), this helper
+ * subscribes to the data-model root inside the calling composable so that downstream changes
+ * trigger recomposition. Plain-literal properties never read the root flow, so static text /
+ * sizes / colours don't pay any subscription cost.
+ *
+ * Without this, Text/Image/Icon/Button-text bound to `{path}` would snapshot at first
+ * composition and never update when the bound value changed — a class of silent bugs that
+ * affected every display component before this rewrite.
+ */
+@Composable
+public fun RenderScope.resolve(node: ComponentNode, key: String): JsonElement {
+    val raw = node.properties[key] ?: return JsonNull
+    val classified = PropertyValue.classify(raw)
+    if (classified is PropertyValue.Literal) return classified.value
+    // Non-literal: subscribe to root so we recompose when any data-model write happens.
+    // resolver.resolve reads dataModel.read(...) under the hood, which uses the latest snapshot.
+    val root by dataModel.root.collectAsState()
+    @Suppress("UNUSED_EXPRESSION") root // ensure read inside this composable
+    return resolver.resolve(raw)
+}
 
 /** Resolve [key] as a string; falls back to [default] when missing or non-primitive. */
+@Composable
 public fun RenderScope.resolveString(node: ComponentNode, key: String, default: String = ""): String =
     (resolve(node, key) as? JsonPrimitive)?.contentOrNull ?: default
 
+@Composable
 public fun RenderScope.resolveBool(node: ComponentNode, key: String, default: Boolean = false): Boolean =
     (resolve(node, key) as? JsonPrimitive)?.booleanOrNull ?: default
 
+@Composable
 public fun RenderScope.resolveInt(node: ComponentNode, key: String, default: Int = 0): Int =
     (resolve(node, key) as? JsonPrimitive)?.intOrNull ?: default
 
+@Composable
 public fun RenderScope.resolveDouble(node: ComponentNode, key: String, default: Double = 0.0): Double =
     (resolve(node, key) as? JsonPrimitive)?.doubleOrNull ?: default
 
+@Composable
 public fun RenderScope.resolveStringList(node: ComponentNode, key: String): List<String> {
     val el = resolve(node, key)
     if (el !is kotlinx.serialization.json.JsonArray) return emptyList()
@@ -69,7 +98,8 @@ public fun parseAction(raw: JsonElement?): ActionSpec? {
 /**
  * Fire an outbound event derived from [node]'s `action` property (if any). Context values in
  * the action are resolved through the binding resolver at emit time so `{path}` refs to the
- * current data model produce concrete values.
+ * current data model produce concrete values. Not `@Composable` — called from `onClick`
+ * lambdas where reactivity isn't meaningful (the click already implies "now").
  */
 public fun RenderScope.emitAction(node: ComponentNode, overrides: JsonObject = JsonObject(emptyMap())) {
     val spec = parseAction(node.properties["action"]) ?: return
