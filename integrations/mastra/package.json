@@ -10,7 +10,7 @@
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@ag-ui/core": "^0.0.30",
+    "@ag-ui/core": "^0.0.52",
     "@mastra/core": "^0.10.0",
     "@ai-sdk/openai": "^1.0.0",
     "express": "^4.21.0",
