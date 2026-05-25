@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.3.20"
+kotlin = "2.3.21"
 kotlinx-serialization = "1.11.0"
 ktor = "3.4.3"
 ksp = "2.3.6"
@@ -41,7 +41,7 @@ coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.re
 
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.10.2" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version = "1.11.0" }
 junit5 = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
 
 [plugins]
